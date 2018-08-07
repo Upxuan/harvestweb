@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/teacher/index'
-import Login from '../login'
-import mystudent from '@/teacher/mystudent'
-import audit from '@/teacher/audit'
-import add from '@/teacher/add'
-import layout from '@/layout'
+import Login from '@/components/Login'
+import Layout from '@/components/Layout'
+import Index from '@/components/system/SysIndex'
+import Mystudent from '@/components/system/SysMystudent'
+import Audit from '@/components/system/SysAudit'
+import Addmanual from '@/components/system/SysAddmanual'
 Vue.use(Router)
 
 export default new Router({
@@ -17,33 +17,39 @@ export default new Router({
       component: Login
     },
     {
-      path:'/layout',
-      component:layout,
+      path:'/Layout',
+      component:Layout,
       children:[
         {
           path:'/',
-          name:'index',
+          name:'Index',
           component:Index
         },
         {
-          path:'/index',
-          name:'index',
+          path:'/Index',
+          name:'Index',
           component:Index
         },
         {
-          path:'/mystudent',
-          name:'mystudent',
-          component:mystudent
+          path:'/Mystudent',
+          name:'Mystudent',
+          component:Mystudent
         },
         {
-          path:'/audit',
-          name:'audit',
-          component:audit
+          path:'/Audit',
+          name:'Audit',
+          component:Audit
         },
         {
-          path:'/addManual',
-          component:add
+          path:'/Addmanual',
+          name:'Addmanual',
+          component:Addmanual
         }
+        // {
+        //   path:'/Addauto',
+        //   name:'Addauto'
+        //   component:Addauto
+        // }
       ]
     }
   ]

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="login">
   <div class="container">
     <br><br><br><br><br><br>
     <h1>Welcome</h1>
@@ -10,7 +10,7 @@
       <el-radio v-model="radio" label="2">学生</el-radio>
       <el-radio v-model="radio" label="3">管理员</el-radio>
       <router-link to="/layout">
-      <input type="submit"  value="Login"/></router-link>
+      <input type="submit" value="Login"/></router-link>
     </form>
   </div>
   <ul>
@@ -29,17 +29,17 @@
 </template>
 
 <script>
-export default {
-  name: 'Login',
-  data () {
-    return {
-      radio: '1'
+  export default {
+    name: 'login',
+    data () {
+      return {
+        radio: '1'
+      }
     }
   }
-}
 </script>
 
-<style>
+<style scoped>
 .el-radio{
   margin-left:230px;
   color:#fff;
@@ -58,7 +58,6 @@ body {
 .wrap {
   width: 100%;
   height: 100%;
-  /*400px*/
   padding: 40px 0;
   position: fixed;
   top: 50%;
@@ -107,7 +106,6 @@ body {
   cursor: pointer;
   width: 400px;
 }
-
 .wrap ul {
   position: absolute;
   top: 0;
@@ -222,7 +220,6 @@ body {
   -o-animation-duration: 30s;
   -webkit-animation-duration: 30s;
 }
-
 @keyframes square {
   0% {
     -webkit-transform: translateY(0);

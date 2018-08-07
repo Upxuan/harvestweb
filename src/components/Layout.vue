@@ -1,10 +1,9 @@
 <template>
-  <div id="Layout">
+  <div id="layout">
     <el-container>
       <el-header>
         <span>&nbsp&nbspACHIEVE</span>
         <el-menu
-          :default-active="activeIndex2"
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
@@ -23,10 +22,8 @@
           :default-active="this.$route.path"
           router
           @select="handleSelect"
-          @open="handleOpen1"
-          @close="handleClose1"
           class="el-menu-vertical-demo">
-          <el-menu-item index="/index">
+          <el-menu-item index="/Index">
             <i class="el-icon-document"></i>
             <span slot="title">个人主页</span>
           </el-menu-item>
@@ -36,7 +33,7 @@
               <span>添加成果</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/addManual">手动录入</el-menu-item>
+              <el-menu-item index="/AddManual">手动录入</el-menu-item>
               <el-menu-item index="/auto">自动录入</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -64,7 +61,7 @@
   </div>
 </template>
 
-<script >
+<script>
   export default{
     name:'layout',
     data() {
