@@ -1,59 +1,131 @@
 <template>
   <div class="wrap">
-  <div class="container">
-    <br><br><br><br><br><br>
-    <h1>Welcome</h1>
-    <form>
-      <input type="text" placeholder="user login"/>
-      <input type="password" placeholder="password"/>
-      <el-radio v-model="radio" label="1">教师</el-radio>
-      <el-radio v-model="radio" label="2">学生</el-radio>
-      <el-radio v-model="radio" label="3">管理员</el-radio>
-      <router-link to="/layout">
-      <input type="submit"  value="Login"/></router-link>
-    </form>
+    <div class="container">
+      <br><br><br><br><br><br>
+      <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" >
+        <h1 class="title">WELCOME</h1>
+        <el-form-item prop="account">
+          <el-input
+            type="username"
+            v-model="ruleForm2.account"
+            :maxlength='16'
+            auto-complete="off"
+            placeholder="username"
+            @keyup.enter.native='handleSubmit2'>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="checkPass">
+          <el-input
+            type="password"
+            v-model="ruleForm2.checkPass"
+            :maxlength='16'
+            auto-complete="off"
+            placeholder="password"
+            @keyup.enter.native='handleSubmit2'>
+          </el-input>
+        </el-form-item>
+        <el-form-item style="width:100%;">
+          <el-button
+            type="submit"
+            style="width:100%;"
+            @click.native.prevent="handleSubmit2"
+            :loading="logining">
+            Login
+          </el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
   </div>
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-</div>
 </template>
 
 <script>
 export default {
   name: 'Login',
   data () {
+    var validateAccount = (rule, value, callback) => {
+      if (!value) {
+        callback(new Error('请输入用户名'));
+      }
+      else {
+        var targ = /^[A-Za-z0-9]+$/;
+        if(!targ.test(value)){
+          callback(new Error('用户名只支持英文、数字'));
+        }
+        callback();
+      }
+    }
     return {
-      radio: '1'
+      logining: false,//加载动画
+      ruleForm2: {
+          account: '',//用户名
+          checkPass: ''//密码
+      },
+      rules2: {
+          account: [
+              { validator: validateAccount, trigger: 'blur' }
+          ],
+          checkPass: [
+              { required: true, message: '请输入密码', trigger: 'blur' },
+              { min: 3, max: 16, required: true, message: '密码至少为3位', trigger: 'blur' },
+          ]
+      }
+    }
+  },
+  methods: {
+    //点击登录
+    handleSubmit2(ev) {
+      var _this = this;
+      this.$refs.ruleForm2.validate((valid) => {
+        if (valid) {
+          if (this.ruleForm2.account === "admin" && this.ruleForm2.checkPass === "123"){
+            // this.$notify({
+            //   type: 'success',
+            //   message: '欢迎你，' + this.ruleForm2.account + '!',
+            //   duration: 3000
+            // })
+            this.$router.replace('/layout')
+          }
+          else{
+            this.$message({
+              type: 'error',
+              message: '用户名或密码错误',
+              showClose: true
+            })
+          }
+          // this.logining = true;
+          // //用户信息
+          // var loginParams = {username: this.ruleForm2.account, password: this.ruleForm2.checkPass};
+          // requestLogin(loginParams).then(data => {
+          //  console.log(data)
+          // });
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
     }
   }
 }
 </script>
 
 <style>
-.el-radio{
-  margin-left:230px;
-  color:#fff;
-}
-a {
-  TEXT-DECORATION:none
-}
-* {
-  box-sizing: border-box;
-}
 body {
-  margin: 0; 
-  padding: 0;
   font: 16px/20px microsft yahei;
+  color: #fff;
+}
+.el-form-item {
 }
 .wrap {
   width: 100%;
@@ -68,28 +140,29 @@ body {
   background: -webkit-linear-gradient(to bottom right,#33ccff,#0099ff);
 }
 .container {
-  width: 60%;
+  width: 320px;
   margin: 0 auto;
 }
 .container h1 {
   text-align: center;
   color: #FFFFFF;
   font-weight: 500;
+  /*font-weight: bold;*/
 }
 .container input {
-  width: 320px;
+  width: 100%;
   display: block;
   height: 36px;
   border: 0;
   outline: 0;
   padding: 6px 10px;
   line-height: 24px;
-  margin: 32px auto;
+  margin: 10px auto;
   -webkit-transition: all 0s ease-in 0.1ms;
   -moz-transition: all 0s ease-in 0.1ms;
   transition: all 0s ease-in 0.1ms;
 }
-.container input[type="text"] , .container input[type="password"]  {
+.container input[type="username"], .container input[type="password"]  {
   background-color: #FFFFFF;
   font-size: 16px;
   color: #50a3a2;
@@ -101,13 +174,13 @@ body {
   background-color: #FFFFFF;
 }
 .container input:focus {
-  width: 400px;
+  width: 320px;
 }
 .container input[type='submit']:hover {
   cursor: pointer;
-  width: 400px;
+  width: 325px;
 }
-
+/*背景效果渲染部分*/
 .wrap ul {
   position: absolute;
   top: 0;
@@ -222,7 +295,6 @@ body {
   -o-animation-duration: 30s;
   -webkit-animation-duration: 30s;
 }
-
 @keyframes square {
   0% {
     -webkit-transform: translateY(0);
