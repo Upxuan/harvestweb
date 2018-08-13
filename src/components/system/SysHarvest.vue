@@ -32,7 +32,7 @@
 
 <style scoped>
 .all-title {
-  height: 50px;
+  height: 30px;
   border-bottom: 1px dashed #DCDFE6;
 }
 .main-font {

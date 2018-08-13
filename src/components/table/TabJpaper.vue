@@ -1,65 +1,30 @@
 <template>
   <div id="tabjpaper">
-  <!-- 上传 -->
-  <!-- <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" size = "small"> -->
-  <!-- <el-form-item label="成果全文" prop="delivery">
-    <el-upload
-      class="upload-demo"
-      action="https://jsonplaceholder.typicode.com/posts/"
-      :on-preview="handlePreview"
-      :on-remove="handleRemove"
-      :before-remove="beforeRemove"
-      multiple
-      :limit="3"
-      :on-exceed="handleExceed"
-      :file-list="fileList"> -->
-  <!--  <el-button size="small" type="primary">点击上传</el-button>
-  <div slot="tip" class="el-upload__tip">只能上传PDF文件</div>
-    </el-upload> -->
-  <!-- </el-form-item> -->
-    <el-form-item label="论文类别" prop="resource" required>
-      <el-radio-group v-model="ruleForm.resource">
-        <el-radio label="特邀报告"></el-radio>
-        <el-radio label="分组报告"></el-radio>
-        <el-radio label="墙报展示"></el-radio>
-      </el-radio-group>
-    </el-form-item>
-    <el-form-item label="标题" prop="name">
+    <el-form-item label="标题：" prop="name">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="摘要" prop="delivery">
+    <el-form-item label="摘要：" prop="delivery">
       <el-input type="textarea" v-model="ruleForm.desc"></el-input>
     </el-form-item>
-    <el-form-item label="关键词" prop="delivery">
+    <el-form-item label="关键词：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="语言" prop="resource">
+    <el-form-item label="语言：" prop="resource">
       <el-radio-group v-model="ruleForm.resource">
         <el-radio label="中文"></el-radio>
         <el-radio label="外文"></el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="会议名称" prop="resource">
+    <el-form-item label="期刊名称：" prop="resource" required>
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="会议组织者" prop="delivery">
-      <el-input v-model="ruleForm.name"></el-input>
+    <el-form-item label="状态：" prop="resource">
+      <el-radio-group v-model="ruleForm.resource">
+        <el-radio label="已发表"></el-radio>
+        <el-radio label="已接受"></el-radio>
+      </el-radio-group>
     </el-form-item>
-    <el-form-item label="会议日期" required>
-      <div class="block">
-        <el-date-picker
-          v-model="value7"
-          type="daterange"
-          align="right"
-          unlink-panels
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          :picker-options="pickerOptions2">
-        </el-date-picker>
-      </div>
-    </el-form-item>
-    <el-form-item label="发表日期" required>
+    <el-form-item label="发表日期：" required>
       <div class="block">
         <el-date-picker
           v-model="value1"
@@ -68,22 +33,16 @@
         </el-date-picker>
       </div>
     </el-form-item>
-    <el-form-item label="起止页码" prop="delivery">
+    <el-form-item label="起止页码：" prop="delivery">
       <div class="block"></div>
     </el-form-item>
-    <el-form-item label="国家或地区" prop="resource">
+    <el-form-item label="文章号：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="城市" prop="delivery">
+    <el-form-item label="DOI：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="文章号" prop="delivery">
-      <el-input v-model="ruleForm.name"></el-input>
-    </el-form-item>
-    <el-form-item label="DOI" prop="delivery">
-      <el-input v-model="ruleForm.name"></el-input>
-    </el-form-item>
-    <el-form-item label="收录情况" prop="type">
+    <el-form-item label="收录情况：" prop="type">
       <el-checkbox-group v-model="ruleForm.type">
         <el-checkbox label="SCIE" name="type"></el-checkbox>
         <el-checkbox label="SSCI" name="type"></el-checkbox>
@@ -93,36 +52,43 @@
         <el-checkbox label="其他" name="type"></el-checkbox>
       </el-checkbox-group>
     </el-form-item>
-    <el-form-item label="基金标注" prop="delivery">
+    <el-form :model="ruleForm" :inline="true" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" size = "small">
+      <el-form-item   class="demo-form-inline" label="卷号："  required prop="delivery">
+        <el-input v-model="ruleForm.name"></el-input>
+      </el-form-item>
+      <el-form-item   label="期号："  required prop="delivery">
+        <el-input v-model="ruleForm.name"></el-input>
+      </el-form-item>
+    </el-form>
+    <el-form-item label="基金标注：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="引用次数" prop="delivery">
+    <el-form-item label="引用次数：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="备注" prop="delivery">
+    <el-form-item label="备注：" prop="delivery">
       <el-input type="textarea" v-model="ruleForm.desc"></el-input>
     </el-form-item>
-    <el-form-item label="全文链接" prop="delivery">
+    <el-form-item label="全文链接：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-      <el-button @click="resetForm('ruleForm')">重置</el-button>
+      <el-button type="danger" style="margin-right: 15px;" @click="resetForm('ruleForm')">重置</el-button>
     </el-form-item>
-    <tab-editor></tab-editor>
-</div>
+  </div>
 </template>
 
 <script>
-  import TabEditor from './tabEditor'
+  import TableEditor from '../table/tabEditor'
   export default {
     name:'tabjpaper',
     components:{
-      TabEditor
+      TableEditor
     },
     data() {
       return {
-        pickerOptions2:{
+        pickerOptions2: {
           shortcuts: [
             {
               text: '最近一周',
@@ -134,8 +100,8 @@
               }
             },
             {
-              text: '最近一个月',
-              onClick(picker) {
+            text: '最近一个月',
+            onClick(picker) {
                 const end = new Date();
                 const start = new Date();
                 start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
@@ -167,10 +133,11 @@
           resource: '',
           desc: ''
         },
-        rules:{
+        rules: {
           name: [
             { required: true, message: '请输入活动名称', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }],
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
           region: [{ required: true, message: '请选择活动区域', trigger: 'change' }],
           date1: [{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }],
           date2: [{ type: 'date', required: true, message: '请选择时间', trigger: 'change' }],
@@ -178,7 +145,7 @@
           resource: [{ required: true, message: '请选择活动资源', trigger: 'change' }],
           desc: [{ required: true, message: '请填写活动形式', trigger: 'blur' }]
         }
-      };
+      }
     },
     methods: {
       submitForm(formName) {
@@ -211,25 +178,10 @@
 </script>
 
 <style scoped>
-.index-wrap {
-  margin-right:100px;
-  margin: 0 auto;
-  overflow: hidden;
-  margin-top: -780px;
-  margin-left:230px;
-  font-family: Hiragino Sans GB;
-}
-.all-title {
- height:40px;
-  border-bottom: 1px dashed #DCDFE6;
-}
-.smallfont{
-  font-size:14px;
-}
-.el-button{
+.el-button {
   float:right;
 }
-.el-menu{
+.el-menu {
   margin-right:-20px;
   float:right;
   font-family: Hiragino Sans GB;
@@ -242,61 +194,7 @@ textarea {
   border: 1px solid #C5C1AA;
   border-radius: 3px;
 }
-.manual-wrap {
-  margin: 0 auto;
-  overflow: hidden;
-  margin-top: 20px;
-  margin-left:30px;
-  margin-right:30px;
-  font-family: Hiragino Sans GB;
-}
-.manual-wrap1{
-   margin: 0 auto;
-  overflow: hidden;
-  margin-top: 6px;
-  margin-left:30px;
-  margin-right:30px;
-}
-.manual-wrap p {
-  float: left;
-}
-.base-msg {
-  margin: 12px 0 0 50px ;
-  line-height: 12px;
-}
-.base-msg-all{
-  margin-left: 70px;
-  width:800px;
-  margin-top:15px;
-}
-.base-msg-some{
-  margin-left: 70px;
-  width:400px;
-  margin-top:25px;
-}
-.main-font {
-  font-size: 17px;
-  color: #000;
-  font-family: Hiragino Sans GB;
-}
-.all-title {
- height:40px;
-  border-bottom: 1px dashed #DCDFE6;
-}
-.all-title p {
-  margin-top: 6px;
-}
-.redfont {
-  color: red;
-}
-.all-title button {
-  float: right;
-  /*background: rgb(233,93,0)*/;
-  display: inline-block;
-  padding: 5px 30px;
-  margin: 0 10px 5px 10px;
-  border:none;
-  border-radius:5px;
-  color: #fff;
+.demo-form-inline{
+  width:300px;
 }
 </style>

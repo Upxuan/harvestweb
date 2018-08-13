@@ -20,7 +20,7 @@
         stripe
         style="width: 100%"
         @row-click="handle">
-        <el-table-column  prop="date1" label="日期" width="60"></el-table-column>
+        <el-table-column prop="date1" label="日期" width="60"></el-table-column>
         <el-table-column prop="type1" label="类别" width="100"></el-table-column>
         <el-table-column prop="title1" label="题目" width="380"></el-table-column>
         <el-table-column prop="author1" label="作者" width="220"></el-table-column>
@@ -186,14 +186,6 @@
   float:right;
   margin-top:35px;
   margin-bottom:35px;
-}
-.index-wrap1 {
-  margin-right:100px;
-  margin: 0 auto;
-  overflow: hidden;
-  margin-top: -780px;
-  margin-left:230px;
-  font-family: Hiragino Sans GB;
 }
 .el-table{
   cursor:pointer; 

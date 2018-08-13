@@ -3,9 +3,11 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Layout from '@/components/Layout'
 import Index from '@/components/system/SysIndex'
+import Addmanual from '@/components/system/SysAddmanual'
+import Addauto from '@/components/system/SysAddauto'
 import Mystudent from '@/components/system/SysMystudent'
 import Audit from '@/components/system/SysAudit'
-import Addmanual from '@/components/system/SysAddmanual'
+import Manage from '@/components/system/SysManage'
 Vue.use(Router)
 
 export default new Router({
@@ -44,12 +46,17 @@ export default new Router({
           path:'/Addmanual',
           name:'Addmanual',
           component:Addmanual
+        },
+        {
+          path:'/Addauto',
+          name:'Addauto',
+          component:Addauto
+        },
+        {
+          path:'/Manage',
+          name:'Manage',
+          component:Manage
         }
-        // {
-        //   path:'/Addauto',
-        //   name:'Addauto'
-        //   component:Addauto
-        // }
       ]
     }
   ]

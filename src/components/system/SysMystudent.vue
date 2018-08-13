@@ -35,7 +35,6 @@
           @current-change="handleCurrentChange"
           :current-page="currentPage"
           :page-sizes="[10, 20, 50, 100]"
-         
           :page-size="pagesize"
           layout="total, sizes, prev, pager, next, jumper"
           :total="data.length">
@@ -171,14 +170,6 @@
 </script>
 
 <style scopde>
-.index-wrap1 {
-  margin-right:100px;
-  margin: 0 auto;
-  overflow: hidden;
-  margin-top: -780px;
-  margin-left:230px;
-  font-family: Hiragino Sans GB;
-}
 .all-title1 {
   height:40px;
   border-bottom: 1px dashed #DCDFE6;

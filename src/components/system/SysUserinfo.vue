@@ -1,15 +1,18 @@
 <template>
   <div id="sysuserinfo">
+    <div class="user-img">
+      <img src="@/assets/user-blue.png">
+    </div>
     <div class="index-usermsg">
-      <div class="namefont"><span>{{ name }}</span></div><br>
+      <div class="namefont"><span>{{ name }}</span></div>
       <div class="elsefont">
-        联系方式： <span class="msg-content-font">{{ tel }}</span><br>
-        电子邮箱： <span class="msg-content-font">{{ Email }}</span><br>
-        研究方向： <span class="msg-content-font">{{ field }}</span><br>
-        个人主页： <span class="msg-content-font">{{ introduction }}</span><br>
+        联系方式： <span>{{ tel }}</span><br>
+        电子邮箱： <span>{{ Email }}</span><br>
+        研究方向： <span>{{ field }}</span><br>
+        个人主页： <span>{{ introduction }}</span><br>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -17,7 +20,7 @@
     name:'sysuserinfo',
     data () {
       return {
-        name: 'teacherA',
+        name: '殷昱煜',
         tel: '12345678903',
         Email: '234351qq.com',
         field: '服务计算、业务流程管理、推荐系统、形式化方法、软件工程',
@@ -28,55 +31,32 @@
 </script>
 
 <style scopde>
-.msg-content-font {
-  color: #333;
-  line-height: 25px;
+.user-img {
+  float: left;
+  margin: 30px 50px;
+}
+.user-img img {
+  width: 100px;
+  background-repeat: no-repeat;
+}
+.elsefont{
+  font-size:16px;
+  color: #424242;
+}
+.elsefont span {
+  color: #424242;
+  line-height: 30px;
   font-family: microsoft yahei;
   font-weight: normal;
-  font-size:14px;
-}
-.main-font {
-  font-size: 17px;
-  
-  color: #000;
-  font-family: Hiragino Sans GB;
-
-}
-
-.elsefont{
-	font-size:16px;
+  font-size:15px;
 }
 .namefont{
-	font-size:21px;
-}
-	.index-wrap p {
-  float: left;
-  font-family: Hiragino Sans GB;
-  /*text-align: left;*/
- 
-}
-.index-wrap {
- 
-  margin-right:100px;
-  margin: 0 auto;
-  overflow: hidden;
-  margin-top: -750px;
-  margin-left:230px;
-  font-family: Hiragino Sans GB;
-  /*background-color: #123456;*/
+  font-size:21px;
+  margin-bottom: 10px;
+  /*font-weight: bold;*/
 }
 .index-usermsg {
-	/*width:1000px;*/
-  height:200px;
-  
-  margin-left: 160px;
-
-  /*border-bottom: 1px dashed #969696;
-  font-size:14px;
-  /*rgb(227,227,227);*/
-  /*background-color: #567465;*/
+  height: 180px;
+  margin: 20px 180px;
 }
-
-
-
 </style>
