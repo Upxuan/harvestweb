@@ -8,6 +8,7 @@ import Addauto from '@/components/system/SysAddauto'
 import Mystudent from '@/components/system/SysMystudent'
 import Audit from '@/components/system/SysAudit'
 import Manage from '@/components/system/SysManage'
+import Pwd from '@/components/system/SysPwd'
 Vue.use(Router)
 
 export default new Router({
@@ -56,6 +57,11 @@ export default new Router({
           path:'/Manage',
           name:'Manage',
           component:Manage
+        },
+        {
+          path:'/Pwd',
+          name:'Pwd',
+          component:Pwd
         }
       ]
     }

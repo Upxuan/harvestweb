@@ -1,7 +1,10 @@
 <template>
   <div id="sysaddmanual">
     <div class = "all-title">
-      <p class="main-font">基本信息<span class="smallfont"> (<span class="redfont"> * </span>为必填项）</span></p>
+      
+      <p class="main-font">基本信息<span class="smallfont"> (<span class="redfont"> * </span>为必填项）</span> 
+      <el-button  type="primary" size="small" @click="submitForm('ruleForm')">立即创建</el-button>
+      <el-button @click="resetForm('ruleForm')" size="small" type="danger" style="margin-right: 15px;">重置</el-button></p>
     </div>
     <div class = "base-msg-all">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" size = "small">
@@ -19,8 +22,12 @@
           <component :is='nowModel' ></component>
         </keep-alive>
       </el-form>
-    </div>
+    </div><br>
+    <div class = "all-title">
+      <p class="main-font">作者详情<a href="/HelloWorld"></a></p>
+    </div><br>
     <table-editor></table-editor>
+
   </div>
 </template>
 
@@ -48,6 +55,31 @@
     data()
     {
       return{
+        ruleForm: {
+          pass: '',
+          checkPass: '',
+          age: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: '请输入标题', trigger: 'blur' },
+          ],
+          region: [
+            { required: true, message: '请选择活动区域', trigger: 'change' }
+          ],
+          date1: [
+            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+          ],
+          date2: [
+            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+          ],
+          type: [
+            { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
+          ],
+          resource: [
+            { required: true, message: '请选择活动资源', trigger: 'change' }
+          ],
+        },
         nowModel:'jpaper',
         value:'jpaper',
         options: [
@@ -82,6 +114,7 @@
         ],
       }
     },
+
     methods:{
       changed(){
         this.nowModel = this.value;
@@ -91,6 +124,12 @@
 </script>
 
 <style scoped>
+.gap{
+  margin-right: 10px;
+}
+.el-button{
+  float:right;
+}
 .all-title {
   height:40px;
   border-bottom: 1px dashed #DCDFE6;

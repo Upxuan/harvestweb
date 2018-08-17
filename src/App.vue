@@ -19,4 +19,7 @@ body {
 a {
   TEXT-DECORATION: none
 }
+#el-radio{
+  font-weight: normal;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="tabpatent">
-    <el-form-item label="论文类别" prop="resource" required>
+    <el-form-item label="论文类别：" prop="resource" required>
       <el-radio-group v-model="ruleForm.resource">
         <el-radio label="中国专利"></el-radio>
         <el-radio label="美国专利"></el-radio>
@@ -10,46 +10,46 @@
         <el-radio label="其他国家专利"></el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="专利名称" prop="name" required><el-input v-model="ruleForm.name" ></el-input></el-form-item>
+    <el-form-item label="专利名称：" prop="name" required><el-input v-model="ruleForm.name" ></el-input></el-form-item>
     <div class="gap">
-      <el-form-item label="申请(专利)号" prop="name" label-width="120px" required>
+      <el-form-item label="申请(专利)号：" prop="name"  label-width="120px" required>
         <el-input v-model="ruleForm.name" ></el-input>
       </el-form-item>
     </div>
-    <el-form-item label="公开(公告)号" prop="name" >
+    <el-form-item label="公开(公告)号：" prop="name" label-width="120px" style="margin-left: -20px">
       <el-input v-model="ruleForm.name" ></el-input>
     </el-form-item>
-    <el-form-item label="摘要" prop="delivery" >
+    <el-form-item label="摘要：" prop="delivery" >
       <el-input type="textarea" v-model="ruleForm.desc" ></el-input>
     </el-form-item>
-    <el-form-item label="关键词" prop="delivery">
+    <el-form-item label="关键词：" prop="delivery">
        <el-input v-model="ruleForm.name" placeholder="用分号或逗号隔开"></el-input>
     </el-form-item>
     <div class="gap">
-      <el-form-item label="IPC号(主分类号)"  label-width="120px" prop="delivery">
+      <el-form-item label="IPC号(主分类号)："  label-width="130px" style="margin-left:-10px" prop="delivery">
          <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
     </div>
-    <el-form-item label="CPC号" prop="delivery">
+    <el-form-item label="CPC号：" prop="delivery">
        <el-input v-model="ruleForm.name" placeholder="用分号或逗号隔开"></el-input>
     </el-form-item>
-    <el-form-item label="发证单位" prop="name" required>
+    <el-form-item label="发证单位：" prop="name" required>
       <el-input v-model="ruleForm.name" ></el-input>
     </el-form-item>
-    <el-form-item label="专利类别" prop="resource" required>
+    <el-form-item label="专利类别：" prop="resource" required>
       <el-radio-group v-model="ruleForm.resource">
         <el-radio label="发明专利"></el-radio>
         <el-radio label="实用新型"></el-radio>
         <el-radio label="外观设计"></el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="专利状态" prop="resource" required>
+    <el-form-item label="专利状态：" prop="resource" required>
       <el-radio-group v-model="ruleForm.resource">
         <el-radio label="申请"></el-radio>
         <el-radio label="授权"></el-radio>
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="生效日期" required>
+    <el-form-item label="生效日期：" required>
       <div class="block">
         <el-date-picker
           v-model="value7"
@@ -63,7 +63,7 @@
         </el-date-picker>
       </div>
     </el-form-item>
-    <el-form-item label="申请日期" required>
+    <el-form-item label="申请日期：" required>
       <div class="block">
         <el-date-picker
           v-model="value1"
@@ -72,10 +72,10 @@
         </el-date-picker>
       </div>
     </el-form-item>
-    <el-form-item label="专利权人" prop="name" >
+    <el-form-item label="专利权人：" prop="name" >
       <el-input v-model="ruleForm.name" ></el-input>
     </el-form-item>
-    <el-form-item label="成果转化状态" prop="resource" >
+    <el-form-item label="成果转化状态：" prop="resource" label-width="110px" style="margin-left: -10px">
       <el-radio-group v-model="ruleForm.resource">
         <el-radio label="转让"></el-radio>
         <el-radio label="许可"></el-radio>
@@ -84,21 +84,22 @@
         <el-radio label="无"></el-radio>
       </el-radio-group>
     </el-form-item>
-    <div class="inputlength">
-      <el-form-item label="交易金额" prop="name" required>
-        <el-input v-model="ruleForm.name" ></el-input>
-      </el-form-item>
-    </div>
-    <el-form-item label="基金标注" prop="delivery">
+    <el-form-item label="交易金额：">
+      <el-col :span="6">
+        <el-input></el-input>
+      </el-col>
+      <el-col class="line" :span="0.5">&nbsp万元</el-col>
+    </el-form-item>
+    <el-form-item label="基金标注：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="DOI" prop="delivery">
+    <el-form-item label="DOI：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
-    <el-form-item label="备注" prop="delivery">
+    <el-form-item label="备注：" prop="delivery">
       <el-input type="textarea" v-model="ruleForm.desc"></el-input>
     </el-form-item>
-    <el-form-item label="全文链接" prop="delivery">
+    <el-form-item label="全文链接：" prop="delivery">
       <el-input v-model="ruleForm.name"></el-input>
     </el-form-item>
   </div>

@@ -1,14 +1,14 @@
 <template>
   <div id="sysmanage">
-    <div class="index-wrap1">
+    
       <div class = "all-title">
         <p class="main-font">修改基本信息</p>
       </div>
       <div class="base-msg-all">
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item label="账号">{{form.account}}</el-form-item>
-          <el-form-item label="姓名">{{form.name}}</el-form-item>
-          <el-form-item label="联系方式">
+          <el-form-item label="姓名" style="margin-top: -15px">{{form.name}}</el-form-item>
+          <el-form-item label="联系方式" style="margin-top: -10px">
             <el-input  size="small" v-model="form.phone"></el-input>
           </el-form-item>
           <el-form-item label="邮箱">
@@ -23,7 +23,7 @@
         </el-form>
       </div>
       <el-button  size="small" type="primary" @click="open6">确认修改</el-button><br>
-      <div class = "all-title">
+      <!-- <div class = "all-title">
         <p class="main-font">修改密码</p>
       </div>
       <div class="base-msg-all">
@@ -40,7 +40,7 @@
         </el-form>
       </div>
       <el-button  size="small" type="primary" @click="open5">确认修改</el-button><br>
-    </div>
+     -->
   </div>
 </template>
 
@@ -62,11 +62,6 @@
           resource: '',
           desc: ''
         },
-        form1:{
-          formerpwd:'',
-          nowpwd:'',
-          affirmpwd:''
-        }
       }
     }
   }
@@ -75,7 +70,6 @@
 <style scoped>
 .el-button{
   float:right;
-  margin-right: 30px;
 }
 .base-msg-all{
   margin-left: 70px;

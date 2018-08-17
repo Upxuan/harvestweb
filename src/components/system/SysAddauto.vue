@@ -1,7 +1,7 @@
 <template>
   <div id="sysaddauto">
     <div class = "all-title1">
-      <p class="main-font">自动录入<a href="/HelloWorld"></a></p>
+      <p class="main-font">自动录入<a href="/HelloWorld"></a><el-input  placeholder="搜索成果" size="small"></el-input></p>
     </div>
     <el-table
       ref="multipleTable"
@@ -22,7 +22,7 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="currentPage"
-        :page-sizes="[10, 20, 50, 100]"
+        :page-sizes="[5, 10, 15, 20]"
         :page-size="pagesize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="tableData3.length">
@@ -82,7 +82,7 @@
         ],
         multipleSelection: [],
         currentPage:1,
-        pagesize:10,
+        pagesize:5,
         num:'10'
       }
     },
@@ -92,8 +92,21 @@
       },
       handleCurrentChange: function(currentPage){
         this.currentPage = currentPage;
-      }
-    }
+      },
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      },
+    },
 }
 </script>
 

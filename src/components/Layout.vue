@@ -15,6 +15,7 @@
             <router-link to="/"><el-menu-item index="2-1">退出</el-menu-item></router-link>
           </el-submenu>
         </el-menu>
+     
       </el-header>
       <el-container>
         <div class="backcolor">
@@ -46,10 +47,16 @@
                 <i class="el-icon-view"></i>
                 <span slot="title">学生成果审核 <el-badge :value="4"  class="item"></el-badge></span>
               </el-menu-item>
-              <el-menu-item index="/Manage">
-                <i class="el-icon-setting"></i>
-                <span slot="title">账号管理</span>
-              </el-menu-item>
+              <el-submenu index="2">
+                <template slot="title">
+                  <i class="el-icon-setting"></i>
+                  <span>账号管理</span>
+                </template>
+                <el-menu-item-group>
+                  <el-menu-item index="/Manage">修改基本信息</el-menu-item>
+                  <el-menu-item index="/Pwd">修改密码</el-menu-item>
+                </el-menu-item-group>
+              </el-submenu>
             </el-menu>
           </el-aside>
         </div>
@@ -108,7 +115,7 @@
 .backcolor{
   width: 200px;
   height: 800px;
-  /*border-right: 1px solid #E4E7ED;*/
+
 }
 .el-menu{
   width: 200px;
@@ -120,4 +127,5 @@
   width: 100%;
   border-left: 1px solid #E4E7ED;
 }
+
 </style>

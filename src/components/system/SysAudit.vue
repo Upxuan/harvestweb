@@ -4,7 +4,7 @@
       <div class = "all-title1">
         <p class="main-font">
           待审核:&nbsp<span class="msg-num">{{num1}}</span>
-          项&nbsp已通过:&nbsp<span class="msg-num">{{num2}}</span>项
+          项&nbsp已通过:&nbsp<span class="msg-num">{{num2}}</span>&nbsp项
           <el-select v-model="value" placeholder="请选择" size="small">
             <el-option
               v-for="item in options"
