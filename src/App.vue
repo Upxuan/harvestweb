@@ -11,5 +11,12 @@ export default {
 </script>
 
 <style>
-
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+a {
+  TEXT-DECORATION: none
+}
 </style>
