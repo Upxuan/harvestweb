@@ -69,18 +69,22 @@
 #sysOutputResume {
   padding-bottom: 100px;
 }
+
 .all-title {
   height: 40px;
   border-bottom: 1px dashed #DCDFE6;
 }
+
 .main-font {
   font-size: 17px;
   color: #000;
   font-family: Hiragino Sans GB;
 }
-.el-button{
+
+.el-button {
   float: right;
-} 
+}
+
 [class*="tex"] {
   margin-top: 35px;
 }
