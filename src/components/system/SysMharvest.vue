@@ -645,47 +645,47 @@
           expandedRows.shift()
         }
       },
-      jpaperHandleSizeChange(size) {
+      jpaperHandleSizeChange: function (size) {
         this.pageSize.jpaperSize = size;
       },
-      mpaperHandleSizeChange(size) {
+      mpaperHandleSizeChange: function (size) {
         this.pageSize.mpaperSize = size;
       },
-      patentHandleSizeChange(size) {
-        this.pageSize.mpaperSize = size;
+      patentHandleSizeChange: function (size) {
+        this.pageSize.patentSize = size;
       },
-      projectHandleSizeChange(size) {
-        this.pageSize.mpaperSize = size;
+      projectHandleSizeChange: function (size) {
+        this.pageSize.projectSize = size;
       },
-      subjectHandleSizeChange(size) {
-        this.pageSize.mpaperSize = size;
+      subjectHandleSizeChange: function (size) {
+        this.pageSize.subjectSize = size;
       },
-      softwareHandleSizeChange(size) {
-        this.pageSize.mpaperSize = size;
+      softwareHandleSizeChange: function (size) {
+        this.pageSize.softwareSize = size;
       },
-      affairsHandleSizeChange(size) {
-        this.pageSize.mpaperSize = size;
+      affairsHandleSizeChange: function (size) {
+        this.pageSize.affairsSize = size;
       },
-      jpaperHandleCurrentChange(currentPage){
+      jpaperHandleCurrentChange: function(currentPage){
         this.currentPage.jpaperPage = currentPage;
       },
-      mpaperHandleCurrentChange(currentPage){
+      mpaperHandleCurrentChange: function(currentPage){
         this.currentPage.mpaperPage = currentPage;
       },
-      patentHandleCurrentChange(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+      patentHandleCurrentChange: function(currentPage){
+        this.currentPage.patentPage = currentPage;
       },
-      projectHandleCurrentChange(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+      projectHandleCurrentChange: function(currentPage){
+        this.currentPage.projectPage = currentPage;
       },
-      subjectHandleCurrentChange(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+      subjectHandleCurrentChange: function(currentPage){
+        this.currentPage.subjectPage = currentPage;
       },
-      softwareHandleCurrentChange(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+      softwareHandleCurrentChange: function(currentPage){
+        this.currentPage.softwarePage = currentPage;
       },
-      affairsHandleCurrentChange(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+      affairsHandleCurrentChange: function(currentPage){
+        this.currentPage.affairsPage = currentPage;
       }
     }
   }

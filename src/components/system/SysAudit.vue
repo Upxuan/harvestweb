@@ -2,9 +2,9 @@
   <div id="sysAudit">
     <div class = "all-title">
       <p class="main-font">
-        待审核:&nbsp<span>{{ number.unReviseNum }}</span>项&nbsp&nbsp
-        已通过:&nbsp<span>{{ number.reviseSuccessNum }}</span>项&nbsp&nbsp
-        未通过:&nbsp<span>{{ number.reviseFailNum }}</span>项
+        待审核:&nbsp;<span>{{ number.unReviseNum }}</span>项&nbsp;&nbsp;
+        已通过:&nbsp;<span>{{ number.reviseSuccessNum }}</span>项&nbsp;&nbsp;
+        未通过:&nbsp;<span>{{ number.reviseFailNum }}</span>项
       </p>
     </div>
     <!-- <el-tabs type="border-card"> -->
@@ -494,7 +494,7 @@
         },
         value: '',
         expands: [],
-        activeName: '1',
+        activeName: '',
         jpaperTable: [],
         mpaperTable: [],
         patentTable: [],
@@ -684,19 +684,19 @@
         this.pageSize.mpaperSize = size;
       },
       patentHandleSizeChange: function (size) {
-        this.pageSize.mpaperSize = size;
+        this.pageSize.patentSize = size;
       },
       projectHandleSizeChange: function (size) {
-        this.pageSize.mpaperSize = size;
+        this.pageSize.projectSize = size;
       },
       subjectHandleSizeChange: function (size) {
-        this.pageSize.mpaperSize = size;
+        this.pageSize.subjectSize = size;
       },
       softwareHandleSizeChange: function (size) {
-        this.pageSize.mpaperSize = size;
+        this.pageSize.softwareSize = size;
       },
       affairsHandleSizeChange: function (size) {
-        this.pageSize.mpaperSize = size;
+        this.pageSize.affairsSize = size;
       },
       jpaperHandleCurrentChange: function(currentPage){
         this.currentPage.jpaperPage = currentPage;
@@ -705,19 +705,19 @@
         this.currentPage.mpaperPage = currentPage;
       },
       patentHandleCurrentChange: function(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+        this.currentPage.patentPage = currentPage;
       },
       projectHandleCurrentChange: function(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+        this.currentPage.projectPage = currentPage;
       },
       subjectHandleCurrentChange: function(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+        this.currentPage.subjectPage = currentPage;
       },
       softwareHandleCurrentChange: function(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+        this.currentPage.softwarePage = currentPage;
       },
       affairsHandleCurrentChange: function(currentPage){
-        this.currentPage.mpaperPage = currentPage;
+        this.currentPage.affairsPage = currentPage;
       }
     }
   }
@@ -772,7 +772,7 @@
   color: #9C9C9C;
 }
 
-.el-tabs {
+/* .el-tabs {
   margin-top: 15px;
-}
+} */
 </style>

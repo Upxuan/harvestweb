@@ -1,12 +1,12 @@
 <template>
   <div id="texAcademicWork">
-    <div class="all-title">
-      <p class="main-font">
-        <span>学术兼职</span>
-      </p>
-    </div>
     <div class="content">
-      <span>AcademicWork msg</span>
+      <el-input
+        type="textarea"
+        :autosize="{ minRows: 5, maxRows: 15 }"
+        placeholder="请输入学术兼职信息"
+        v-model="textarea">
+      </el-input>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@
     name: 'texAcademicWork',
     data () {
       return {
-
+        textarea: ''
       }
     }
   }
@@ -35,5 +35,6 @@
 }
 .content {
     margin-top: 10px;
+    /* padding-right: 40%; */
 }
 </style>

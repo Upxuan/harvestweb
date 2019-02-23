@@ -1,12 +1,12 @@
 <template>
   <div id="texProjects">
-    <div class="all-title">
-      <p class="main-font">
-        <span>承担项目</span>
-      </p>
-    </div>
     <div class="content">
-      <span>Projects msg</span>
+      <el-input
+        type="textarea"
+        :autosize="{ minRows: 5, maxRows: 15 }"
+        placeholder="请输入承担的项目信息"
+        v-model="textarea">
+      </el-input>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@
     name: 'texProjects',
     data () {
       return {
-
+        textarea: ''
       }
     }
   }

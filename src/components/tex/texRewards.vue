@@ -1,12 +1,12 @@
 <template>
   <div id="texRewards">
-    <div class="all-title">
-      <p class="main-font">
-        <span>获得奖励</span>
-      </p>
-    </div>
     <div class="content">
-      <span>Rewards msg</span>
+      <el-input
+        type="textarea"
+        :autosize="{ minRows: 5, maxRows: 15 }"
+        placeholder="请输入获得的奖励信息"
+        v-model="textarea">
+      </el-input>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@
     name: 'texRewards',
     data () {
       return {
-
+        textarea: ''
       }
     }
   }

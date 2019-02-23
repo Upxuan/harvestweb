@@ -66,6 +66,7 @@
 <style scoped>
 .all-title {
   height: 30px;
+  margin-top: 35px;
   border-bottom: 1px dashed #DCDFE6;
 }
 .main-font {

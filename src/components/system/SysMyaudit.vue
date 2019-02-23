@@ -535,7 +535,7 @@
         },
         value: '',
         expands: [],
-        activeName: '1',
+        activeName: '',
         jpaperTable: [],
         mpaperTable: [],
         patentTable: [],

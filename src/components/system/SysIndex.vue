@@ -12,7 +12,7 @@
   import MyHarvest from '@/components/table/tableHarvest'
   export default {
     name: 'sysindex',
-    components:{
+    components: {
       UserInfo,
       MyHarvest
   }
