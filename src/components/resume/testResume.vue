@@ -1,35 +1,38 @@
 <template>
   <div id="testResume">
     <div class="main-content">
-      <user-info></user-info>
-        <div class="all-title"></div>
-        <div class="row">
-          <div class="col-md-1">
-              <p>&nbsp;&nbsp;&nbsp;<el-progress type="circle" :percentage="58.7" color="pink" stroke-width="8" width="120"></el-progress></p>
-              <p style="text-align:center;font-size:12px">期刊</p>
-            </div>
-          <div class="col-md-2">
-              <p>&nbsp;&nbsp;&nbsp;<el-progress type="circle" :percentage="17.4" stroke-width="8" width="120"></el-progress></p>
-              <p style="text-align:center;font-size:12px">会议</p>
-            </div>
-          <div class="col-md-3">
-              <p>&nbsp;&nbsp;&nbsp;<el-progress type="circle" :percentage="2.2" color="#8e71c7" stroke-width="8" width="120"></el-progress></p>
-              <p style="text-align:center;font-size:12px">专著</p>
-            </div>
-          <div class="col-md-4">
-             <p>&nbsp;&nbsp;&nbsp;<el-progress type="circle" :percentage="21.7" color="yellow" stroke-width="8" width="120"></el-progress></p>
-             <p style="text-align:center;font-size:12px">其他</p>
-          </div>
-          <div class="col-md-5">
-            <br>
-            <p style="text-align:center">总计</p>
-            <p style="text-align:center;font-size:25px">46篇</p>
-          </div>
+      <div style="margin-bottom: 60px;">
+        <user-info></user-info>
+      </div>
+      <div class="line-isolation"></div>
+      <div class="mychart">
+        <div class="col-md-1">
+          <p><el-progress type="circle" :percentage="circle.jpaperPercent" color="rgb(79,184,238)" :stroke-width="strokeWidth" :width="circleWidth"></el-progress></p>
+          <p style="font-size:12px">期刊论文</p>
         </div>
-        <div class="all-title1"></div>
+        <div class="col-md-2">
+          <p><el-progress type="circle" :percentage="circle.mpaperPercent" color="rgb(79,184,238)" :stroke-width="strokeWidth" :width="circleWidth"></el-progress></p>
+          <p style="font-size:12px">会议论文</p>
+        </div>
+        <div class="col-md-3">
+          <p><el-progress type="circle" :percentage="circle.subjectPercent" color="rgb(79,184,238)" :stroke-width="strokeWidth" :width="circleWidth"></el-progress></p>
+          <p style="font-size:12px">学术专著</p>
+        </div>
+        <div class="col-md-4">
+            <p><el-progress type="circle" :percentage="circle.othersPercent" color="rgb(79,184,238)" :stroke-width="strokeWidth" :width="circleWidth"></el-progress></p>
+            <p style="font-size:12px">其他</p>
+        </div>
+        <div class="col-md-5">
+          <br>
+          <p>总计</p>
+          <p style="font-size:25px">{{ number.count }}篇</p>
+        </div>
+      </div>
+      <!-- <div class="line-isolation"></div> -->
+      <div style="margin:10px 0 40px 0;">
         <p class="main-font">
             <!-- <span>个人成果</span> -->
-            <el-dropdown @command="handleCommand">
+            <!-- <el-dropdown @command="handleCommand">
               <span class="el-dropdown-link">
                 全部年份<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
@@ -71,30 +74,72 @@
                 <el-dropdown-item command="a" disabled>按时间降序</el-dropdown-item>
                 <el-dropdown-item command="b" divided>按被引降序</el-dropdown-item>
               </el-dropdown-menu>
-            </el-dropdown>
+            </el-dropdown> -->
         </p>
-      <!-- <my-harvest></my-harvest> -->  
-      <img src="@/assets/testHarvest.jpg">
+        <harvest-list @numberEvent="getNumber"></harvest-list>
+      </div>
+      <div class="line-isolation"></div>
+      <div class="text-projects">
+        <p>工作经历</p>
+        <pre >{{ this.$userInfo.projects }}</pre>
+      </div>
+      <div class="line-isolation"></div>
+      <div class="text-projects">
+        <p>获得奖励</p>
+        <pre >{{ this.$userInfo.rewards }}</pre>
+      </div>
+      <div class="line-isolation"></div>
+      <div class="text-projects">
+        <p>学术兼职</p>
+        <pre >{{ this.$userInfo.academicwork }}</pre>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import UserInfo from '@/components/tex/texUserinfo'
-  import MyHarvest from '@/components/table/tableHarvest'
+  import HarvestList from '@/components/tex/texHarvestList'
   import myapi from '@/api/myapi.js'
   export default {
     name: 'testResume',
     components:{
       UserInfo,
-      MyHarvest
+      HarvestList,
+      // MyRewards,
+      // AcademicWork,
+      // MyProjects
     },
     data () {
       return {
-        
+        number: {},
+        strokeWidth: 8,
+        circleWidth: 120,
+        circle: {
+          jpaperPercent: 0.0,
+          mpaperPercent: 0.0,
+          subjectPercent: 0.0,
+          othersPercent: 0.0,
+          patentPercent: 0.0,
+          projectPercent: 0.0,
+          softwarePercent: 0.0,
+        }
       }
     },
+    mounted () {
+      
+    },
     methods: {
+      getNumber (data) {
+        var _this = this
+        _this.number = data
+        // console.log(data)
+        _this.circle.jpaperPercent = Math.round(_this.number.jpaperCount / _this.number.count * 10000) / 100.00
+        _this.circle.mpaperPercent = Math.round(_this.number.mpaperCount / _this.number.count * 10000) / 100.00
+        _this.circle.subjectPercent = Math.round(_this.number.subjectCount / _this.number.count * 10000) / 100.00
+        _this.number.othersCount = _this.number.patentCount + _this.number.projectCount + _this.number.softwareCount
+        _this.circle.othersPercent = Math.round(_this.number.othersCount / _this.number.count * 10000) / 100.00
+      },
       handleCommand(command) {
         this.$message('click on item ' + command);
       }
@@ -104,13 +149,9 @@
 
 <style scoped>
 .main-content {
-  margin: 80px 500px;
+  margin: 80px 400px;
 }
-.all-title {
-  height: 40px;
-  border-bottom: 1px dashed #DCDFE6;
-}
-.all-title1 {
+.line-isolation {
   border-bottom: 1px dashed #DCDFE6;
 }
 .main-font {
@@ -128,18 +169,32 @@
 .grid-container * {
     box-sizing: border-box;
 }
-.row:before, .row:after {
+.mychart:before, .mychart:after {
     content: "";
     display: block;
     visibility: hidden;
     clear: both;
     *zoom: 1;
 }
+[class*="text-"] {
+    margin: 20px 0;
+}
+[class*="text-"] p {
+  color: #545454;
+  font-weight: bold;
+}
+[class*="text-"] pre {
+  color: #666;
+  font-size:14px;
+}
 [class*="col-"] {
     float: left;
     min-height: 1px;
     width: 15%;
     padding: 12px;
+}
+[class*="col-"] p {
+  text-align: center;
 }
 @media all and (min-width: 768px) {
     .col-md-1 {
@@ -166,7 +221,7 @@
     line-height: 27px;
     padding: 0 0 10px 20px;
   }
-  .el-icon-arrow-down {
-    font-size: 12px;
-  }
+.el-icon-arrow-down {
+  font-size: 12px;
+}
 </style>

@@ -339,6 +339,7 @@
     inject: ['reload'],
     data () {
       return {
+        number: {},
         currentPage: {
           jpaperPage: 1,
           mpaperPage: 1,
@@ -378,75 +379,80 @@
             userId: _this.$userInfo.id 
           }
           this.$ajax.get('/api/harvest', {params: Params}).then( res => {
-            console.log(res)
-            /**************************************************************************************************jpaper***/
-            var jpaper = res.data.jpaperModels
-            for (var i=0; i<res.data.jpaperModels.length; i++) {
-              let model = res.data.jpaperModels[i]
-              jpaper[i].jpaperIndex = i+1
-              jpaper[i].jpaperVolume = model.jpaperReel + '-' + model.jpaperIssue;
-              jpaper[i].jpaperPage = model.jpaperPage1 + '-' + model.jpaperPage2;
-              jpaper[i].jpaperType = model.jpaperType1 
-              if(model.jpaperType2 != '')
-                jpaper[i].jpaperType += '>' + jpaper[i].jpaperType2
-              if(model.jpaperType3 != '')
-                jpaper[i].jpaperType += '>' + jpaper[i].jpaperType3;
+            // console.log(res)
+            if(res.data.errCode == 20){
+              /**************************************************************************************************jpaper***/
+              var jpaper = res.data.jpaperModels
+              for (var i=0; i<jpaper.length; i++) {
+                let model = jpaper[i]
+                jpaper[i].jpaperIndex = i+1
+                jpaper[i].jpaperVolume = model.jpaperReel + '-' + model.jpaperIssue;
+                jpaper[i].jpaperPage = model.jpaperPage1 + '-' + model.jpaperPage2;
+                jpaper[i].jpaperType = model.jpaperType1 
+                if(model.jpaperType2 != '')
+                  jpaper[i].jpaperType += '>' + jpaper[i].jpaperType2
+                if(model.jpaperType3 != '')
+                  jpaper[i].jpaperType += '>' + jpaper[i].jpaperType3
+              }
+              _this.jpaperTable = jpaper
+              /**************************************************************************************************mpaper***/
+              var mpaper = res.data.mpaperModels
+              for (var i=0; i<mpaper.length; i++) {
+                let model = mpaper[i]
+                mpaper[i].mpaperIndex = i+1
+                mpaper[i].mpaperPage = model.mpaperPage1 + '-' + model.mpaperPage2;
+                mpaper[i].mpaperMeetDate = model.mpaperMeetDate1 + ' To ' + model.mpaperMeetDate2;
+                mpaper[i].mpaperType = model.mpaperType1 
+                if(model.mpaperType2 != '')
+                  mpaper[i].mpaperType += '>' + mpaper[i].mpaperType2
+                if(model.mpaperType3 != '')
+                  mpaper[i].mpaperType += '>' + mpaper[i].mpaperType3
+              }
+              _this.mpaperTable = mpaper
+              /**************************************************************************************************patent***/
+              var patent = res.data.patentModels
+              for (var i=0; i<patent.length; i++) {
+                let model = patent[i]
+                patent[i].patentIndex = i+1
+                patent[i].patentEffectDate = model.patentEffectDate1 + ' 至 ' + model.patentEffectDate2
+              }
+              _this.patentTable = patent
+              /**************************************************************************************************project***/
+              var project = res.data.projectModels
+              for (var i=0; i<project.length; i++) {
+                let model = project[i]
+                project[i].projectIndex = i+1
+                project[i].projectDate = model.projectDate1 + ' 至 ' + model.projectDate2
+              }
+              _this.projectTable = project
+              /**************************************************************************************************subject***/
+              var subject = res.data.subjectModels
+              for (var i=0; i<subject.length; i++) {
+                let model = subject[i]
+                subject[i].subjectIndex = i+1
+              }
+              _this.subjectTable = subject
+              /**************************************************************************************************software***/
+              var software = res.data.softwareModels
+              for (var i=0; i<software.length; i++) {
+                let model = software[i]
+                software[i].softwareIndex = i+1
+              }
+              _this.softwareTable = software
+
+              _this.number.jpaperCount = jpaper.length
+              _this.number.mpaperCount = mpaper.length
+              _this.number.patentCount = patent.length
+              _this.number.projectCount = project.length
+              _this.number.subjectCount = subject.length
+              _this.number.softwareCount = software.length
+              _this.number.count = jpaper.length + mpaper.length + patent.length + project.length + subject.length + software.length
+              this.$emit("numberEvent", _this.number)
+            }else if(res.data.errCode == 21) {
+              alert("出错！请联系管理员")
             }
-            _this.jpaperTable = jpaper
-            /**************************************************************************************************mpaper***/
-            var mpaper = res.data.mpaperModels
-            for (var i=0; i<res.data.mpaperModels.length; i++) {
-              let model = res.data.mpaperModels[i]
-              mpaper[i].mpaperIndex = i+1
-              mpaper[i].mpaperPage = model.mpaperPage1 + '-' + model.mpaperPage2;
-              mpaper[i].mpaperMeetDate = model.mpaperMeetDate1 + ' To ' + model.mpaperMeetDate2;
-              mpaper[i].mpaperType = model.mpaperType1 
-              if(model.mpaperType2 != '')
-                mpaper[i].mpaperType += '>' + mpaper[i].mpaperType2
-              if(model.mpaperType3 != '')
-                mpaper[i].mpaperType += '>' + mpaper[i].mpaperType3;
-            }
-            _this.mpaperTable = mpaper
-            /**************************************************************************************************patent***/
-            var patent = res.data.patentModels
-            for (var i=0; i<res.data.patentModels.length; i++) {
-              let model = res.data.patentModels[i]
-              patent[i].patentIndex = i+1
-              patent[i].patentEffectDate = model.patentEffectDate1 + ' 至 ' + model.patentEffectDate2;
-            }
-            _this.patentTable = patent
-            /**************************************************************************************************project***/
-            var project = res.data.projectModels
-            for (var i=0; i<res.data.projectModels.length; i++) {
-              let model = res.data.projectModels[i]
-              project[i].projectIndex = i+1
-              project[i].projectDate = model.projectDate1 + ' 至 ' + model.projectDate2;
-            }
-            _this.projectTable = project
-            /**************************************************************************************************subject***/
-            var subject = res.data.subjectModels
-            for (var i=0; i<res.data.subjectModels.length; i++) {
-              let model = res.data.subjectModels[i]
-              subject[i].subjectIndex = i+1
-            }
-            _this.subjectTable = subject
-            /**************************************************************************************************software***/
-            var software = res.data.softwareModels
-            for (var i=0; i<res.data.softwareModels.length; i++) {
-              let model = res.data.softwareModels[i]
-              software[i].softwareIndex = i+1
-            }
-            _this.softwareTable = software
-            /**************************************************************************************************affairs***/
-            var affairs = res.data.affairsModels
-            for (var i=0; i<res.data.affairsModels.length; i++) {
-              let model = res.data.affairsModels[i]
-              affairs[i].affairsIndex = i+1
-              affairs[i].affairsDate = model.affairsDate1 + ' 至 ' + model.affairsDate2;
-            }
-            _this.affairsTable = affairs
           }).catch( () => {
-            alert("出错！请联系管理员")
+            // alert("出错！请联系管理员")
           });
         }
       })

@@ -2,9 +2,9 @@
   <div id="sysMyAudit">
     <div class = "all-title">
       <p class="main-font">
-        审核中:&nbsp<span>{{ number.unReviseNum }}</span>项&nbsp&nbsp
-        已通过:&nbsp<span>{{ number.reviseSuccessNum }}</span>项&nbsp&nbsp
-        未通过:&nbsp<span>{{ number.reviseFailNum }}</span>项
+        审核中:&nbsp;<span>{{ number.unReviseNum }}</span>项&nbsp;&nbsp;
+        已通过:&nbsp;<span>{{ number.reviseSuccessNum }}</span>项&nbsp;&nbsp;
+        未通过:&nbsp;<span>{{ number.reviseFailNum }}</span>项
       </p>
     </div>
     <!-- <el-tabs type="border-card"> -->
@@ -556,114 +556,118 @@
 					var Params = { userId: _this.$userInfo.id }
 					this.$ajax.get('/api/myAudit', {params: Params}).then( res => {
 						console.log(res)
-						/**************************************************************************************************jpaper***/
-						var jpaper = res.data.jpaperModels
-						for (var i=0; i<res.data.jpaperModels.length; i++) {
-							let model = res.data.jpaperModels[i]
-							jpaper[i].jpaperIndex = i+1
-							jpaper[i].jpaperVolume = model.jpaperReel + '-' + model.jpaperIssue;
-							jpaper[i].jpaperPage = model.jpaperPage1 + '-' + model.jpaperPage2;
-							jpaper[i].jpaperType = model.jpaperType1 
-							if(model.jpaperType2 != '')
-								jpaper[i].jpaperType += '>' + jpaper[i].jpaperType2
-							if(model.jpaperType3 != '')
-								jpaper[i].jpaperType += '>' + jpaper[i].jpaperType3;
-							if(model.review === 1)
-								_this.number.unReviseNum++
-							else if(model.review === 2)
-								_this.number.reviseFailNum++
-							else if(model.review === 3)
-								_this.number.reviseSuccessNum++
+						if(res.data.errCode == 20){
+							/**************************************************************************************************jpaper***/
+							var jpaper = res.data.jpaperModels
+							for (var i=0; i<res.data.jpaperModels.length; i++) {
+								let model = res.data.jpaperModels[i]
+								jpaper[i].jpaperIndex = i+1
+								jpaper[i].jpaperVolume = model.jpaperReel + '-' + model.jpaperIssue;
+								jpaper[i].jpaperPage = model.jpaperPage1 + '-' + model.jpaperPage2;
+								jpaper[i].jpaperType = model.jpaperType1 
+								if(model.jpaperType2 != '')
+									jpaper[i].jpaperType += '>' + jpaper[i].jpaperType2
+								if(model.jpaperType3 != '')
+									jpaper[i].jpaperType += '>' + jpaper[i].jpaperType3;
+								if(model.review === 1)
+									_this.number.unReviseNum++
+								else if(model.review === 2)
+									_this.number.reviseFailNum++
+								else if(model.review === 3)
+									_this.number.reviseSuccessNum++
+							}
+							_this.jpaperTable = jpaper
+							/**************************************************************************************************mpaper***/
+							var mpaper = res.data.mpaperModels
+							for (var i=0; i<res.data.mpaperModels.length; i++) {
+								let model = res.data.mpaperModels[i]
+								mpaper[i].mpaperIndex = i+1
+								mpaper[i].mpaperPage = model.mpaperPage1 + '-' + model.mpaperPage2;
+								mpaper[i].mpaperMeetDate = model.mpaperMeetDate1 + ' To ' + model.mpaperMeetDate2;
+								mpaper[i].mpaperType = model.mpaperType1 
+								if(model.mpaperType2 != '')
+									mpaper[i].mpaperType += '>' + mpaper[i].mpaperType2
+								if(model.mpaperType3 != '')
+									mpaper[i].mpaperType += '>' + mpaper[i].mpaperType3;
+								if(model.review === 1)
+									_this.number.unReviseNum++
+								else if(model.review === 2)
+									_this.number.reviseFailNum++
+								else if(model.review === 3)
+									_this.number.reviseSuccessNum++
+							}
+							_this.mpaperTable = mpaper
+							/**************************************************************************************************patent***/
+							var patent = res.data.patentModels
+							for (var i=0; i<res.data.patentModels.length; i++) {
+								let model = res.data.patentModels[i]
+								patent[i].patentIndex = i+1
+								patent[i].patentEffectDate = model.patentEffectDate1 + ' 至 ' + model.patentEffectDate2;
+								if(model.review === 1)
+									_this.number.unReviseNum++
+								else if(model.review === 2)
+									_this.number.reviseFailNum++
+								else if(model.review === 3)
+									_this.number.reviseSuccessNum++
+							}
+							_this.patentTable = patent
+							/**************************************************************************************************project***/
+							var project = res.data.projectModels
+							for (var i=0; i<res.data.projectModels.length; i++) {
+								let model = res.data.projectModels[i]
+								project[i].projectIndex = i+1
+								project[i].projectDate = model.projectDate1 + ' 至 ' + model.projectDate2;
+								if(model.review === 1)
+									_this.number.unReviseNum++
+								else if(model.review === 2)
+									_this.number.reviseFailNum++
+								else if(model.review === 3)
+									_this.number.reviseSuccessNum++
+							}
+							_this.projectTable = project
+							/**************************************************************************************************subject***/
+							var subject = res.data.subjectModels
+							for (var i=0; i<res.data.subjectModels.length; i++) {
+								let model = res.data.subjectModels[i]
+								subject[i].subjectIndex = i+1
+								if(model.review === 1)
+									_this.number.unReviseNum++
+								else if(model.review === 2)
+									_this.number.reviseFailNum++
+								else if(model.review === 3)
+									_this.number.reviseSuccessNum++
+							}
+							_this.subjectTable = subject
+							/**************************************************************************************************software***/
+							var software = res.data.softwareModels
+							for (var i=0; i<res.data.softwareModels.length; i++) {
+								let model = res.data.softwareModels[i]
+								software[i].softwareIndex = i+1
+								if(model.review === 1)
+									_this.number.unReviseNum++
+								else if(model.review === 2)
+									_this.number.reviseFailNum++
+								else if(model.review === 3)
+									_this.number.reviseSuccessNum++
+							}
+							_this.softwareTable = software
+							/**************************************************************************************************affairs***/
+							var affairs = res.data.affairsModels
+							for (var i=0; i<res.data.affairsModels.length; i++) {
+								let model = res.data.affairsModels[i]
+								affairs[i].affairsIndex = i+1
+								affairs[i].affairsDate = model.affairsDate1 + ' 至 ' + model.affairsDate2;
+								if(model.review === 1)
+									_this.number.unReviseNum++
+								else if(model.review === 2)
+									_this.number.reviseFailNum++
+								else if(model.review === 3)
+									_this.number.reviseSuccessNum++
+							}
+							_this.affairsTable = affairs
+						}else if(res.data.errCode == 21) {
+							alert("出错！请联系管理员")
 						}
-						_this.jpaperTable = jpaper
-						/**************************************************************************************************mpaper***/
-						var mpaper = res.data.mpaperModels
-						for (var i=0; i<res.data.mpaperModels.length; i++) {
-							let model = res.data.mpaperModels[i]
-							mpaper[i].mpaperIndex = i+1
-							mpaper[i].mpaperPage = model.mpaperPage1 + '-' + model.mpaperPage2;
-							mpaper[i].mpaperMeetDate = model.mpaperMeetDate1 + ' To ' + model.mpaperMeetDate2;
-							mpaper[i].mpaperType = model.mpaperType1 
-							if(model.mpaperType2 != '')
-								mpaper[i].mpaperType += '>' + mpaper[i].mpaperType2
-							if(model.mpaperType3 != '')
-								mpaper[i].mpaperType += '>' + mpaper[i].mpaperType3;
-							if(model.review === 1)
-								_this.number.unReviseNum++
-							else if(model.review === 2)
-								_this.number.reviseFailNum++
-							else if(model.review === 3)
-								_this.number.reviseSuccessNum++
-						}
-						_this.mpaperTable = mpaper
-						/**************************************************************************************************patent***/
-						var patent = res.data.patentModels
-						for (var i=0; i<res.data.patentModels.length; i++) {
-							let model = res.data.patentModels[i]
-							patent[i].patentIndex = i+1
-							patent[i].patentEffectDate = model.patentEffectDate1 + ' 至 ' + model.patentEffectDate2;
-							if(model.review === 1)
-								_this.number.unReviseNum++
-							else if(model.review === 2)
-								_this.number.reviseFailNum++
-							else if(model.review === 3)
-								_this.number.reviseSuccessNum++
-						}
-						_this.patentTable = patent
-						/**************************************************************************************************project***/
-						var project = res.data.projectModels
-						for (var i=0; i<res.data.projectModels.length; i++) {
-							let model = res.data.projectModels[i]
-							project[i].projectIndex = i+1
-							project[i].projectDate = model.projectDate1 + ' 至 ' + model.projectDate2;
-							if(model.review === 1)
-								_this.number.unReviseNum++
-							else if(model.review === 2)
-								_this.number.reviseFailNum++
-							else if(model.review === 3)
-								_this.number.reviseSuccessNum++
-						}
-						_this.projectTable = project
-						/**************************************************************************************************subject***/
-						var subject = res.data.subjectModels
-						for (var i=0; i<res.data.subjectModels.length; i++) {
-							let model = res.data.subjectModels[i]
-							subject[i].subjectIndex = i+1
-							if(model.review === 1)
-								_this.number.unReviseNum++
-							else if(model.review === 2)
-								_this.number.reviseFailNum++
-							else if(model.review === 3)
-								_this.number.reviseSuccessNum++
-						}
-						_this.subjectTable = subject
-						/**************************************************************************************************software***/
-						var software = res.data.softwareModels
-						for (var i=0; i<res.data.softwareModels.length; i++) {
-							let model = res.data.softwareModels[i]
-							software[i].softwareIndex = i+1
-							if(model.review === 1)
-								_this.number.unReviseNum++
-							else if(model.review === 2)
-								_this.number.reviseFailNum++
-							else if(model.review === 3)
-								_this.number.reviseSuccessNum++
-						}
-						_this.softwareTable = software
-						/**************************************************************************************************affairs***/
-						var affairs = res.data.affairsModels
-						for (var i=0; i<res.data.affairsModels.length; i++) {
-							let model = res.data.affairsModels[i]
-							affairs[i].affairsIndex = i+1
-							affairs[i].affairsDate = model.affairsDate1 + ' 至 ' + model.affairsDate2;
-							if(model.review === 1)
-								_this.number.unReviseNum++
-							else if(model.review === 2)
-								_this.number.reviseFailNum++
-							else if(model.review === 3)
-								_this.number.reviseSuccessNum++
-						}
-						_this.affairsTable = affairs
 					}).catch( () => {
 						// alert("出错！请联系管理员")
 					})

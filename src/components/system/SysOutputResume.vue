@@ -23,7 +23,7 @@
           <span>获得奖励</span>
         </p>
       </div>
-      <my-rewards></my-rewards>
+      <my-rewards ref="rewards" :rewardsMsg="rewardsData"></my-rewards>
     </div>
     <div class="texAcademicWork">
       <div class="all-title">
@@ -31,7 +31,7 @@
           <span>学术兼职</span>
         </p>
       </div>
-      <academic-work></academic-work>
+      <academic-work ref="academicwork" :academicworkMsg="academicworkData"></academic-work>
     </div>
     <div class="texProjects">
       <div class="all-title">
@@ -39,7 +39,7 @@
           <span>承担项目</span>
         </p>
       </div>
-      <my-projects></my-projects>
+      <my-projects ref="projects" :projectsMsg="projectsData"></my-projects>
     </div>
   </div>
 </template>
@@ -47,12 +47,13 @@
 <script>
   import UserInfo from '@/components/tex/texUserinfo'
   import HarvestList from '@/components/tex/texHarvestList'
-  import AcademicWork from '@/components/tex/texAcademicWork'
-  import MyProjects from '@/components/tex/texProjects'
-  import MyRewards from '@/components/tex/texRewards'
+  import AcademicWork from '@/components/form/formAcademicWork'
+  import MyProjects from '@/components/form/formProjects'
+  import MyRewards from '@/components/form/formRewards'
   import myapi from '@/api/myapi.js'
   export default {
     name: 'sysOutputResume',
+    inject: ['reload'],
     components:{
       UserInfo,
       HarvestList,
@@ -62,14 +63,62 @@
     },
     data () {
       return {
-        
+        rewardsData: '',
+        academicworkData: '',
+        projectsData: ''
       }
+    },
+    created () {
+      var _this = this
+      _this.rewardsData = _this.$userInfo.rewards
+      _this.academicworkData = _this.$userInfo.academicwork
+      _this.projectsData = _this.$userInfo.projects
+
+      // console.log( _this.rewardsData + _this.academicworkData + _this.projectsData)
+    },
+    mounted () {
+      console.log(this.$userInfo)
     },
     methods: {
       generateResume () {
-        this.$router.push({ 
-					name: 'TestResume'
-				})                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+        if(this.judgeLogin()){
+          var _this = this
+          _this.rewardsData = _this.$refs.rewards.getRewards()
+          _this.academicworkData = _this.$refs.academicwork.getAcademicwork()
+          _this.projectsData = _this.$refs.projects.getProjects()
+          var Params = {
+            userType: this.$type,
+            userId: this.$userInfo.id,
+            teacherModel: {
+              rewards: _this.rewardsData,
+              academicwork: _this.academicworkData,
+              projects: _this.projectsData
+            }
+          }
+          console.log(Params)
+          this.$ajax({
+            url:'/api/generateResume', 
+            method: 'post',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: Params
+          }).then( res => {
+            // console.log(res)
+            if(res.data.errCode == 20 ){
+              this.$userInfo.rewards = _this.rewardsData
+              this.$userInfo.academicwork = _this.academicworkData
+              this.$userInfo.projects = _this.projectsData
+              // this.reload()重新加载信息
+              // console.log(this.$userInfo)
+              this.$message({ type: 'success', message: '已生成/更新简历' })
+              this.$router.push({  name: 'TestResume' }) 
+            }else {
+              this.$message({ type: 'error', message: '操作失败' });
+            }
+          }).catch( error => {
+            console.log()
+          })
+        }
       }
     }
   }
@@ -87,8 +136,7 @@
 
 .main-font {
   font-size: 17px;
-  /* color: #36648B; */
-  color: #666;
+  color: #545454;
   font-weight: bold;
   font-family: Hiragino Sans GB;
 }

@@ -103,7 +103,7 @@
         //传值给子组件
         _this.isDisable = true
         if(_this.row.jpaperId != null ) {
-          _this.value = 'jpaper'//selsect的值jpaper
+          _this.value = 'jpaper'//select的值jpaper
           _this.nowModel = 'jpaper'
         }else if(_this.row.mpaperId != null ) {
           _this.value = 'mpaper'
@@ -192,7 +192,7 @@
                       this.turnBack()
                     } 
                   }else if(res.data.errCode == 21){
-                      this.$message({ type: 'error', message: '操作失败' });
+                    this.$message({ type: 'error', message: '操作失败' });
                   }
                 }).catch( error => {
                   console.log(error);

@@ -83,9 +83,8 @@
               this.$ajax.get('/api/reviseBaseInfo', {params: Params}).then( res => {
                 console.log(res)
                 if(res.data.errCode == 20){
-                  if(this.$type == 1) {
+                  if(this.$type == 1) 
                     this.$userInfo.link = this.ruleForm.link
-                  }
                   this.$userInfo.tel = this.ruleForm.tel
                   this.$userInfo.email = this.ruleForm.email
                   this.$userInfo.direction = this.ruleForm.direction

@@ -2,7 +2,7 @@
   <div id="layout">
     <el-container>
       <el-header>
-        <span>&nbsp&nbspHARVEST</span>
+        <span>&nbsp;&nbsp;HARVEST</span>
         <el-dropdown @command="handleCommand">
           <span class="el-dropdown-link">
             {{ $userInfo.name }}<i class="el-icon-arrow-down el-icon--right"></i>
