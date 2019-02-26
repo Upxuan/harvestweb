@@ -81,14 +81,16 @@
                 direction: reForm.direction,
               }
               this.$ajax.get('/api/reviseBaseInfo', {params: Params}).then( res => {
-                console.log(res)
+                // console.log(res)
                 if(res.data.errCode == 20){
-                  if(this.$type == 1) 
-                    this.$userInfo.link = this.ruleForm.link
-                  this.$userInfo.tel = this.ruleForm.tel
-                  this.$userInfo.email = this.ruleForm.email
-                  this.$userInfo.direction = this.ruleForm.direction
-                  console.log(this.$userInfo)
+                  var userModel = this.$userInfo
+                  if(this.$type == 1) userModel.link = this.ruleForm.link
+                  userModel.tel = this.ruleForm.tel
+                  userModel.email = this.ruleForm.email
+                  userModel.direction = this.ruleForm.direction
+                  
+                  var user = JSON.stringify(userModel)
+                  setCookie('userInfo', user)
                   this.$message({ type: 'success', message: '修改成功' });
                 }else if(res.data.errCode == 21){
                   this.$message({ type: 'error', message: '修改失败' });

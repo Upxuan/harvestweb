@@ -12,7 +12,7 @@ export default {
               userId: _this.$userInfo.id,
               load: val };
       this.$ajax.get('/api/harJpaper', {params: Params}).then( res => {
-        console.log(res);
+        // console.log(res);
         var jpaper = res.data;
         for (var i=0; i<jpaper.length; i++) {
           let model = jpaper[i];

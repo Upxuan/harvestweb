@@ -11,7 +11,9 @@ function getCookie(name)
     for(var i=0; i<ca.length; i++) 
     {
         var c = ca[i].trim();
-        if (c.indexOf(_name)==0) return c.substring(_name.length,c.length);
+        if (c.indexOf(_name)==0) {
+            return c.substring(_name.length,c.length);
+        }
     }
     return "";
 }

@@ -167,5 +167,26 @@ export default {
       }).catch( () => {});
     }
 
+    Vue.prototype.getThreeMsg = function (username) {
+      var flag = this.judgeLogin();
+      if(!flag) return;
+      var _this = this
+      var Params = {
+        username: username
+      }
+      this.$ajax.get('/api/getThreeMsg', {params: Params}).then( res => {
+        console.log(res)
+        if(res.data.errCode == 20){
+          _this.textarea.rewards = res.data.teacherModel.rewards
+          _this.textarea.academicwork = res.data.teacherModel.academicwork
+        }else if(res.data.errCode == 21){
+          alert("出错！请联系管理员")
+        }
+      }).catch( err => {
+        console.log(err)
+        alert("出错！请联系管理员")
+      })
+    }
+
   }
 }

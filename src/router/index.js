@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
 import Layout from '@/components/Layout'
-import TestResume from '@/components/resume/testResume'
+import Resume from '@/components/resumes/resume'
 import Index from '@/components/system/SysIndex'
 import Addmanual from '@/components/system/SysAddmanual'
 import Addauto from '@/components/system/SysAddauto'
@@ -28,9 +28,9 @@ export default new Router({
       component: Login
     },
     {
-      path: '/TestResume',
-      name: 'TestResume',
-      component: TestResume
+      path: '/resume',
+      name: 'Resume',
+      component: Resume
     },
     {
       path:'/Layout',

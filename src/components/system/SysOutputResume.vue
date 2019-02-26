@@ -11,35 +11,31 @@
     </div>
     <div class="texHarvestList">
       <div class="all-title">
-        <p class="main-font">
-          <span>个人成果</span>
-        </p>
+        <p class="main-font"><span>个人成果</span></p>
       </div>
       <harvest-list></harvest-list>
     </div>
     <div class="texRewards">
       <div class="all-title">
-        <p class="main-font">
-          <span>获得奖励</span>
-        </p>
+        <p class="main-font"><span>获得奖励</span></p>
       </div>
-      <my-rewards ref="rewards" :rewardsMsg="rewardsData"></my-rewards>
+      <el-input
+        type="textarea"
+        :autosize="{ minRows: 5, maxRows: 15 }"
+        placeholder="请输入获得的奖励信息"
+        v-model="textarea.rewards">
+      </el-input>
     </div>
     <div class="texAcademicWork">
       <div class="all-title">
-        <p class="main-font">
-          <span>学术兼职</span>
-        </p>
+        <p class="main-font"><span>学术兼职</span></p>
       </div>
-      <academic-work ref="academicwork" :academicworkMsg="academicworkData"></academic-work>
-    </div>
-    <div class="texProjects">
-      <div class="all-title">
-        <p class="main-font">
-          <span>承担项目</span>
-        </p>
-      </div>
-      <my-projects ref="projects" :projectsMsg="projectsData"></my-projects>
+      <el-input
+        type="textarea"
+        :autosize="{ minRows: 5, maxRows: 15 }"
+        placeholder="请输入学术兼职信息"
+        v-model="textarea.academicwork">
+      </el-input>
     </div>
   </div>
 </template>
@@ -47,52 +43,37 @@
 <script>
   import UserInfo from '@/components/tex/texUserinfo'
   import HarvestList from '@/components/tex/texHarvestList'
-  import AcademicWork from '@/components/form/formAcademicWork'
-  import MyProjects from '@/components/form/formProjects'
-  import MyRewards from '@/components/form/formRewards'
+  import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
     name: 'sysOutputResume',
     inject: ['reload'],
     components:{
       UserInfo,
-      HarvestList,
-      AcademicWork,
-      MyProjects,
-      MyRewards
+      HarvestList
     },
     data () {
       return {
-        rewardsData: '',
-        academicworkData: '',
-        projectsData: ''
+        textarea: {
+          rewards: '',
+          academicwork: '',
+        }
       }
     },
     created () {
-      var _this = this
-      _this.rewardsData = _this.$userInfo.rewards
-      _this.academicworkData = _this.$userInfo.academicwork
-      _this.projectsData = _this.$userInfo.projects
-
-      // console.log( _this.rewardsData + _this.academicworkData + _this.projectsData)
-    },
-    mounted () {
-      console.log(this.$userInfo)
+      this.getThreeMsg(this.$userInfo.username)
+      console.log(this.textarea.rewards)
     },
     methods: {
       generateResume () {
         if(this.judgeLogin()){
           var _this = this
-          _this.rewardsData = _this.$refs.rewards.getRewards()
-          _this.academicworkData = _this.$refs.academicwork.getAcademicwork()
-          _this.projectsData = _this.$refs.projects.getProjects()
           var Params = {
             userType: this.$type,
             userId: this.$userInfo.id,
             teacherModel: {
-              rewards: _this.rewardsData,
-              academicwork: _this.academicworkData,
-              projects: _this.projectsData
+              rewards: _this.textarea.rewards,
+              academicwork: _this.textarea.academicwork,
             }
           }
           console.log(Params)
@@ -103,15 +84,16 @@
             dataType: "json",
             data: Params
           }).then( res => {
-            // console.log(res)
+            console.log(res)
             if(res.data.errCode == 20 ){
-              this.$userInfo.rewards = _this.rewardsData
-              this.$userInfo.academicwork = _this.academicworkData
-              this.$userInfo.projects = _this.projectsData
-              // this.reload()重新加载信息
-              // console.log(this.$userInfo)
+              this.reload()
               this.$message({ type: 'success', message: '已生成/更新简历' })
-              this.$router.push({  name: 'TestResume' }) 
+              this.$router.push({  
+                path: '/resume',
+                query: {
+                  username: this.$userInfo.username
+                }
+              }) 
             }else {
               this.$message({ type: 'error', message: '操作失败' });
             }
@@ -125,12 +107,13 @@
 </script>
 
 <style scoped>
-/* #sysOutputResume {
+#sysOutputResume {
   padding-bottom: 100px;
-} */
+}
 
 .all-title {
-  height: 40px;
+  margin-top: 40px;
+  height: 35px;
   border-bottom: 1px dashed #DCDFE6;
 }
 
@@ -146,6 +129,10 @@
 }
 
 [class*="tex"] {
-  margin-top: 60px;
+  margin-top: 10px;
+}
+
+.texHarvestList {
+  margin-top: 50px;
 }
 </style>

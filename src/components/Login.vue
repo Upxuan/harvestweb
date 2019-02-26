@@ -95,24 +95,45 @@
       //点击登录
       handleSubmit() {
         var _this = this;
-        var user;
+        var user = "";
         this.$refs.ruleForm2.validate((valid) => {
           if (valid) {
             _this.logining = true;
             var loginParams = {username: this.ruleForm2.account, password: this.ruleForm2.checkPass};
 
-            this.$ajax.get('/api/login', {params: loginParams}).then( response => {
-              console.log(response);
+            this.$ajax.get('/api/login', {params: loginParams}).then( res => {
+              // console.log(res);
               _this.logining = false;
-              var type = response.data.type;
-              if(response.data.errCode == 10){
+              var type = res.data.type;
+              if(res.data.errCode == 10){
+                var userModel = {}
+                var model ={}
                 if(type == 0){
-                  user = JSON.stringify(response.data.managerModel);
+                  model = res.data.managerModel
                 }else if(type == 1){
-                  user = JSON.stringify(response.data.teacherModel);
+                  model = res.data.teacherModel
+                  userModel.email = model.email
+                  userModel.direction = model.direction
+                  userModel.link = model.link
+                  userModel.team = model.team
+                  userModel.tel = model.tel
+                  userModel.title = model.title
                 }else if(type == 2){
-                  user = JSON.stringify(response.data.studentModel);
+                  model = res.data.studentModel
+                  userModel.link = model.first
+                  userModel.link = model.second
+                  userModel.tel = model.tel
+                  userModel.email = model.email
+                  userModel.direction = model.direction
+                  userModel.title = model.degree
+                  userModel.team = model.team
                 }
+                userModel.id = model.id
+                userModel.name = model.name
+                userModel.username = model.username
+                userModel.password = model.password
+                
+                user = JSON.stringify(userModel);
                 setCookie('userInfo', user);
                 setCookie('type', type);
                 // console.log("document.cookie:" + document.cookie);
@@ -122,7 +143,7 @@
               }
             }).catch( error => {
               _this.logining = false;
-              // alert(error);
+              console.log(error)
               alert("出错！请联系管理员")
             });
           }else {

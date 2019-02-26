@@ -1,5 +1,5 @@
 <template>
-  <div id="testResume">
+  <div id="resume">
     <div class="main-content">
       <div style="margin-bottom: 60px;">
         <user-info></user-info>
@@ -79,19 +79,14 @@
         <harvest-list @numberEvent="getNumber"></harvest-list>
       </div>
       <div class="line-isolation"></div>
-      <div class="text-projects">
-        <p>工作经历</p>
-        <pre >{{ this.$userInfo.projects }}</pre>
-      </div>
-      <div class="line-isolation"></div>
-      <div class="text-projects">
+      <div class="text-rewards">
         <p>获得奖励</p>
-        <pre >{{ this.$userInfo.rewards }}</pre>
+        <pre >{{ textarea.rewards }}</pre>
       </div>
       <div class="line-isolation"></div>
-      <div class="text-projects">
+      <div class="text-academicwork">
         <p>学术兼职</p>
-        <pre >{{ this.$userInfo.academicwork }}</pre>
+        <pre >{{ textarea.academicwork }}</pre>
       </div>
     </div>
   </div>
@@ -102,16 +97,14 @@
   import HarvestList from '@/components/tex/texHarvestList'
   import myapi from '@/api/myapi.js'
   export default {
-    name: 'testResume',
+    name: 'resume',
     components:{
       UserInfo,
-      HarvestList,
-      // MyRewards,
-      // AcademicWork,
-      // MyProjects
+      HarvestList
     },
     data () {
       return {
+        username: '',
         number: {},
         strokeWidth: 8,
         circleWidth: 120,
@@ -123,11 +116,17 @@
           patentPercent: 0.0,
           projectPercent: 0.0,
           softwarePercent: 0.0,
+        },
+        textarea: {
+          rewards: '',
+          academicwork: ''
         }
       }
     },
     mounted () {
-      
+      var _this = this
+      _this.username = this.$route.query.username
+      this.getThreeMsg(_this.username)
     },
     methods: {
       getNumber (data) {
@@ -149,7 +148,8 @@
 
 <style scoped>
 .main-content {
-  margin: 80px 400px;
+  margin: 80px auto;
+  width: 1200px;
 }
 .line-isolation {
   border-bottom: 1px dashed #DCDFE6;
@@ -163,8 +163,8 @@
   float: right;
 } 
 .grid-container {
-    width: 100%;
-    max-width: 1200px;
+  width: 100%;
+  max-width: 1200px;
 }
 .grid-container * {
     box-sizing: border-box;
