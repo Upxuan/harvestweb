@@ -137,7 +137,7 @@
                 setCookie('userInfo', user);
                 setCookie('type', type);
                 // console.log("document.cookie:" + document.cookie);
-                _this.$router.push({ path:'/layout' });
+                _this.$router.push({ path:'/system/index' });
               }else{
                 _this.$message.error("用户名或密码错误");
               }

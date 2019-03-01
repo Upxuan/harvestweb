@@ -1,7 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/cloud/home'
+import Team from '@/cloud/team'
+import Research from '@/cloud/research'
+import News from '@/cloud/news'
+import Development from '@/cloud/development'
+import JoinUs from '@/cloud/joinus'
 import Login from '@/components/Login'
-import Layout from '@/components/Layout'
+import System from '@/components/Layout'
 import Resume from '@/components/resumes/resume'
 import Index from '@/components/system/SysIndex'
 import Addmanual from '@/components/system/SysAddmanual'
@@ -24,6 +30,43 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Home',
+      component: Home,
+      children: [
+        {
+          path: '/',
+          name: 'Home', 
+          component: Home
+        },
+        {
+          path: '/team',
+          name: 'Team',
+          component: Team
+        },
+        {
+          path: '/research',
+          name: 'Research',
+          component: Research
+        },
+        {
+          path: '/news',
+          name: 'News',
+          component: News
+        },
+        {
+          path: '/development',
+          name: 'Development',
+          component: Development
+        },
+        {
+          path: '/joinus',
+          name: 'JoinUs',
+          component: JoinUs
+        }
+      ]
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: Login
     },
@@ -33,83 +76,84 @@ export default new Router({
       component: Resume
     },
     {
-      path:'/Layout',
-      component:Layout,
-      children:[
+      path: '/system',
+      name: 'System',
+      component: System,
+      children: [
         {
-          path:'/',
-          name:'Index',
-          component:Index
+          path: '/',
+          name: 'Index',
+          component: Index
         },
         {
-          path:'/Index',
-          name:'Index',
-          component:Index
+          path: 'index',
+          name: 'Index',
+          component: Index
         },
         {
-          path:'/Mystudent',
-          name:'Mystudent',
-          component:Mystudent
+          path: 'mystudent',
+          name: 'Mystudent',
+          component: Mystudent
         },
         {
-          path:'/Audit',
-          name:'Audit',
-          component:Audit
+          path: 'audit',
+          name: 'Audit',
+          component: Audit
         },
         {
-          path:'/Addmanual',
-          name:'Addmanual',
-          component:Addmanual
+          path: 'addmanual',
+          name: 'Addmanual',
+          component: Addmanual
         },
         {
-          path:'/Addauto',
-          name:'Addauto',
-          component:Addauto
+          path: 'addauto',
+          name: 'Addauto',
+          component: Addauto
         },
         {
-          path:'/Manageinfo',
-          name:'Manageinfo',
-          component:Manageinfo
+          path: 'manageinfo',
+          name: 'Manageinfo',
+          component: Manageinfo
         },
         {
-          path:'/Managepwd',
-          name:'Managepwd',
-          component:Managepwd
+          path: 'managepwd',
+          name: 'Managepwd',
+          component: Managepwd
         },
         {
-          path:'/Myaudit',
-          name:'Myaudit',
-          component:Myaudit
+          path: 'myaudit',
+          name: 'Myaudit',
+          component: Myaudit
         },
         {
-          path:'/Mteacher',
-          name:'Mteacher',
-          component:Mteacher
+          path: 'mteacher',
+          name: 'Mteacher',
+          component: Mteacher
         },
         {
-          path:'/Mstudent',
-          name:'Mstudent',
-          component:Mstudent
+          path: 'mstudent',
+          name: 'Mstudent',
+          component: Mstudent
         },
         {
-          path:'/Mharvest',
-          name:'Mharvest',
-          component:Mharvest
+          path: 'mharvest',
+          name: 'Mharvest',
+          component: Mharvest
         },
         {
-          path:'/Mharvestcopy',
-          name:'Mharvestcopy',
-          component:Mharvestcopy
+          path: 'mharvestcopy',
+          name: 'Mharvestcopy',
+          component: Mharvestcopy
         },
         {
-          path:'/CheckCount',
-          name:'CheckCount',
-          component:CheckCount
+          path: 'checkCount',
+          name: 'CheckCount',
+          component: CheckCount
         },
         {
-          path:'/OutputResume',
-          name:'OutputResume',
-          component:OutputResume
+          path: 'outputResume',
+          name: 'OutputResume',
+          component: OutputResume
         }
       ]
     }

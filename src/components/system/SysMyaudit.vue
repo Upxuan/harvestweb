@@ -784,6 +784,10 @@
 </script>
 
 <style scoped>
+/* #sysMyAudit {
+  width: 1664px;
+} */
+
 .el-button{
   margin-right: 5px;
   float: right;

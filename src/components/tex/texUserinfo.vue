@@ -4,24 +4,24 @@
       <img src="@/assets/user-blue.png">
     </div>
     <div class="index-usermsg">
-      <div class="namefont"><span>{{ $userInfo.name }}</span></div>
+      <div class="namefont"><span>{{ myInfo.name }}</span></div>
       <div class="elsefont">
-        <div v-if="$type === '1'">
-          <span>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称： {{ $userInfo.title }}</span><br>
-          <span>组&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别： {{ $userInfo.team }}</span><br>
-          <span>联系方式： {{ $userInfo.tel }}</span><br>
-          <span>电子邮箱： {{ $userInfo.email }}</span><br>
-          <span>研究方向： {{ $userInfo.direction }}</span><br>
-          <span>个人主页： {{ $userInfo.link }}</span><br>
+        <div v-if="UserName.length === 5">
+          <span>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称： {{ myInfo.title }}</span><br>
+          <span>组&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别： {{ myInfo.team }}</span><br>
+          <span>联系方式： {{ myInfo.tel }}</span><br>
+          <span>电子邮箱： {{ myInfo.email }}</span><br>
+          <span>研究方向： {{ myInfo.direction }}</span><br>
+          <span>个人主页： {{ myInfo.link }}</span><br>
         </div>
-        <div v-else-if="$type === '2'">
-          <span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位： {{ $userInfo.degree }}</span><br>
-          <span>组&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别： {{ $userInfo.team }}</span><br>
-          <span>第一导师： {{ $userInfo.first }}</span><br>
-          <span>指导老师： {{ $userInfo.second }}</span><br>
-          <span>联系方式： {{ $userInfo.tel }}</span><br>
-          <span>电子邮箱： {{ $userInfo.email }}</span><br>
-          <span>研究方向： {{ $userInfo.direction }}</span><br>
+        <div v-else-if="UserName.length === 9">
+          <span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位： {{ myInfo.degree }}</span><br>
+          <span>组&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别： {{ myInfo.team }}</span><br>
+          <span>第一导师： {{ myInfo.first }}</span><br>  
+          <span>指导老师： {{ myInfo.second }}</span><br>
+          <span>联系方式： {{ myInfo.tel }}</span><br>
+          <span>电子邮箱： {{ myInfo.email }}</span><br>
+          <span>研究方向： {{ myInfo.direction }}</span><br>
         </div>
         <div v-else>欢迎来到管理员端！</div>
       </div>
@@ -33,26 +33,43 @@
   import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
-    name:'texUserInfo',
+    name: 'texUserInfo',
+    props: ["username"],
     data () {
       return {
-        userType: 0
+        UserName: '',
+        myInfo: {}
       }
     },
-    mounted () {
+    created () {
       var _this = this;
-      // var self = this;
-      // myapi.$on("userInfo", function(msg){
-      //   self.msg = msg;
-      //   console.log("msg:"+self.msg);
-      // })
+      // console.log("this.$route.path:" + this.$route.path)
+      _this.UserName = _this.username
+      if(this.$route.path == '/resume'){
+        this.getTeacherMsg(_this.UserName, 1)
+      }else {
+         _this.UserName = this.$userInfo.username,
+         _this.myInfo.name = this.$userInfo.name,
+         _this.myInfo.first = this.$userInfo.first,
+         _this.myInfo.second = this.$userInfo.second,
+         _this.myInfo.tel = this.$userInfo.tel,
+         _this.myInfo.email = this.$userInfo.email,
+         _this.myInfo.title = this.$userInfo.title,
+         _this.myInfo.degree = this.$userInfo.degree,
+         _this.myInfo.team = this.$userInfo.team,
+         _this.myInfo.link = this.$userInfo.link,
+         _this.myInfo.direction = this.$userInfo.direction
+      }
+      // console.log(_this.UserName.length)
     }
   }
 </script>
 
 <style>
-#sysuserinfo{
+div#texUserInfo{
   height: 240px;
+  width: 600px;
+  /* margin: 0px; */
 }
 .user-img {
   float: left;
@@ -80,6 +97,7 @@
 }
 .index-usermsg {
   height: 190px;
-  margin: 20px 180px;
+  float: left;
+  margin: 20px 10px;
 }
 </style>

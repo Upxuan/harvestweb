@@ -7,7 +7,25 @@
           <el-button type="primary" size="small" @click="generateResume()">生成简历</el-button>
         </p>
       </div>
-      <user-info></user-info>
+      <div class="userinfo-content">
+        <div class="myinfo">
+          <user-info></user-info>
+        </div>
+        <div class="myIntroduction">
+          <el-popover
+            width="500"
+            placement="right"
+            trigger="hover">
+            <el-input
+              type="textarea"
+              :autosize="{ minRows: 8, maxRows: 10 }"
+              placeholder="请输入个人简介"
+              v-model="textarea.introduction">
+            </el-input>
+            <el-button type="primary" icon="el-icon-edit" circle slot="reference"></el-button>
+          </el-popover>
+        </div>
+      </div>
     </div>
     <div class="texHarvestList">
       <div class="all-title">
@@ -55,14 +73,14 @@
     data () {
       return {
         textarea: {
+          introduction: '',
           rewards: '',
           academicwork: '',
         }
       }
     },
     created () {
-      this.getThreeMsg(this.$userInfo.username)
-      console.log(this.textarea.rewards)
+      this.getTeacherMsg(this.$userInfo.username, 0)
     },
     methods: {
       generateResume () {
@@ -72,11 +90,12 @@
             userType: this.$type,
             userId: this.$userInfo.id,
             teacherModel: {
+              introduction: _this.textarea.introduction,
               rewards: _this.textarea.rewards,
               academicwork: _this.textarea.academicwork,
             }
           }
-          console.log(Params)
+          // console.log(Params)
           this.$ajax({
             url:'/api/generateResume', 
             method: 'post',
@@ -84,7 +103,7 @@
             dataType: "json",
             data: Params
           }).then( res => {
-            console.log(res)
+            // console.log(res)
             if(res.data.errCode == 20 ){
               this.reload()
               this.$message({ type: 'success', message: '已生成/更新简历' })
@@ -112,7 +131,7 @@
 }
 
 .all-title {
-  margin-top: 40px;
+  margin-top: 10px;
   height: 35px;
   border-bottom: 1px dashed #DCDFE6;
 }
@@ -128,11 +147,28 @@
   float: right;
 }
 
+.userinfo {
+  margin-top: 20px;
+  height: 300px;
+  /* width: 100%; */
+  /* width: 1662px; */
+}
+
 [class*="tex"] {
   margin-top: 10px;
 }
 
-.texHarvestList {
-  margin-top: 50px;
+[class*="my"] {
+  float: left;
+  /* display: inline; */
 }
+
+.userinfo-content {
+  width: 700px;
+}
+
+.myIntroduction {
+  margin: 20px auto;
+  /* margin-bottom: 100px; */
+} 
 </style>

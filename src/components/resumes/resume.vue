@@ -1,11 +1,17 @@
 <template>
   <div id="resume">
     <div class="main-content">
-      <div style="margin-bottom: 60px;">
-        <user-info></user-info>
+      <div class="text-userinfo">
+        <div class="myinfo">
+          <user-info :username="username"></user-info>
+        </div>
+        <div class="myIntroduction">
+          <p>个人简介</p>
+          <pre>{{ textarea.introduction }}</pre>
+        </div>
       </div>
       <div class="line-isolation"></div>
-      <div class="mychart">
+      <div class="charts">
         <div class="col-md-1">
           <p><el-progress type="circle" :percentage="circle.jpaperPercent" color="rgb(79,184,238)" :stroke-width="strokeWidth" :width="circleWidth"></el-progress></p>
           <p style="font-size:12px">期刊论文</p>
@@ -76,7 +82,7 @@
               </el-dropdown-menu>
             </el-dropdown> -->
         </p>
-        <harvest-list @numberEvent="getNumber"></harvest-list>
+        <harvest-list @numberEvent="getNumber" :username="username"></harvest-list>
       </div>
       <div class="line-isolation"></div>
       <div class="text-rewards">
@@ -98,7 +104,7 @@
   import myapi from '@/api/myapi.js'
   export default {
     name: 'resume',
-    components:{
+    components: {
       UserInfo,
       HarvestList
     },
@@ -118,15 +124,19 @@
           softwarePercent: 0.0,
         },
         textarea: {
+          introduction: '',
           rewards: '',
           academicwork: ''
         }
       }
     },
-    mounted () {
+    created () {
       var _this = this
+      // console.log("path: " + this.$route.path)
+      // console.log(this.$route.query.username)
       _this.username = this.$route.query.username
-      this.getThreeMsg(_this.username)
+      // console.log(_this.username)
+      this.getTeacherMsg(_this.username, 0)
     },
     methods: {
       getNumber (data) {
@@ -147,9 +157,13 @@
 </script>
 
 <style scoped>
+pre {
+  white-space: pre-wrap; 
+}
 .main-content {
-  margin: 80px auto;
-  width: 1200px;
+  margin: 80px 20%;
+  min-width: 1000px;
+  /* width: 1200px; */
 }
 .line-isolation {
   border-bottom: 1px dashed #DCDFE6;
@@ -162,6 +176,16 @@
 .el-button{
   float: right;
 } 
+.text-userinfo {
+  /* min-width: 1000px; */
+  height: 260px;
+  margin-bottom: 60px;
+}
+.myIntroduction {
+  width: 400px;
+  margin: 80px auto 0 auto;
+  text-align: justify;
+}
 .grid-container {
   width: 100%;
   max-width: 1200px;
@@ -169,12 +193,15 @@
 .grid-container * {
     box-sizing: border-box;
 }
-.mychart:before, .mychart:after {
+.charts:before, .charts:after {
     content: "";
     display: block;
     visibility: hidden;
     clear: both;
     *zoom: 1;
+}
+[class*="my"] {
+  float: left;
 }
 [class*="text-"] {
     margin: 20px 0;

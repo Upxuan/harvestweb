@@ -8,8 +8,8 @@ export default {
     //   console.log(_this.$userInfo)
     //   console.log(_this.$type)
     //   console.log(getCookie('userInfo'))
-      if(getCookie('userInfo') == "") {
-        _this.$router.push({ path:'/' });
+      if((this.$route.path != '/login' && this.$route.path != '/resume') && getCookie('userInfo') == "") {
+        _this.$router.push({ path:'/login' });
         this.$message({ message: '用户信息已过期，请重新登录！', type: 'warning' });
       }else {
         flag = true;

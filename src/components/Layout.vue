@@ -21,7 +21,7 @@
               router
               @select="handleSelect"
               class="el-menu-vertical-demo">
-              <el-menu-item index="/Index">
+              <el-menu-item index="/system/index">
                 <i class="el-icon-document"></i>
                 <span slot="title">个人主页</span>
               </el-menu-item>
@@ -31,19 +31,19 @@
                   <span>添加成果</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="/Addmanual">手动录入</el-menu-item>
-                  <el-menu-item index="/Addauto">自动录入</el-menu-item>
+                  <el-menu-item index="/system/addmanual">手动录入</el-menu-item>
+                  <el-menu-item index="/system/addauto">自动录入</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
-              <el-menu-item index="/Mystudent" v-show="this.teacherShow">
+              <el-menu-item index="/system/mystudent" v-show="this.teacherShow">
                 <i class="el-icon-star-on"></i>
                 <span slot="title">我的学生</span>
               </el-menu-item>
-              <el-menu-item index="/Audit" v-show="this.teacherShow">
+              <el-menu-item index="/system/audit" v-show="this.teacherShow">
                 <i class="el-icon-news"></i>
                 <span slot="title">学生成果审核<el-badge class="mark" :value="this.num2" :hidden="this.num2 === 0" :max="99"/></span>
               </el-menu-item>
-              <el-menu-item index="/Myaudit" v-show="this.studentShow">
+              <el-menu-item index="/system/myaudit" v-show="this.studentShow">
                 <i class="el-icon-news"></i>
                 <span slot="title">成果审核情况</span>
               </el-menu-item>
@@ -53,8 +53,8 @@
                   <span>账号管理</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="/Manageinfo" :disabled="this.manageinfoShow">修改基本信息</el-menu-item>
-                  <el-menu-item index="/Managepwd">修改密码</el-menu-item>
+                  <el-menu-item index="/system/manageinfo" :disabled="this.manageinfoShow">修改基本信息</el-menu-item>
+                  <el-menu-item index="/system/managepwd">修改密码</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
               <el-submenu index="3" v-show="this.managerShow">
@@ -63,8 +63,8 @@
                   <span>成果管理</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="/Mharvest">教师成果管理</el-menu-item>
-                  <el-menu-item index="/Mharvestcopy">学生成果管理</el-menu-item>
+                  <el-menu-item index="/system/mharvest">教师成果管理</el-menu-item>
+                  <el-menu-item index="/system/mharvestcopy">学生成果管理</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
               <el-submenu index="4" v-show="this.managerShow">
@@ -73,15 +73,15 @@
                   <span>信息管理</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="/Mteacher">教师信息管理</el-menu-item>
-                  <el-menu-item index="/Mstudent">学生信息管理</el-menu-item>
+                  <el-menu-item index="/system/mteacher">教师信息管理</el-menu-item>
+                  <el-menu-item index="/system/mstudent">学生信息管理</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
-              <el-menu-item index="/CheckCount" v-show="this.managerShow">
+              <el-menu-item index="/system/checkCount" v-show="this.managerShow">
                 <i class="el-icon-search"></i>
                 <span slot="title">查询统计</span>
               </el-menu-item>
-              <el-menu-item index="/OutputResume" v-show="this.teacherShow">
+              <el-menu-item index="/system/outputResume" v-show="this.teacherShow">
                 <i class="el-icon-tickets"></i>
                 <span slot="title">简历生成</span>
               </el-menu-item>
@@ -176,7 +176,7 @@
         }).then(() => {
           // this.$message({type: 'success',message: '成功退出!'});
           //清除cookie中的data
-          this.$router.push({ path:'/' });
+          this.$router.push({ path:'/login' });
         }).catch(() => {
           // this.$message({type: 'info',message: '已取消!'});
         });

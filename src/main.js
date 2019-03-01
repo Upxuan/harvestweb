@@ -1,14 +1,17 @@
 import Vue from 'vue'
-import App from './App'
-import router from './router'
-import ElementUI from 'element-ui';
+import ElementUI from 'element-ui'
 import axios from 'axios'
 import qs from 'qs'
-import Harvest from './api/js/harvest.js'
-import Common from './api/js/common.js'
-import JudgeLogin from './api/js/judgelogin.js'
-import Data from './data/data.js'
-import 'element-ui/lib/theme-chalk/index.css';
+import App from '@/App'
+import router from '@/router'
+import Harvest from '@/api/js/harvest.js'
+import Common from '@/api/js/common.js'
+import JudgeLogin from '@/api/js/judgelogin.js'
+import Data from '@/data/data.js'
+import 'element-ui/lib/theme-chalk/index.css'
+// import '@/api/css/frame/animate.min.css'
+// import '@/api/css/frame/templatemo-style.css'
+
 // import 'lib-flexible'
 import {getCookie,delCookie,setCookie} from './api/js/Cookie.js'
 Vue.use(ElementUI)
@@ -39,15 +42,19 @@ router.beforeEach((to, from, next) => {
 
   //用cookie生存时间到期清除cookie 代替 到主页就清除cookie的操作
   //只有“切换账户”的时候才主动清除
-  if(to.path == '/'){
+  if(to.path == '/login'){
     delete Vue.prototype.$userInfo;
     delete Vue.prototype.$type;
     delCookie('userInfo');
     delCookie('type');
   }
   
-  if(to.path != '/' && getCookie('userInfo') == "")
-    next({ path: '/' }) 
+  // console.log(to.path)
+  //url: /resume?username=18501
+  // console.log(to.path.substring(0,7) === "/system")
+  // if((to.path != '/login' && to.path != '/resume' && to.path != '/') && getCookie('userInfo') == "")
+  if(to.path.substring(0,7) === "/system" && getCookie('userInfo') == "")
+    next({ path: '/login' }) 
   else
     next()
 })
