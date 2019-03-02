@@ -61,7 +61,7 @@
 <script>
   import UserInfo from '@/components/tex/texUserinfo'
   import HarvestList from '@/components/tex/texHarvestList'
-  import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
+  import {getCookie,delCookie,setCookie} from '@/api/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
     name: 'sysOutputResume',

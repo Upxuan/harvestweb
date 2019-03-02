@@ -1,5 +1,5 @@
 import myapi from '@/api/myapi.js'
-import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
+import {getCookie,delCookie,setCookie} from '@/api/Cookie.js'
 export default {
   install (Vue, opt) {
     Vue.prototype.judgeLogin = function () {

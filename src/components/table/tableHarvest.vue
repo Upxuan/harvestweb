@@ -37,7 +37,7 @@
   import HarSubject from '@/components/table/harvest/tableSubject'
   import HarSoftware from '@/components/table/harvest/tableSoftware'
   import HarAffairs from '@/components/table/harvest/tableAffairs'
-  import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
+  import {getCookie,delCookie,setCookie} from '@/api/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
     name:'sysharvest',

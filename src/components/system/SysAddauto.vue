@@ -30,7 +30,7 @@
   import AddHarSubject from '@/components/table/harvestAdd/tableAddSubject'
   import AddHarSoftware from '@/components/table/harvestAdd/tableAddSoftware'
   import AddHarAffairs from '@/components/table/harvestAdd/tableAddAffairs'
-  import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
+  import {getCookie,delCookie,setCookie} from '@/api/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default{
     name:'sysAddauto',

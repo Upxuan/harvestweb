@@ -4,20 +4,29 @@ import axios from 'axios'
 import qs from 'qs'
 import App from '@/App'
 import router from '@/router'
-import Harvest from '@/api/js/harvest.js'
-import Common from '@/api/js/common.js'
-import JudgeLogin from '@/api/js/judgelogin.js'
-import Data from '@/data/data.js'
 import 'element-ui/lib/theme-chalk/index.css'
+import $ from 'jquery'
+import 'animate.css'
+// import 'lib-flexible'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/js/bootstrap.min'
+import Harvest from '@/api/harvest.js'
+import Common from '@/api/common.js'
+import JudgeLogin from '@/api/judgelogin.js'
+import Data from '@/data/data.js'
+import {getCookie,delCookie,setCookie} from './api/Cookie.js'
+// import '@/api/js/frame/jquery.simple-text-rotator.js'
+// import '@/api/js/frame/smoothscroll.js'
+// import '@/api/js/frame/wow.min.js'
+// import '@/api/js/frame/jquery.flexslider.js'
 // import '@/api/css/frame/animate.min.css'
 // import '@/api/css/frame/templatemo-style.css'
 
-// import 'lib-flexible'
-import {getCookie,delCookie,setCookie} from './api/js/Cookie.js'
 Vue.use(ElementUI)
 Vue.use(Harvest)
 Vue.use(Common)
 Vue.use(JudgeLogin)
+// Vue.use(js1)
 Vue.use(Data)
 Vue.config.productionTip = false
 Vue.prototype.$ajax = axios

@@ -3,7 +3,7 @@
     <div class="content">
       <el-collapse v-model="activeName" accordion>
         <el-collapse-item title="期刊论文" name="1">
-          <div v-for="(item, index) in messages.jpaperData.slice((currentPage.jpaperPage-1)*pageSize.jpaperSize,currentPage.jpaperPage*pageSize.jpaperSize)">
+          <div v-for="(item, index) in messages.jpaperData.slice((currentPage.jpaperPage-1)*pageSize.jpaperSize,currentPage.jpaperPage*pageSize.jpaperSize)" :key="index">
             <el-card class="box-card mycard" shadow="hover">
               <p class="mytitle">{{ item.jpaperTitle }}</p>
               <p>
@@ -27,7 +27,7 @@
           </div>
         </el-collapse-item>
         <el-collapse-item title="会议论文" name="2">
-          <div v-for="(item, index) in messages.mpaperData.slice((currentPage.mpaperPage-1)*pageSize.mpaperSize,currentPage.mpaperPage*pageSize.mpaperSize)">
+          <div v-for="(item, index) in messages.mpaperData.slice((currentPage.mpaperPage-1)*pageSize.mpaperSize,currentPage.mpaperPage*pageSize.mpaperSize)" :key="index">
             <el-card class="box-card mycard" shadow="hover">
               <p class="mytitle">{{ item.mpaperTitle }}</p>
               <p>
@@ -51,7 +51,7 @@
           </div>
         </el-collapse-item>
         <el-collapse-item title="专利" name="3">
-          <div v-for="(item, index) in messages.patentData.slice((currentPage.patentPage-1)*pageSize.patentSize,currentPage.patentPage*pageSize.patentSize)">
+          <div v-for="(item, index) in messages.patentData.slice((currentPage.patentPage-1)*pageSize.patentSize,currentPage.patentPage*pageSize.patentSize)" :key="index">
             <el-card class="box-card mycard" shadow="hover">
               <p class="mytitle">{{ item.patentTitle }}</p>
               <p>
@@ -75,7 +75,7 @@
           </div>
         </el-collapse-item>
         <el-collapse-item title="项目" name="4">
-          <div v-for="(item, index) in messages.projectData.slice((currentPage.projectPage-1)*pageSize.projectSize,currentPage.projectPage*pageSize.projectSize)">
+          <div v-for="(item, index) in messages.projectData.slice((currentPage.projectPage-1)*pageSize.projectSize,currentPage.projectPage*pageSize.projectSize)" :key="index">
             <el-card class="box-card mycard" shadow="hover">
               <p class="mytitle">{{ item.projectTitle }}</p>
               <p>
@@ -99,7 +99,7 @@
           </div>
         </el-collapse-item>
         <el-collapse-item title="学术专著" name="5">
-          <div v-for="(item, index) in messages.subjectData.slice((currentPage.subjectPage-1)*pageSize.subjectSize,currentPage.subjectPage*pageSize.subjectSize)">
+          <div v-for="(item, index) in messages.subjectData.slice((currentPage.subjectPage-1)*pageSize.subjectSize,currentPage.subjectPage*pageSize.subjectSize)" :key="index">
             <el-card class="box-card mycard" shadow="hover">
               <p class="mytitle">{{ item.subjectTitle }}</p>
               <p>
@@ -123,7 +123,7 @@
           </div>
         </el-collapse-item>
         <el-collapse-item title="软件著作权" name="6">
-          <div v-for="(item, index) in messages.softwareData.slice((currentPage.softwarePage-1)*pageSize.softwareSize,currentPage.softwarePage*pageSize.softwareSize)">
+          <div v-for="(item, index) in messages.softwareData.slice((currentPage.softwarePage-1)*pageSize.softwareSize,currentPage.softwarePage*pageSize.softwareSize) " :key="index">
             <el-card class="box-card mycard" shadow="hover">
               <p class="mytitle">{{ item.softwareName }}</p>
               <p>

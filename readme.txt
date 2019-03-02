@@ -4,3 +4,4 @@ v0.1.3outputResume界面一部分
 v0.1.4testResume界面完善
 v0.1.5生成简历部分基本完成
 v0.1.6官网部件初步分配
+v0.1.7官网index bar条路由

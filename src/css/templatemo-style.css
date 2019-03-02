@@ -125,7 +125,7 @@ body
 
 /* start home */
 h1 { margin: 0; }
-#home { padding-top: 65px; }
+/* #home { padding-top: 65px; } */
 .flexslider {
   margin: 0 0 60px;
   background: #fff;
@@ -496,7 +496,7 @@ ul
 /* start newsletter */
 #newsletter
   {
-    background: url('../../../assets/images/newsletter-bg.jpg') no-repeat center center;
+    background: url('../images/newsletter-bg.jpg') no-repeat center center;
     background-size: cover;
    background-attachment: fixed;
     color: #FFFFFF;
@@ -697,7 +697,7 @@ ul
 /* start contact */
 #contact
   {
-    background: #404040 url('../../../assets/images/contact-bg.jpg') no-repeat;
+    background: #404040 url('../images/contact-bg.jpg') no-repeat;
     background-size: cover;
     background-attachment: fixed;
     color: #FFFFFF;

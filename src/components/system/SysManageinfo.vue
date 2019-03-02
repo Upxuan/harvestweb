@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import {getCookie,delCookie,updateCookie,setCookie} from '@/api/js/Cookie.js'
+  import {getCookie,delCookie,updateCookie,setCookie} from '@/api/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default{
     name:'sysManageInfo',

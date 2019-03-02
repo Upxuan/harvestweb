@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Index from '@/cloud/index'
 import Home from '@/cloud/home'
-import Team from '@/cloud/team'
+import Member from '@/cloud/member'
 import Research from '@/cloud/research'
 import News from '@/cloud/news'
 import Development from '@/cloud/development'
@@ -9,7 +10,7 @@ import JoinUs from '@/cloud/joinus'
 import Login from '@/components/Login'
 import System from '@/components/Layout'
 import Resume from '@/components/resumes/resume'
-import Index from '@/components/system/SysIndex'
+import SysIndex from '@/components/system/SysIndex'
 import Addmanual from '@/components/system/SysAddmanual'
 import Addauto from '@/components/system/SysAddauto'
 import Mystudent from '@/components/system/SysMystudent'
@@ -30,18 +31,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name: 'Index',
+      component: Index,
       children: [
         {
           path: '/',
-          name: 'Home', 
+          name: 'Home',
           component: Home
         },
         {
-          path: '/team',
-          name: 'Team',
-          component: Team
+          path: '/member',
+          name: 'Member',
+          component: Member
         },
         {
           path: '/research',
@@ -81,14 +82,9 @@ export default new Router({
       component: System,
       children: [
         {
-          path: '/',
-          name: 'Index',
-          component: Index
-        },
-        {
           path: 'index',
-          name: 'Index',
-          component: Index
+          name: 'SysIndex',
+          component: SysIndex
         },
         {
           path: 'mystudent',

@@ -107,7 +107,7 @@
   import Mharvest from '@/components/system/SysMharvest'
   import Mharvestcopy from '@/components/system/SysMharvestcopy'  
   import Audit from '@/components/system/SysAudit'
-  import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
+  import {getCookie,delCookie,setCookie} from '@/api/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
     name: 'layout',

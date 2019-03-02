@@ -67,7 +67,6 @@
 </template>
 
 <script>
-  import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
     name:'harSubject',

@@ -31,7 +31,6 @@
 </template>
 
 <script type="text/javascript">
-  import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
     name: 'tabProject',

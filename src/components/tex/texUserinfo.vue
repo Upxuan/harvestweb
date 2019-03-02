@@ -1,7 +1,7 @@
 <template>
   <div id="texUserInfo">
     <div class="user-img">
-      <img src="@/assets/user-blue.png">
+      <img src="@/images/user-blue.png">
     </div>
     <div class="index-usermsg">
       <div class="namefont"><span>{{ myInfo.name }}</span></div>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import {getCookie,delCookie,setCookie} from '@/api/js/Cookie.js'
+  import {getCookie,delCookie,setCookie} from '@/api/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
     name: 'texUserInfo',
