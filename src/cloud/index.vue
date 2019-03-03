@@ -26,11 +26,38 @@
 					</div>
 				</nav>
 			</el-header>
-			<el-main>
-				<transition> 
-					<router-view></router-view>
-				</transition>
-			</el-main>
+      <transition> 
+        <router-view></router-view>
+      </transition>
+			<div id="foot">
+        <footer id="footer">
+                <div class="fotter">
+                <div class="footer-container">
+                    <div class="col-md-8">
+                    <br>
+                    <i class="fa fa-1x fa-home"></i> 实验室地址：<br>
+                    浙江省杭州市杭州电子科技大学下沙高教园校区 一教南楼323/335/337室 三教南楼617室<br>
+                    </div>
+                    <div class="col-md-4">
+                    <br>
+                    <i class="fa fa-1x fa-chain"></i> 实验室网址：<br>
+                    <a href="http://cloud.hdu.edu.cn">http://cloud.hdu.edu.cn</a><br>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                </div>
+                <br>
+                <div class="container">
+                <div class="row myfooter">
+                    <div class="text-center">
+                    Copyright © 2019. All rights reserved. Designed by <a target="_blank"
+                        href="http://cloud.hdu.edu.cn">CLOUD</a>.
+                    </div>
+                </div>
+                </div>
+                <br>
+            </footer>
+    </div>
 		</el-container>
   </div>
 </template>
@@ -68,10 +95,19 @@ export default {
 </script>
 
 <style>
-@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
-@import 'http://www.jq22.com/jquery/font-awesome.4.6.0.css';
-@import '../css/animate.min.css';
-@import '../css/templatemo-style.css';
-@import 'http://fonts.googleapis.com/css?family=Open+Sans:400,700';
-@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
+.container {
+  margin: 0px 18%;
+  width: 60%;
+}
+
+#footer {
+  width: 100%;
+  font-size: 14px;
+  color: #DDD;
+  background-color: rgb(34, 34, 34);
+}
+
+.footer-container {
+  margin: 0px 17%;
+}
 </style>

@@ -30,6 +30,12 @@ export default {
 </script>
 
 <style>
+@import './css/animate.min.css';
+@import './css/templatemo-style.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
+@import 'http://www.jq22.com/jquery/font-awesome.4.6.0.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
+@import 'http://fonts.googleapis.com/css?family=Open+Sans:400,700';
 body {
   margin: 0px;
   padding: 0px;

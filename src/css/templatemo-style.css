@@ -355,6 +355,7 @@ h1 { margin: 0; }
   }
 #team .team_thumb
   {
+    height: 190px;
     overflow: hidden;
     position: relative;
     margin: 30px 0 0 0;
@@ -398,13 +399,16 @@ h1 { margin: 0; }
   }  
 #team .team_description
   {
+    height: 120px;
     background: #303030;
     padding: 10px;
   }
-#team .team_description h5
+  #team .team_description h5
   {
-    color: #66AF33;
-	padding-bottom: 10px;
+    /* color: #66AF33; */
+    text-align: justify;
+    color: #FFF;
+	  padding-bottom: 10px;
   }
 #team p
   {
@@ -442,7 +446,7 @@ ul
   }
 .social_icon li a:hover
   {
-    background: #66AF33;
+    background: #666;
     color: #FFFFFF;
   }
   footer .social_icon {

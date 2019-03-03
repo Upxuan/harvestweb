@@ -5,6 +5,7 @@ import qs from 'qs'
 import App from '@/App'
 import router from '@/router'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'font-awesome/css/font-awesome.min.css'
 import $ from 'jquery'
 import 'animate.css'
 // import 'lib-flexible'
@@ -21,6 +22,10 @@ import {getCookie,delCookie,setCookie} from './api/Cookie.js'
 // import '@/api/js/frame/jquery.flexslider.js'
 // import '@/api/css/frame/animate.min.css'
 // import '@/api/css/frame/templatemo-style.css'
+import TeacherInfo from '@/data/teacherInfo.js'
+Vue.use(TeacherInfo)
+
+
 
 Vue.use(ElementUI)
 Vue.use(Harvest)
