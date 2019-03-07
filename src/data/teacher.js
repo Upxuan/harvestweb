@@ -14,7 +14,7 @@ export default {
         name: '施巍松',
         title: 'IEEE Fellow，研究中心讲座教授',
         reward: '讲座教授，IEEE FELLOW',
-        direction: '可持续计算',
+        direction: '可持续计算，边缘计算等。',
         msg: '韦恩州立大学(Wayne State Univ.)计算机系教授、终身教职，移动和因特网系统结构实验室主任，可持续计算实验室主任。美国国家科学基金会杰出青年教授奖获得者。'
       },
       { 

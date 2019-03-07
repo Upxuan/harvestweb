@@ -51,4 +51,30 @@ a {
 .hui-font {
   color: #999;
 }
+/*
+a:link{color: blue}
+a:visited{color: red}
+a:hover{color: yellow}
+a:active{color: white}
+*/
+.mylink a {
+  color: #36648B;
+  font-weight: bold;
+}
+.mylink a:hover {
+  color: #999;
+  font-size: 15px;
+  text-decoration:none ;
+}
+.mylink > a:focus
+  {
+    color: #999;
+    text-decoration:none ;
+  }
+.mylink > .active > a,
+.mylink > .active > a:hover,
+.mylink > .active > a:focus {
+  color: #36648B;
+  background-color: transparent;
+}
 </style>

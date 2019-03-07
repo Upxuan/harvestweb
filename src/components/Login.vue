@@ -176,12 +176,13 @@ body {
 }
 .container {
   width: 320px;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 .container h1 {
   text-align: center;
   color: #FFFFFF;
   font-weight: 500;
+  margin-bottom: 30px;
   /*font-weight: bold;*/
 }
 .container input {

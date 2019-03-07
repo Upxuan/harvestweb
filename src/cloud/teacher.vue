@@ -63,6 +63,9 @@
 </script>
 
 <style scoped>
+p {
+  text-align: justify;
+}
 .teacher-section {
   background: #404040;
   color: #FFFFFF;

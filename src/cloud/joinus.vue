@@ -11,7 +11,7 @@
             <p><span>学历学位：</span>博士研究生</p>
             <p><span>学科方向：</span>云计算与云存储，高性能计算，服务计算，海量数据分析，边缘计算，软件工程。</p>
             <p><span>其他条件：</span>年龄一般在35周岁以下，教授（研究员）年龄可适当放宽。有海外经验者优先。</p>
-            <p><span>待遇福利：</span>参照杭州电子科技大学<a href="http://renshi.hdu.edu.cn" target="_blank">工作待遇</a>等政策（如有调整，以学校新文件为准）。 </p>
+            <p class="mylink"><span>待遇福利：</span>参照杭州电子科技大学<a href="http://renshi.hdu.edu.cn" target="_blank">工作待遇</a>等政策（如有调整，以学校新文件为准）。 </p>
             <p><span>申请材料：</span>个人详细简历、近年来代表性论文著作、科研成果、获奖情况、文献收录证明等相关材料。 </p>
             <p><span>申请方式：</span>通过电子邮箱方式投递个人简历至E-mail：yinyuyu@hdu.edu.cn</p>
           </div>
@@ -27,7 +27,7 @@
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-10 wow fadeInDown" data-wow-delay="2000">
-            <p><span>学校招生信息：</span>参照杭州电子科技大学<a href="http://grs.hdu.edu.cn/" target="_blank">研究生院</a>最新信息</p>
+            <p class="mylink"><span>学校招生信息：</span>参照杭州电子科技大学<a href="http://grs.hdu.edu.cn/" target="_blank">研究生院</a>最新信息</p>
             <p><span>注意事项：</span><span class="green-font">请将详细简历及本科成绩单发送至实验室邮箱，简历中请注明初试总成绩、单科成绩、本科期间项目经历、研究兴趣和计划等。邮件无主题、正文、抬头、落款的直接忽略！附件不要压缩打包。</span></p>
             <p><span>实验室邮箱：</span><u>cloud@hdu.edu.cn</u></p>
             <p><span>实验室2019招生QQ群号：</span><u>778670004</u></p><br>

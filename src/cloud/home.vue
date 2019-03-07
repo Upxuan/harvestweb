@@ -135,13 +135,58 @@
             </p>
           </div>   
           <div class="col-md-2"></div>
-					<div class="col-sm-6 col-md-4 wow fadeInLeft" v-for="(item, index) in this.reseachTopics" :key="index">
+					<div class="col-sm-6 col-md-4 wow fadeInLeft">
 						<div class="media">
-							<i class="fa fa-cloud-upload pull-left media-object"></i>
-								<div class="media-body">
-									<h4 class="media-heading">{{ item.topic }}</h4>
-									<p  style="text-indent: 0">{{ item.description }}</p>
-								</div>
+							<i class="fa fa-cloud pull-left media-object"></i>
+              <div class="media-body">
+                <h4 class="media-heading">云计算</h4>
+                <p  style="text-indent: 0">通过网络把多个成本相对较低的计算实体整合成一个具有强大计算能力的完美系统,并把这强大的计算能力分布到终端用户手中。</p>
+              </div>
+						</div>
+					</div>
+          <div class="col-sm-6 col-md-4 wow fadeInLeft">
+						<div class="media">
+							<i class="fa fa-cloud-download pull-left media-object"></i>
+              <div class="media-body">
+                <h4 class="media-heading">边缘计算</h4>
+                <p  style="text-indent: 0">在靠近物或数据源头的一侧，采用网络、计算、存储、应用核心能力为一体的开放平台，就近提供最近端服务，以产生更快的网络服务响应。</p>
+              </div>
+						</div>
+					</div>
+          <div class="col-sm-6 col-md-4 wow fadeInLeft">
+						<div class="media">
+							<i class="fa fa-chain pull-left media-object"></i>
+              <div class="media-body">
+                <h4 class="media-heading">区块链</h4>
+                <p  style="text-indent: 0">一种新型的去中心化协议，具有分布式、去中介、去信任、不可篡改、可编程等特征，未来可应用于金融市场交易、博彩业、智能合约等领域。</p>
+              </div>
+						</div>
+					</div>
+          <div class="col-sm-6 col-md-4 wow fadeInLeft">
+						<div class="media">
+							<i class="fa fa-bars pull-left media-object"></i>
+              <div class="media-body">
+                <h4 class="media-heading">并行与高性能计算</h4>
+                <p  style="text-indent: 0">开发高性能计算机的技术，涉及并行算法、并行编译、并行软件工程、面向CPU/GPU的算法性能优化等。</p>
+              </div>
+						</div>
+					</div>
+          <div class="col-sm-6 col-md-4 wow fadeInLeft">
+						<div class="media">
+							<i class="fa fa-server pull-left media-object"></i>
+              <div class="media-body">
+                <h4 class="media-heading">服务计算与系统虚拟化</h4>
+                <p  style="text-indent: 0">有效产生和利用计算和信息技术进行建模、生成、操作和管理业务服务的科学技术，涉及虚拟化技术、SOA和Web服务、业务流程集成等。</p>
+              </div>
+						</div>
+					</div>
+          <div class="col-sm-6 col-md-4 wow fadeInLeft">
+						<div class="media">
+							<i class="fa fa-cogs pull-left media-object"></i>
+              <div class="media-body">
+                <h4 class="media-heading">机器学习</h4>
+                <p  style="text-indent: 0">从大量的、不完全的、有噪声的、模糊的实际应用数据中,提取隐含在其中的、潜在有用的信息和知识的过程，涉及各类算法。</p>
+              </div>
 						</div>
 					</div>
 				</div>
@@ -160,12 +205,11 @@
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            
-            <p>6个机柜，2套刀片服务器，2套网络存储、聚合峰值计算能力12万亿FLOPS，存储容量100TB，80余台PC机；拥有UBsense室内定位系统、GPS信号模拟器、GIS平台等设备构成的移动计算环境，以及50个Xbow TeloSB无线传感器模块、RFID设备构成的无线传感网络实验环境。</p>
-            <p>实验设备资产近1000万元，为高层次人才培养提供良好的基础设施与外部条件。未来三年还将购进300多万大型仪器和日常办公设备。</p>
+            <span>6个机柜，2套刀片服务器，2套网络存储、聚合峰值计算能力12万亿FLOPS，存储容量100TB，80余台PC机；拥有UBsense室内定位系统、GPS信号模拟器、GIS平台等设备构成的移动计算环境，以及50个Xbow TeloSB无线传感器模块、RFID设备构成的无线传感网络实验环境。</span><br><br>
+            <span>实验设备资产近1000万元，为高层次人才培养提供良好的基础设施与外部条件。未来三年还将购进300多万大型仪器和日常办公设备。</span>
           </div>
           <div class="col-md-2"></div>
-          <div class="col-sm-6 col-md-4 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.workEnvironment" :key="index">
+          <div class="col-sm-6 col-md-4 wow fadeInLeft" style="margin-top:20px;" data-wow-delay="2000" v-for="(item, index) in this.workEnvironment" :key="index">
             <div class="work_thumb">
               <img :src="item.img" style="width:100%; height:100%;" class="img-responsive" alt="work">
             </div>
@@ -182,19 +226,30 @@
           <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000">
             <h3>合作平台</h3>
           </div>
-          <div class="col-md-12" style="margin-bottom:10px;">
+          <div class="col-md-12">
             <div class="col-md-1"></div>
             <div class="col-md-10 text-center">
-              <p>与美国韦恩州立大学、加拿大约克大学、浙江大学、华中科技大学、中科院网络中心等相关实验室保持密切的学术交流与合作关系，与阿里巴巴、网易杭研院、海康威视、中电集团第52研究所、信核数据等国内知名IT企业以及602所、706所、620所等军工科研单位有密切的合作。</p>
+              <span>实验室与美国韦恩州立大学、加拿大约克大学、浙江大学、华中科技大学、中科院网络中心等相关实验室保持密切的学术交流与合作关系，与阿里巴巴、网易杭研院、海康威视、中电集团第52研究所、信核数据等国内知名IT企业以及602所、706所、620所等军工科研单位有密切的合作。</span>
             </div>
             <div class="col-md-1"></div>
           </div>
-          <div class="col-md-12">
-            <!-- <div class="col-sm-2 col-md-2 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.achievementImages" :key="index">
-              <div class="home1_thumb">
-                <img :src="item.img" class="img-responsive" alt="home1">
-              </div>
-            </div>  -->
+          <div class="col-md-12" style="margin-top:50px;">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
+                <div class="home1_thumb"><img src="../images/home/cooperation/1.jpg" class="img-responsive"></div>
+              </div> 
+              <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
+                <div class="home1_thumb"><img src="../images/home/cooperation/2.jpg" class="img-responsive"></div>
+              </div> 
+              <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
+                <div class="home1_thumb"><img src="../images/home/cooperation/3.jpg" class="img-responsive"></div>
+              </div> 
+              <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
+                <div class="home1_thumb"><img src="../images/home/cooperation/4.jpg" class="img-responsive"></div>
+              </div> 
+            </div>
+            <div class="col-md-2"></div>
           </div>
         </div>
       </div> 
@@ -210,16 +265,17 @@
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-10">
-            <p>我们非常欢迎爱好云计算处理和机器学习的同学前来加入我们的行列，攻读博士学位、硕士学位，做科创实习;<br/>我们非常欢迎拥有博士学位的人才前来应聘。</p>
+            <span>我们非常欢迎热爱实验室相关研究方向的同学前来加入我们的行列，攻读博士学位、硕士学位，做科创实习；我们非常欢迎拥有博士学位的人才前来应聘。</span>
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
             <form role="form">
               <div class="col-md-4"></div>
               <div class="col-md-4">
-                <router-link to="/joinus">
+                <a href="/joinus" class="smoothScroll btn btn-default wow fadeInDown" data-wow-delay="2000" style="width:260px;margin-top:20px;">JOIN US NOW</a>	
+                <!-- <router-link to="/joinus">
                   <input type="submit" value="JOIN US NOW" class="form-control">
-                </router-link>
+                </router-link> -->
               </div>
               <div class="col-md-4"></div>
             </form>
@@ -260,6 +316,14 @@ export default {
 </script>
 
 <style scoped>
+p {
+  font-size: 15px;
+  text-align: justify;
+  text-indent: 32px;
+}
+span {
+  font-size: 15px;
+}
 .navigation {
   margin: 0px 15%;
   position: fixed;
@@ -356,10 +420,6 @@ export default {
   padding-bottom: 220px;
 }
 
-p {
-  text-indent: 30px;
-}
-
 .container {
   margin: 0px 18%;
   width: 60%;
@@ -400,8 +460,9 @@ p {
 }
 
 #work .container .col-md-8  {
-  color: black;
-  font-family: YouYuan;
+  color: #555;
+  
+  /* font-family: YouYuan; */
 }
 
 .work_thumb {
@@ -420,7 +481,7 @@ p {
   color: #333;
   font-weight: bold;
   letter-spacing: 1px !important;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   
 }
 #home1 p {

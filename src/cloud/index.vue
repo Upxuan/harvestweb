@@ -31,7 +31,7 @@
 										</router-link>
 									</li>
 								</ul>
-						</div>
+							</div>
 						</div>			
 					</div>
 				</nav>
@@ -46,7 +46,7 @@
 							<i class="fa fa-1x fa-map-marker"></i> 实验室地址：<br>
 							<p>浙江省杭州市经济技术开发区2号大街1158号，邮编310018<br/>杭州电子科技大学下沙高教园校区 一教南楼323/335/337室 三教南楼617室</p>
 						</div>
-						<div class="footer-container-msg">
+						<div class="footer-container-msg mylink">
 							<i class="fa fa-1x fa-home"></i> 实验室网址：<br>
 							<a href="http://cloud.hdu.edu.cn">http://cloud.hdu.edu.cn</a>
 						</div>
@@ -56,7 +56,7 @@
 							<i class="fa fa-1x fa-envelope-o"></i> 实验室邮箱：<br>
 							cloud@hdu.edu.cn (云技术实验室)
 						</div>
-						<div class="footer-container-msg">
+						<div class="footer-container-msg mylink">
 							<i class="fa fa-1x fa-bank"></i> 友情链接：<br>
 							<a href="http://www.hdu.edu.cn/" target="_blank">Hangzhou Dianzi University</a><br/>
 							<a href="http://computer.hdu.edu.cn/" target="_blank">School of Coputer Science and Technology</a>
@@ -71,7 +71,7 @@
 							<li><a href="#" class="fa fa-angle-double-up"></a></li>
 						</ul>								
 					</div>
-					Copyright © 2019. All rights reserved. Designed by <a target="_blank" href="http://cloud.hdu.edu.cn">CLOUD</a>.
+					<div class="mylink">Copyright © 2019. All rights reserved. Designed by <a href="http://cloud.hdu.edu.cn" target="_blank">CLOUD</a>.</div>
 				</div>
 			</div>
 		</footer>

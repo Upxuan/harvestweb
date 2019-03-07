@@ -19,6 +19,7 @@ export default {
 
       { img: require('../images/team/people/3.png') },
       { img: require('../images/team/people/14.png') },
+      { img: require('../images/team/people/17.png') },
       { img: require('../images/team/people/16.png') },
     ]
 

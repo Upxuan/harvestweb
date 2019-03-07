@@ -100,12 +100,12 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <div class="col-md-12" v-for="(item, index) in this.studentRewardHonor" :key="index">
+            <div class="col-md-12" v-for="(item, index) in this.studentRewards" :key="index + 'model'">
               <h5>{{ item.msg }}（<span class="deepred-font">{{item.name}}</span>）</h5>
             </div>
           </div>
           <div class="col-md-6">
-            <div class="col-md-12" v-for="(item, index) in this.studentRewards" :key="index + 'model'">
+            <div class="col-md-12" v-for="(item, index) in this.studentRewardHonor" :key="index">
               <h5>{{ item.msg }}（<span class="deepred-font">{{item.name}}</span>）</h5>
             </div>
           </div>
@@ -435,11 +435,11 @@ h3 {
   background: rgb(246, 246, 246);
   color: #FFFFFF;
   min-height: 200px;
-  padding: 40px 0;
+  padding: 40px 0 50px 0;
 }
 #stu4 h5 {
   color: #555;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 /* end stu4 */
 </style>

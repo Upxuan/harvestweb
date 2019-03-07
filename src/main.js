@@ -77,8 +77,10 @@ router.beforeEach((to, from, next) => {
   //url: /resume?username=18501
   // console.log(to.path.substring(0,7) === "/system")
   // if((to.path != '/login' && to.path != '/resume' && to.path != '/') && getCookie('userInfo') == "")
-  if(to.path.substring(0,7) === "/system" && getCookie('userInfo') == "")
-    next({ path: '/login' }) 
+  if(to.path === "/login" || to.path.substring(0,7) === "/resume" || to.path.substring(0,7) === "/system")
+    next({ path: '/' }) 
+  // else if(to.path.substring(0,7) === "/system" && getCookie('userInfo') == "")
+  //   next({ path: '/login' }) 
   else
     next()
 })

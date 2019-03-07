@@ -104,9 +104,9 @@ body
     color: #888;
   }
 .navbar-default .navbar-toggle
-    {
-      margin-top: 16px;
-    }
+  {
+    margin-top: 16px;
+  }
 .navbar-default .navbar-toggle .icon-bar
   {
     background-color: #66AF33;
@@ -399,7 +399,7 @@ h1 { margin: 0; }
   }  
 #team .team_description
   {
-    height: 120px;
+    height: 130px;
     background: #303030;
     padding: 10px;
   }
