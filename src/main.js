@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
+import echarts from 'echarts'
 import axios from 'axios'
 import qs from 'qs'
 import App from '@/App'
@@ -22,18 +23,27 @@ import {getCookie,delCookie,setCookie} from './api/Cookie.js'
 // import '@/api/js/frame/jquery.flexslider.js'
 // import '@/api/css/frame/animate.min.css'
 // import '@/api/css/frame/templatemo-style.css'
-import TeacherInfo from '@/data/teacherInfo.js'
-Vue.use(TeacherInfo)
-
+import Home from '@/data/home.js'
+import Teacher from '@/data/teacher.js'
+import Achievement from '@/data/achievement.js'
+import Exchange from '@/data/exchange.js'
+import Student from '@/data/student.js'
+import Team from '@/data/team.js'
+Vue.use(Home)
+Vue.use(Teacher)
+Vue.use(Achievement)
+Vue.use(Exchange)
+Vue.use(Student)
+Vue.use(Team)
 
 
 Vue.use(ElementUI)
 Vue.use(Harvest)
 Vue.use(Common)
 Vue.use(JudgeLogin)
-// Vue.use(js1)
 Vue.use(Data)
 Vue.config.productionTip = false
+Vue.prototype.$echarts = echarts 
 Vue.prototype.$ajax = axios
 Vue.prototype.$qs = qs
 

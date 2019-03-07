@@ -2,10 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/cloud/index'
 import Home from '@/cloud/home'
-import Member from '@/cloud/member'
-import Research from '@/cloud/research'
-import News from '@/cloud/news'
-import Development from '@/cloud/development'
+import Teacher from '@/cloud/teacher'
+import Student from '@/cloud/student'
+import Team from '@/cloud/team'
+import Result from '@/cloud/result'
+import Achievement from '@/cloud/achievement'
+import Exchange from '@/cloud/exchange'
 import JoinUs from '@/cloud/joinus'
 import Login from '@/components/Login'
 import System from '@/components/Layout'
@@ -40,24 +42,34 @@ export default new Router({
           component: Home
         },
         {
-          path: '/member',
-          name: 'Member',
-          component: Member
+          path: '/teacher',
+          name: 'Teacher',
+          component: Teacher
         },
         {
-          path: '/research',
-          name: 'Research',
-          component: Research
+          path: '/student',
+          name: 'Student',
+          component: Student
         },
         {
-          path: '/news',
-          name: 'News',
-          component: News
+          path: '/team',
+          name: 'Team',
+          component: Team
         },
         {
-          path: '/development',
-          name: 'Development',
-          component: Development
+          path: '/result',
+          name: 'Result',
+          component: Result
+        },
+        {
+          path: '/achievement',
+          name: 'Achievement',
+          component: Achievement
+        },
+        {
+          path: '/exchange',
+          name: 'Exchange',
+          component: Exchange
         },
         {
           path: '/joinus',

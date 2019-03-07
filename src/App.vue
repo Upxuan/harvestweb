@@ -45,4 +45,10 @@ body {
 a {
   TEXT-DECORATION: none
 }
+.green-font {
+  color: #66AF33;
+}
+.hui-font {
+  color: #999;
+}
 </style>

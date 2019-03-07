@@ -342,8 +342,8 @@ h1 { margin: 0; }
 /* start team */
 #team
   {
-    background: #404040;
-    color: #FFFFFF;
+    /* background: #404040; */
+    /* color: #FFFFFF; */
     min-height: 300px;
     padding: 80px 0 80px 0;
   }
@@ -432,7 +432,7 @@ ul
   }
 .social_icon li a
   {
-    background: #303030;
+    background: rgb(51, 51, 51);
     border-radius: 50%;
     cursor: pointer;
     color: #FFFFFF;
@@ -449,9 +449,9 @@ ul
     background: #666;
     color: #FFFFFF;
   }
-  footer .social_icon {
+  /* footer .social_icon {
     margin-top: 10px;
-  }
+  } */
 /* end social icon */
 
 /* start service */
