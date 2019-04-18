@@ -186,7 +186,7 @@
     },
     created () {
       var _this = this
-      console.log(_this.row)
+      // console.log(_this.row)
       if(_this.row != null) {
         _this.ruleForm.type1 = _this.row.jpaperType1
         _this.ruleForm.type2 = _this.row.jpaperType2
@@ -229,13 +229,13 @@
             obj.page2 = _this.page2
             obj.doi = _this.doi
             obj.review = _this.review
-            console.log(obj)
+            // console.log(obj)
             data = obj
           }else{
             // console.log('path2');
             data = null
           }
-        })
+        });
         // console.log("OUT")
         return data
       },

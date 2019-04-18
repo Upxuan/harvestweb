@@ -1,51 +1,53 @@
 <template>
   <div id="home">
-   <div class="block flexslider templatemo_headerimage">
-    <el-carousel trigger="click" :height="bannerH+'px'" class="slides">
-      <el-carousel-item>
+    <div class="block flexslider templatemo_headerimage">
+      <el-carousel trigger="click" :height="bannerH+'px'" class="slides" setActiveItem @change="changeCarousel">
+        <el-carousel-item>
           <div class="slider-caption">
             <div class="templatemo_homewrapper">
-              
+              <!-- <div class="animated bounce">欢迎来到云技术研究中心</div> -->
             </div>
           </div>
-      </el-carousel-item>
-      <el-carousel-item class="text-center">
+        </el-carousel-item>
+        <el-carousel-item class="text-center">
           <div class="slider-caption2 text-center">
             <div class="templatemo_homewrapper">
-              <h2 class="wow fadeInDown" data-wow-delay="2000">2019实验室招新</h2>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">请将详细简历及本科成绩单发送至实验室邮箱cloud@hdu.edu.cn</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">简历中请注明初试总成绩、单科成绩、本科期间项目经历、研究兴趣和计划等。</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">邮件无主题、正文、抬头、落款的直接忽略！附件不要压缩打包。</h3>
-              <a href="/joinus" class="smoothScroll btn btn-default wow fadeInDown" data-wow-delay="2000">LEARN MORE</a>	
+              <h2 id="f1-1" class="wow" data-wow-delay="2000">2019实验室招新</h2>
+              <div id="f1-2">
+                <h3 class="wow" data-wow-delay="2000">请将详细简历及本科成绩单发送至实验室邮箱cloud@hdu.edu.cn</h3>
+                <h3 class="wow" data-wow-delay="2000">简历中请注明初试总成绩、单科成绩、本科期间项目经历、研究兴趣和计划等。</h3>
+                <h3 class="wow" data-wow-delay="2000">邮件无主题、正文、抬头、落款的直接忽略！附件不要压缩打包。</h3>
+              </div>
+              <a id="f1-3" class="smoothScroll btn btn-default wow" data-wow-delay="2000" @click="gotoJoinUs()">LEARN MORE</a>	
             </div>
           </div>
-      </el-carousel-item>
-      <el-carousel-item>
+        </el-carousel-item>
+        <el-carousel-item>
           <div class="slider-caption">
-            <div class="templatemo_homewrapper">
-              <h2 class="wow fadeInDown" data-wow-delay="2000">云技术研究中心</h2>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">复杂系统建模与仿真教育部B类重点实验室</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">浙江省网络媒体云处理与分析工程技术中心</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">浙江省数据存储传输及应用技术研究重点实验室</h3>
+            <div id="f2" class="templatemo_homewrapper">
+              <h2 class="wow" data-wow-delay="2000">云技术研究中心</h2>
+              <h3 class="wow" data-wow-delay="2000">复杂系统建模与仿真教育部B类重点实验室</h3>
+              <h3 class="wow" data-wow-delay="2000">浙江省网络媒体云处理与分析工程技术中心</h3>
+              <h3 class="wow" data-wow-delay="2000">浙江省数据存储传输及应用技术研究重点实验室</h3>
             </div>
           </div>
-      </el-carousel-item>
-      <el-carousel-item>
+        </el-carousel-item>
+        <el-carousel-item>
           <div class="slider-caption">
-            <div class="templatemo_homewrapper">
-              <h2 class="wow fadeInDown" data-wow-delay="2000">实验室科研平台</h2>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">复杂系统建模与仿真教育部重点实验室</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">中国教育科研网格平台</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">浙江省网络媒体云处理与分析工程技术中心</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">浙江省数据存储传输及应用技术研究重点实验室</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">浙江省政务新媒体研究院</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">海量数据存储与处理校创新团队</h3>
-              <h3 class="wow fadeInDown" data-wow-delay="2000">浙江省物联网科技创新服务平台和杭州市物联网科技创新服务平台的核心共建单位</h3>
+            <div id="f3" class="templatemo_homewrapper">
+              <h2 class="wow" data-wow-delay="2000">实验室科研平台</h2>
+              <h3 class="wow" data-wow-delay="2000">复杂系统建模与仿真教育部重点实验室</h3>
+              <h3 class="wow" data-wow-delay="2000">中国教育科研网格平台</h3>
+              <h3 class="wow" data-wow-delay="2000">浙江省网络媒体云处理与分析工程技术中心</h3>
+              <h3 class="wow" data-wow-delay="2000">浙江省数据存储传输及应用技术研究重点实验室</h3>
+              <h3 class="wow" data-wow-delay="2000">浙江省政务新媒体研究院</h3>
+              <h3 class="wow" data-wow-delay="2000">海量数据存储与处理校创新团队</h3>
+              <h3 class="wow" data-wow-delay="2000">浙江省物联网科技创新服务平台和杭州市物联网科技创新服务平台的核心共建单位</h3>
             </div>
           </div>
-      </el-carousel-item>
-    </el-carousel>
-  </div>
+        </el-carousel-item>
+      </el-carousel> 
+    </div>
     <!-- start about -->
     <section id="about">
       <div class="container">
@@ -62,16 +64,16 @@
           <div class="col-sm-6 col-md-5 wow fadeInRight" data-wow-delay="2000">
             <br><br><br>
             <div class="col-md-6 col-sm-12 col-xs-12">
-              <img src="../images/home/rewards/1.jpg" class="img-responsive" alt="company 3">
+              <img src="../../static/images/home/rewards/1.jpg" class="img-responsive" alt="company 3">
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
-              <img src="../images/home/rewards/2.jpg" class="img-responsive" alt="company 4">
+              <img src="../../static/images/home/rewards/2.jpg" class="img-responsive" alt="company 4">
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
-              <img src="../images/home/rewards/3.jpg" class="img-responsive" alt="company 3">
+              <img src="../../static/images/home/rewards/3.jpg" class="img-responsive" alt="company 3">
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
-              <img src="../images/home/rewards/4.jpg" class="img-responsive" alt="company 4">
+              <img src="../../static/images/home/rewards/4.jpg" class="img-responsive" alt="company 4">
             </div>
           </div>
         </div>
@@ -88,37 +90,37 @@
     <!-- end about -->
     <!-- start growth -->
 		<section id="pricing" class="text-center" style="background-color: rgb(246,246,246);">
-        <div class="container">
-            <div class="row">
-              <div class="col-md-12 wow fadeInDown">
-                <!-- <h3>Road To Growth</h3> -->
-                <h3>实验室发展史</h3>
-              </div>
-              <div class="col-md-2"></div>
-              <div class="col-md-8">
-                <span>2006年 - 至今</span>
-              </div>
-              <div class="col-md-2" style="height: 40px;"></div>
-              <div class="col-md-3 col-sm-6" style="padding-left:0px;" v-for="(item, index) in this.growth" :key="index">
-                <div class="col-md-6 wow fadeInLeft" style="padding-left:5px">
-                  <div class="plan plan_one" style="opacity:0.9;border-radius:10px">
-                    <h4 class="plan_title" style="color:black; height:130px; padding-top:30px;">{{ item.name1 }}</h4>
-                    <ul>
-                      <li style="font-family:Bahnschrift;font-size:20px;">{{ item.year1 }}</li>
-                    </ul>
-                  </div>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12 wow fadeInDown">
+              <!-- <h3>Road To Growth</h3> -->
+              <h3>实验室发展史</h3>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <span>2006年 - 至今</span>
+            </div>
+            <div class="col-md-2" style="height: 40px;"></div>
+            <div class="col-md-3 col-sm-6" style="padding-left:0px;" v-for="(item, index) in this.home.growth" :key="index">
+              <div class="col-md-6 wow fadeInLeft" style="padding-left:5px">
+                <div class="plan plan_one" style="opacity:0.9;border-radius:10px">
+                  <h4 class="plan_title" style="color:black; height:130px; padding-top:30px;">{{ item.name1 }}</h4>
+                  <ul>
+                    <li style="font-family:Bahnschrift;font-size:20px;">{{ item.year1 }}</li>
+                  </ul>
                 </div>
-                <div class="col-md-6 wow fadeInDown" style="padding-right:5px">
-                  <div class="plan plan_two" style="opacity:0.9;border-radius:10px">
-                    <h4 class="plan_title" style="color:black; height:130px; padding-top:30px;">{{ item.name2 }}</h4>
-                    <ul>
-                      <li style="font-family:Bahnschrift;font-size:20px;">{{ item.year2 }}</li>
-                    </ul>
-                  </div>
+              </div>
+              <div class="col-md-6 wow fadeInDown" style="padding-right:5px">
+                <div class="plan plan_two" style="opacity:0.9;border-radius:10px">
+                  <h4 class="plan_title" style="color:black; height:130px; padding-top:30px;">{{ item.name2 }}</h4>
+                  <ul>
+                    <li style="font-family:Bahnschrift;font-size:20px;">{{ item.year2 }}</li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 		</section>
 		<!-- end growth -->
     <!-- start reseach topics -->
@@ -198,9 +200,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
-            <!-- <h3 style="color:#66AF33">WORK ENVIRONMENT</h3> -->
+            <!-- <h3 style="color:#66AF23">WORK ENVIRONMENT</h3> -->
             <h3 style="color:#333">实验室环境<br>
-              <span style="color:#66AF33;font-size:15px;font-weight: 500;">(中国教育科研网格建设单位)</span>
+              <span style="color:#66AF23;font-size:15px;font-weight: 500;">(中国教育科研网格建设单位)</span>
             </h3>
           </div>
           <div class="col-md-2"></div>
@@ -209,7 +211,7 @@
             <span>实验设备资产近1000万元，为高层次人才培养提供良好的基础设施与外部条件。未来三年还将购进300多万大型仪器和日常办公设备。</span>
           </div>
           <div class="col-md-2"></div>
-          <div class="col-sm-6 col-md-4 wow fadeInLeft" style="margin-top:20px;" data-wow-delay="2000" v-for="(item, index) in this.workEnvironment" :key="index">
+          <div class="col-sm-6 col-md-4 wow fadeInLeft" style="margin-top:20px;" data-wow-delay="2000" v-for="(item, index) in this.home.workEnvironment" :key="index">
             <div class="work_thumb">
               <img :src="item.img" style="width:100%; height:100%;" class="img-responsive" alt="work">
             </div>
@@ -224,32 +226,43 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000">
-            <h3>合作平台</h3>
+            <h3>合作机构</h3>
+          </div>
+          <div class="col-md-12" style="margin-bottom:50px;">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="col-md-12">
+              <p><span style="font-weight:bold;">合作高校：</span>美国韦恩州立大学，加拿大约克大学，浙江大学，华中科技大学，中科院网络中心等相关实验室。</p><br>
+              <p><span style="font-weight:bold;">合作企业：</span>阿里巴巴，网易杭研院，海康威视，同花顺，信核数据，同博，盘石网盟，中科曙光，浪潮集团，新华三，安恒，数源科技，中电集团第52研究所等国内知名IT企业；602所、706所、620所等军工科研单位。</p><br>
+              <p><span style="font-weight:bold;">交叉平台：</span>杭电舟山同博海洋电子信息研究院，杭电-韦恩州立大学云服务实验室，资产云协同创新中心，中国财务云研究院，浙江省数据存储传输及应用技术研究重点实验室，浙江省网络媒体云处理与分析工程技术研究中心。</p>
+            </div>
+          </div>
+          <div class="col-md-12" style="margin-bottom:20px;">
+            <div class="col-md-1"></div>
+            <div class="col-sm-2 col-md-2 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.home.homeCooperation.school" :key="index">
+              <div class="home1_thumb"><img :src="item.img" class="img-responsive"></div>
+            </div> 
+            <div class="col-md-1"></div>
+          </div>
+          <div class="col-md-12"  style="margin-bottom:20px;">
+            <div class="col-md-1"></div>
+            <div class="col-sm-2 col-md-2 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.home.homeCooperation.cooperation1" :key="index">
+              <div class="home1_thumb"><img :src="item.img" class="img-responsive"></div>
+            </div> 
+            <div class="col-md-1"></div>
+          </div>
+          <div class="col-md-12"  style="margin-bottom:20px;">
+            <div class="col-md-1"></div>
+            <div class="col-sm-2 col-md-2 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.home.homeCooperation.cooperation2" :key="index">
+              <div class="home1_thumb"><img :src="item.img" class="img-responsive"></div>
+            </div> 
+            <div class="col-md-1"></div>
           </div>
           <div class="col-md-12">
+            <div class="col-md-4"></div>
+            <div class="col-sm-2 col-md-2 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.home.homeCooperation.cooperation3" :key="index">
+              <div class="home1_thumb"><img :src="item.img" class="img-responsive"></div>
+            </div> 
             <div class="col-md-1"></div>
-            <div class="col-md-10 text-center">
-              <span>实验室与美国韦恩州立大学、加拿大约克大学、浙江大学、华中科技大学、中科院网络中心等相关实验室保持密切的学术交流与合作关系，与阿里巴巴、网易杭研院、海康威视、中电集团第52研究所、信核数据等国内知名IT企业以及602所、706所、620所等军工科研单位有密切的合作。</span>
-            </div>
-            <div class="col-md-1"></div>
-          </div>
-          <div class="col-md-12" style="margin-top:50px;">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
-                <div class="home1_thumb"><img src="../images/home/cooperation/1.jpg" class="img-responsive"></div>
-              </div> 
-              <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
-                <div class="home1_thumb"><img src="../images/home/cooperation/2.jpg" class="img-responsive"></div>
-              </div> 
-              <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
-                <div class="home1_thumb"><img src="../images/home/cooperation/3.jpg" class="img-responsive"></div>
-              </div> 
-              <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
-                <div class="home1_thumb"><img src="../images/home/cooperation/4.jpg" class="img-responsive"></div>
-              </div> 
-            </div>
-            <div class="col-md-2"></div>
           </div>
         </div>
       </div> 
@@ -265,14 +278,14 @@
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-10">
-            <span>我们非常欢迎热爱实验室相关研究方向的同学前来加入我们的行列，攻读博士学位、硕士学位，做科创实习；我们非常欢迎拥有博士学位的人才前来应聘。</span>
+            <span>我们非常欢迎热爱实验室相关研究方向的同学前来加入我们的行列，攻读博士学位、硕士学位，做科创实习；非常欢迎拥有博士学位的相关优秀人才前来应聘教师岗位。</span>
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
             <form role="form">
               <div class="col-md-4"></div>
               <div class="col-md-4">
-                <a href="/joinus" class="smoothScroll btn btn-default wow fadeInDown" data-wow-delay="2000" style="width:260px;margin-top:20px;">JOIN US NOW</a>	
+                <a class="smoothScroll btn btn-default wow fadeInDown" data-wow-delay="2000" style="width:260px;margin-top:20px;" @click="gotoJoinUs()">JOIN US NOW</a>	
                 <!-- <router-link to="/joinus">
                   <input type="submit" value="JOIN US NOW" class="form-control">
                 </router-link> -->
@@ -288,34 +301,78 @@
 </template>
 
 <script>
+import home from '../../static/mock/home.json';
 export default {
   name: 'home',
   data () {
     return {
       activeIndex: '1',
       activeIndex2: '1',
-      bannerH: 200
+      bannerH: 200,
+      home: {
+        homeCooperation: home.homeCooperation,
+        growth: home.growth,
+        reseachTopics: home.reseachTopics,
+        workEnvironment: home.workEnvironment,
+      }
     }
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+    gotoJoinUs(){
+      this.$router.push({path:"/joinus"});
     },
     setBannerH() {
       this.bannerH = document.body.clientWidth / 2 - 70
     },
+    changeCarousel (key1, key2) {
+      // console.log(key1 + ",,," + key2)
+      // console.log(document.getElementById("f2").className)
+      if(key1 === 1) {
+        $('#f1-1').addClass('animated fadeInLeftBig')
+        $('#f1-2').addClass('animated fadeInRightBig')
+        $('#f1-3').addClass('animated fadeInUp')
+      }else if(key1 === 2) {
+        $('#f2').addClass('animated flipInX')
+      }else if(key1 === 3) {
+        $('#f3').addClass('animated bounceInUp')
+      }
+
+      if(key2 === 1) {
+        $('#f1-1').removeClass('animated fadeInLeftBig');
+        $('#f1-2').removeClass('animated fadeInRightBig');
+        $('#f1-3').removeClass('animated fadeInUp');
+      }else if(key2 === 2) {
+        $('#f2').removeClass('animated flipInX')
+      }else if(key2 === 3) {
+        $('#f3').removeClass('animated bounceInUp')
+      }
+    }
   },
   mounted() {
     this.setBannerH()
     window.addEventListener('resize', () => {
       this.setBannerH()
     }, false)
-  },
-  created() { }
+  }
 }
 </script>
 
 <style scoped>
+@import '../css/templatemo-style.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
+/* start animate*/
+#f1-3 {
+  animation-duration:1s;
+  -webkit-animation-duration:1s;
+  animation-delay:1s;
+  -webkit-animation-delay:1s;
+}
+#f2, #f3{
+  animation-duration:1.5s;
+  -webkit-animation-duration:1.5s;
+}
+/* end animate*/
+
 p {
   font-size: 15px;
   text-align: justify;
@@ -367,22 +424,22 @@ span {
 }
 
 .el-carousel__item:nth-child(4n) {
-  background-image: url(../images/home/sliders/4.jpg);
+  background-image: url(../../static/images/home/sliders/4.jpg);
   background-size: cover;
 }
 
 .el-carousel__item:nth-child(4n+1) {
-  background-image: url(../images/home/sliders/2.jpg);
+  background-image: url(../../static/images/home/sliders/2.jpg);
   background-size: cover;
 }
 
 .el-carousel__item:nth-child(4n+2) {
-  background-image: url(../images/home/sliders/11.jpg);
+  background-image: url(../../static/images/home/sliders/11.jpg);
   background-size: cover;
 }
 
 .el-carousel__item:nth-child(4n+3) {
-  background-image: url(../images/home/sliders/1.jpg);
+  background-image: url(../../static/images/home/sliders/1.jpg);
   background-size: cover;
 }
 
@@ -435,7 +492,7 @@ span {
 }
 
 #pricing {
-  background: url('../images/home/pricing-img.jpg') no-repeat center center;
+  background: url('../../static/images/home/pricing-img.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   color: #FFFFFF;
@@ -485,9 +542,8 @@ span {
   
 }
 #home1 p {
-  color: #555;
-  font-weight: 400;
-  margin: 0 0 40px 0;
+  margin: 0px;
+  /* margin-bottom: 10px; */
 }
 #home1 .col-md-4 {
   padding: 2px;
@@ -532,7 +588,7 @@ span {
 }
 #home1 h5 {
   font-size: 15px;
-  color: #66AF33;
+  color: #66AF23;
   text-align: justify;
   padding-bottom: 5px;
 }

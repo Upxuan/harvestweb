@@ -6,11 +6,10 @@
           <div class="row">
             <div class="col-md-12 wow fadeInDown" data-wow-delay="900">
               <h3>教师团队</h3>
-              <!-- <div class="teacher-title-line"></div> -->
             </div>
             <div class="col-md-1"></div>
-            <div class="col-md-10">
-              <p>教授/博导3人；副教授8人；具有博士学位教师15人；浙江省首批中青年学科带头人1人；讲座教授3人；其中IEEE FELLOW 1人；浙江省151人才工程第三层次人员2人。</p>
+            <div class="col-md-10" style="margin-bottom:15px;">
+              <span class="text-center">教授/博导3人；副教授8人；具有博士学位教师15人；浙江省首批中青年学科带头人1人；讲座教授3人；其中IEEE FELLOW 1人；浙江省151人才工程第三层次人员2人。</span>
             </div>
             <div class="col-md-1"></div>
             <div class="col-xs-4 col-sm-3 col-md-2 wow fadeInLet" data-wow-delay="2000" v-for="(item, index) in this.teacherInfo" :key="index">
@@ -18,12 +17,13 @@
                 <img :src="item.img" class="img-responsive" alt="team">
                 <div class="team_overlay">
                   <ul class="social_icon">
-                    <li><a href="#" class="fa fa-user-o"></a></li>
+                    <li><a v-show="item.link!=''" :href="item.link" target="_blank" class="fa fa-user-o"></a></li>
                   </ul>								
                 </div>
               </div>
               <div class="team_description">
                 <div class="teacher-name">{{ item.name }}</div>
+                <h5 style="color:#C4C4C4;padding-bottom:5px;" v-show="item.reward!=''">{{ item.reward }}</h5>
                 <h5>{{ item.direction }}</h5>
               </div>
             </div>
@@ -53,16 +53,20 @@
 </template>
 
 <script>
-  export default {
+import teacher from '../../static/mock/teacher.json';
+export default {
   name: 'researchTeam',
   data () {
-    return {}
-  },
-  mounted () {}
+    return {
+      teacherInfo: teacher.teacherInfo
+    }
+  }
 }
 </script>
 
 <style scoped>
+@import '../css/templatemo-style.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
 p {
   text-align: justify;
 }

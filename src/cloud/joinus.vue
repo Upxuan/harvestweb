@@ -13,7 +13,7 @@
             <p><span>其他条件：</span>年龄一般在35周岁以下，教授（研究员）年龄可适当放宽。有海外经验者优先。</p>
             <p class="mylink"><span>待遇福利：</span>参照杭州电子科技大学<a href="http://renshi.hdu.edu.cn" target="_blank">工作待遇</a>等政策（如有调整，以学校新文件为准）。 </p>
             <p><span>申请材料：</span>个人详细简历、近年来代表性论文著作、科研成果、获奖情况、文献收录证明等相关材料。 </p>
-            <p><span>申请方式：</span>通过电子邮箱方式投递个人简历至E-mail：yinyuyu@hdu.edu.cn</p>
+            <p><span>申请方式：</span>通过电子邮箱方式投递个人简历至E-mail：<u>yinyuyu@hdu.edu.cn</u></p>
           </div>
         </div>
       </div> 
@@ -59,6 +59,8 @@ export default {
 </script>
 
 <style scoped>
+@import '../css/templatemo-style.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
 p {
   font-size: 15px;
 }

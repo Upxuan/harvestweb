@@ -1,0 +1,18 @@
+
+export default [
+     { "value": "SCI1", "label": "SCI一区" },
+     { "value": "SCI2", "label": "SCI二区" },
+     { "value": "SCI3", "label": "SCI三区" },
+     { "value": "SCI4", "label": "SCI四区" },
+     { "value": "EI1", "label": "EI一区" },
+     { "value": "EI2", "label": "EI二区" },
+     { "value": "EI3", "label": "EI三区" },
+     { "value": "EI4", "label": "EI四区" },
+     { "value": "JCR1", "label": "JCR一区" },
+     { "value": "JCR2", "label": "JCR二区" },
+     { "value": "JCR3", "label": "JCR三区" },
+     { "value": "JCR4", "label": "JCR四区" },
+     { "value": "ZKYa", "label": "中科院A类" },
+     { "value": "ZKYb", "label": "中科院B类" },
+     { "value": "ZKYc", "label": "中科院C类" }
+]

@@ -97,7 +97,7 @@
     props: ["row"],
     data() {
       var type2Validate = (rule, value, callback) => {
-        console.log(value)
+        // console.log(value)
         if(!this.isDisable2 && value == null){
           callback(new Error("请输入分类"));
         }else {
@@ -105,7 +105,7 @@
         }
       };
       var type3Validate = (rule, value, callback) => {
-        console.log(value)
+        // console.log(value)
         if(!this.isDisable3 && value == null){
           callback(new Error("请输入级别"));
         }else {

@@ -49,14 +49,8 @@
       <el-table-column prop="patentAuthors" label="作者" width="190"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
-          <el-button 
-            size="mini"
-            type="danger"
-            @click="handleDelete(props.row)">删除</el-button>
-          <el-button
-            size="mini"
-            type="primary"
-            @click="handleEdit(props.row)">编辑</el-button>
+          <el-button size="mini" type="danger" @click="handleDelete(props.row)">删除</el-button>
+          <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -136,7 +130,7 @@
 }
 .el-button{
   margin-right: 5px;
-  float:right;
+  /* float:right; */
 }
 .demo-table-expand {
   font-size: 0;

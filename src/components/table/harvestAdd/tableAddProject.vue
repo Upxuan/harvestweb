@@ -4,6 +4,7 @@
       :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
       :loading="logining"
       style="width: 100%"
+      :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
       stripe
       row-key="projectIndex"
       :expand-row-keys="expands"
@@ -38,14 +39,13 @@
       <el-table-column prop="projectIndex" label="序号" width="60" align="center"></el-table-column>
       <el-table-column prop="projectType" label="类别" width="150"></el-table-column>
       <el-table-column prop="projectTitle" label="标题" width="520"></el-table-column>
-      <el-table-column prop="projectAuthors" label="作者" width="270"></el-table-column>
+      <el-table-column prop="projectAuthors" label="作者"></el-table-column>
     </el-table>
     <div class="block">
       <el-pagination
         @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
-        :page-sizes="[5, 10, 20, 50]"
         :page-size="pagesize"
-        layout="total, sizes, prev, pager, next, jumper"
+        layout="total, prev, pager, next, jumper"
         :total="tableData.length">
       </el-pagination>
     </div>
@@ -60,7 +60,7 @@
     data () {
       return {
         currentPage: 1,
-        pagesize: 5,
+        pagesize: 20,
         logining: false,
         tableData: [],
         selectionData: [],
@@ -117,7 +117,7 @@
 }
 .el-button{
   margin-right: 5px;
-  float:right;
+  /* float:right; */
 }
 .demo-table-expand {
   font-size: 0;

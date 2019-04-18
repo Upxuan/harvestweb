@@ -12,7 +12,8 @@
             auto-complete="off"
             placeholder="username"
             @change="changeAccount"
-            @keyup.enter.native='handleSubmit'>
+            @keyup.enter.native='handleSubmit'
+            clearable>
           </el-input>
         </el-form-item>
         <el-form-item prop="checkPass">
@@ -22,7 +23,8 @@
             :maxlength='16'
             auto-complete="off"
             placeholder="password"
-            @keyup.enter.native='handleSubmit'>
+            @keyup.enter.native='handleSubmit'
+            show-password>
           </el-input>
         </el-form-item>
         <el-form-item style="width:100%;">
@@ -112,6 +114,7 @@
                   model = res.data.managerModel
                 }else if(type == 1){
                   model = res.data.teacherModel
+                  userModel.imgurl = model.imgurl
                   userModel.email = model.email
                   userModel.direction = model.direction
                   userModel.link = model.link
@@ -120,12 +123,13 @@
                   userModel.title = model.title
                 }else if(type == 2){
                   model = res.data.studentModel
-                  userModel.link = model.first
-                  userModel.link = model.second
+                  userModel.imgurl = model.imgurl
+                  userModel.first = model.first
+                  userModel.second = model.second
                   userModel.tel = model.tel
                   userModel.email = model.email
                   userModel.direction = model.direction
-                  userModel.title = model.degree
+                  userModel.degree = model.degree
                   userModel.team = model.team
                 }
                 userModel.id = model.id
@@ -143,7 +147,7 @@
               }
             }).catch( error => {
               _this.logining = false;
-              console.log(error)
+              // console.log(error)
               alert("出错！请联系管理员")
             });
           }else {

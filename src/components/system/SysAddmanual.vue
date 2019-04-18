@@ -4,14 +4,14 @@
       <p class="main-font">
         <span>基本信息</span>
         <span class="smallfont"> (<span class="redfont"> * </span>为必填项）</span> 
-        <el-button v-if="this.harReturnRouter == 'Myaudit'" type="primary" size="small" @click="submitAgainForm(2)">重新提交</el-button>
-        <el-button v-else-if="this.row != null" type="primary" size="small" @click="updateForm(1)">更新成果</el-button>
-        <el-button v-else type="primary" size="small" @click="submitForm(0, 0)">录入成果</el-button>
-        <el-button v-if="this.row != null" type="warning" size="small" style="margin-right: 15px;" @click="turnBack()">返回</el-button>
+        <el-button v-if="this.harReturnRouter == 'Myaudit'" type="warning" size="small" @click="submitAgainForm(2)">重新提交</el-button>
+        <el-button v-else-if="this.row != null" type="warning" size="small" @click="updateForm(1)">更新成果</el-button>
+        <el-button v-else type="warning" size="small" @click="submitForm(0, 0)">录入成果</el-button>
+        <el-button v-if="this.row != null" type="danger" size="small" style="margin-right: 15px;" @click="turnBack()">返回</el-button>
         <el-button v-else type="danger" size="small" style="margin-right: 15px;" @click="resetForm()">重置</el-button>
       </p>
     </div>
-    <div class = "base-msg-all">
+    <div class="base-msg-all">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm" >
         <el-form-item label="类别：" required>
           <el-select v-model="value" placeholder="请选择类别" @change="selectGet" :disabled="isDisable">
@@ -96,7 +96,7 @@
       //管理员端的跳转处理
       _this.harReturnRouter = _this.$route.params.harReturnRouter//路由跳转获得的信息
       _this.row = _this.$route.params.row
-      console.log(_this.row)
+      // console.log(_this.row)
       // console.log(_this.harReturnRouter)
 
       if(_this.row != null) {
@@ -171,7 +171,7 @@
                     jpaperDoi: obj.doi
                   }
                 }
-                console.log(Params)
+                // console.log(Params)
                 this.$ajax({
                   url: '/api/manualAddJpaper',
                   method: 'post',
@@ -179,7 +179,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                  console.log(res)
+                  // console.log(res)
                   if(res.data.errCode == 20){
                     if(handleType === 0){
                       this.$message({ type:'success', message:'成果录入成功'})
@@ -195,7 +195,7 @@
                     this.$message({ type: 'error', message: '操作失败' });
                   }
                 }).catch( error => {
-                  console.log(error);
+                  // console.log(error);
                 })
               }else if(_this.nowModel === "mpaper"){//****************************************.mpaper*******
                 var Params = {
@@ -219,7 +219,7 @@
                     mpaperMeetPlace: obj.meetPlace,
                   }
                 }
-                console.log(Params)
+                // console.log(Params)
                 this.$ajax({
                   url: '/api/manualAddMpaper',
                   method: 'post',
@@ -227,7 +227,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                  console.log(res)
+                  // console.log(res)
                   if(res.data.errCode == 20){
                     if(handleType === 0){
                       this.$message({ type:'success', message:'成果录入成功'})
@@ -264,7 +264,7 @@
                     patentBelong: obj.belong
                   }
                 }
-                console.log(Params)
+                // console.log(Params)
                 this.$ajax({
                   url: '/api/manualAddPatent',
                   method: 'post',
@@ -272,7 +272,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                  console.log(res)
+                  // console.log(res)
                   if(res.data.errCode == 20){
                     if(handleType === 0){
                       this.$message({ type:'success', message:'成果录入成功'})
@@ -305,7 +305,7 @@
                     projectMoney: obj.money,
                   }
                 }
-                console.log(Params)
+                // console.log(Params)
                 this.$ajax({
                   url: '/api/manualAddProject',
                   method: 'post',
@@ -313,7 +313,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                  console.log(res)
+                  // console.log(res)
                   if(res.data.errCode == 20){
                     if(handleType === 0){
                       this.$message({ type:'success', message:'成果录入成功'})
@@ -347,7 +347,7 @@
                     subjectDOI: obj.doi
                   }
                 }
-                console.log(Params)
+                // console.log(Params)
                 this.$ajax({
                   url: '/api/manualAddSubject',
                   method: 'post',
@@ -355,7 +355,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                  console.log(res)
+                  // console.log(res)
                 if(res.data.errCode == 20){
                     if(handleType === 0){
                       this.$message({ type:'success', message:'成果录入成功'})
@@ -385,7 +385,7 @@
                     softwareAcquireType: obj.acquireType,
                   }
                 }
-                console.log(Params)
+                // console.log(Params)
                 this.$ajax({
                   url: '/api/manualAddSoftware',
                   method: 'post',
@@ -393,7 +393,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                  console.log(res)
+                  // console.log(res)
                   if(res.data.errCode == 20){
                     if(handleType === 0){
                       this.$message({ type:'success', message:'成果录入成功'})
@@ -424,7 +424,7 @@
                     affairsDate2: obj.date2
                   }
                 }
-                console.log(Params)
+                // console.log(Params)
                 this.$ajax({
                   url: '/api/manualAddAffairs',
                   method: 'post',
@@ -432,7 +432,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                  console.log(res)
+                  // console.log(res)
                   if(res.data.errCode == 20){
                     if(handleType === 0){
                       this.$message({ type:'success', message:'成果录入成功'})
@@ -488,6 +488,7 @@
               harId = _this.row.affairsId
             // console.log(harId)
             this.submitForm(handleType, harId)
+
          	}).catch( () => {});
         }
       },
@@ -495,8 +496,10 @@
         this.updateForm(handleType)
       },
       resetForm () {
-        if(this.judgeLogin())
+        if(this.judgeLogin()){
           this.$refs.msg.resetMsg()
+          this.nowModel="jpaper";
+        }
       },
       turnBack () {
         if(this.judgeLogin()){
@@ -507,13 +510,13 @@
           // }).then(() => {
             var _this = this
             if(_this.harReturnRouter == "Mharvest")
-              _this.$router.push({ path:'/Mharvest'})
+              _this.$router.push({ name:'Mharvest'})
             else if(_this.harReturnRouter == "Mharvestcopy")
-              _this.$router.push({ path:'/Mharvestcopy'})
+              _this.$router.push({ name:'Mharvestcopy'})
             else if(_this.harReturnRouter == "Myaudit")
-              _this.$router.push({ path:'/Myaudit'})
+              _this.$router.push({ name:'Myaudit'})
             else
-              _this.$router.push({ path:'/Index'})
+              _this.$router.push({ name:'SysIndex'})
           // });
         }
       },
@@ -568,8 +571,7 @@
   color: red;
 }
 .base-msg-all{
-  margin-left: 70px;
   width: 800px;
-  margin-top: 15px;
+  margin: 50px 70px;
 }
 </style>

@@ -9,6 +9,7 @@
           </el-checkbox-group>
         </div>
       </el-form-item>
+      
       <el-row>
         <el-col :span="7">
           <el-form-item label="发表时间：" prop="date1">
@@ -36,7 +37,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
+      <!-- <el-row>
         <el-col :span="7">
           <el-form-item label="检索信息一：" prop="searchType1">
             <el-select v-model="ruleForm.searchType1" placeholder="请选择检索类目">
@@ -130,7 +131,7 @@
             <el-input v-model="ruleForm.search5"></el-input>
           </el-form-item>
         </el-col>
-      </el-row>
+      </el-row> -->
 
       
     </el-form>
@@ -139,6 +140,7 @@
 
 <script>
   import myapi from '@/api/myapi.js'
+  import data from '../../../static/mock/data.json';
   const harvestOptions = ['期刊论文', '会议论文', '专利', '项目', '软件著作权', '学术著作', '公共事务'];
   export default {
     name: 'tabAdvanceSearch',
@@ -150,8 +152,8 @@
         isIndeterminate: true,
         ruleForm: {},
         rules: {},
-        searchDate: this.searchDate,
-        searchTypes: this.searchTypes
+        searchDate: data.searchDate,
+        searchTypes: data.searchTypes
       }
     },
     methods: {

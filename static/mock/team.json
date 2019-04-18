@@ -1,0 +1,66 @@
+{
+  "teamPeople": [
+    { "img": "./static/images/team/people/13.png" },
+    { "img": "./static/images/team/people/15.png"},
+    { "img": "./static/images/team/people/7.png" },
+    { "img": "./static/images/team/people/8.png" },
+
+    { "img": "./static/images/team/people/1.png" },
+    { "img": "./static/images/team/people/11.png"},
+    { "img": "./static/images/team/people/6.png" },
+    { "img": "./static/images/team/people/2.png" },
+
+    { "img": "./static/images/team/people/5.png" },
+    { "img": "./static/images/team/people/4.png" },
+    { "img": "./static/images/team/people/9.png" },
+    { "img": "./static/images/team/people/10.png" },
+
+    { "img": "./static/images/team/people/3.png" },
+    { "img": "./static/images/team/people/14.png" },
+    { "img": "./static/images/team/people/17.png" },
+    { "img": "./static/images/team/people/16.png"}
+  ],
+
+  "teamDevelop": [
+    { "img": "./static/images/team/develop/2.png" },
+    { "img": "./static/images/team/develop/3.png"},
+    { "img": "./static/images/team/develop/0.png"},
+    { "img": "./static/images/team/develop/1.png" },
+    { "img": "./static/images/team/develop/pk1.jpg"},
+    { "img": "./static/images/team/develop/pk2.jpg" },
+    { "img": "./static/images/team/develop/pk3.jpg"},
+    { "img": "./static/images/team/develop/pk4.jpg" }
+  ],
+
+  "teamBuliding": [
+    { "img": "./static/images/team/buliding/1.png" },
+    { "img": "./static/images/team/buliding/2.png" },
+    { "img": "./static/images/team/buliding/3.png" }
+  ],
+
+  "teamOutdoor": [
+    { "img": "./static/images/team/outdoor/1.png"},
+    { "img": "./static/images/team/outdoor/6.png" },
+    { "img": "./static/images/team/outdoor/8.png"},
+    { "img": "./static/images/team/outdoor/7.png"},
+    { "img": "./static/images/team/outdoor/2.png" },
+    { "img": "./static/images/team/outdoor/3.png"},
+    { "img": "./static/images/team/outdoor/4.png" },
+    { "img": "./static/images/team/outdoor/5.png" },
+    { "img": "./static/images/team/outdoor/17.jpg"},
+    { "img": "./static/images/team/outdoor/9.jpg"},
+    { "img": "./static/images/team/outdoor/10.jpg" },
+    { "img": "./static/images/team/outdoor/11.jpg"},
+    { "img": "./static/images/team/outdoor/12.jpg" },
+    { "img": "./static/images/team/outdoor/13.jpg" },
+    { "img": "./static/images/team/outdoor/14.jpg"},
+    { "img": "./static/images/team/outdoor/15.jpg" }
+  ],
+
+  "teamParty": [
+    { "img": "./static/images/team/party/1.png" },
+    { "img": "./static/images/team/party/2.png" },
+    { "img": "./static/images/team/party/4.png" },
+    { "img": "./static/images/team/party/3.png"}
+  ]
+}

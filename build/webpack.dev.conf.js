@@ -13,6 +13,13 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+/*2019/3/12 Upxuan 1.为读取本地json文件的适配*/
+const express = require('express')
+const app = express()
+var appData = require('../static/mock/achievement.json')
+var apiRoutes = express.Router()
+app.use('/api', apiRoutes) 
+
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -42,6 +49,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    before(app) {   /*2019/3/12 Upxuan 2.为读取本地json文件的适配*/
+      app.get('/api/achievement', (req, res) => {
+        res.json({
+          errno: 0,
+          data: appData
+        })
+      })
     }
   },
   plugins: [
@@ -55,7 +70,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      favicon: './static/cloud.ico'
     }),
     // copy custom static assets
     new CopyWebpackPlugin([

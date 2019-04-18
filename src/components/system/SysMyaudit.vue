@@ -2,6 +2,7 @@
   <div id="sysMyAudit">
     <div class = "all-title">
       <p class="main-font">
+				成果审核情况 /
         审核中:&nbsp;<span>{{ number.unReviseNum }}</span>项&nbsp;&nbsp;
         已通过:&nbsp;<span>{{ number.reviseSuccessNum }}</span>项&nbsp;&nbsp;
         未通过:&nbsp;<span>{{ number.reviseFailNum }}</span>项
@@ -14,6 +15,7 @@
           :data="jpaperTable.slice((currentPage.jpaperPage-1)*pageSize.jpaperSize,currentPage.jpaperPage*pageSize.jpaperSize)"
           stripe
           style="width: 100%"
+					:header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
           row-key="jpaperIndex"
           @expand-change="jpaperExpandChange">
           <el-table-column type="expand">
@@ -78,9 +80,8 @@
 	          @size-change="jpaperHandleSizeChange"
 	          @current-change="jpaperHandleCurrentChange"
 	          :current-page="currentPage.jpaperPage"
-	          :page-sizes="[5, 10, 20, 50]"
 	          :page-size="pageSize.jpaperSize"
-	          layout="total, sizes, prev, pager, next, jumper"
+	          layout="total, prev, pager, next, jumper"
 	          :total="jpaperTable.length">
 	        </el-pagination>
 	      </div>
@@ -89,6 +90,7 @@
         <el-table
 		      :data="mpaperTable.slice((currentPage.mpaperPage-1)*pageSize.mpaperSize,currentPage.mpaperPage*pageSize.mpaperSize)"
 		      style="width: 100%"
+					:header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
 		      stripe
 		      row-key="mpaperIndex"
 		      @expand-change="mpaperExpandChange">
@@ -151,9 +153,8 @@
 		        @size-change="mpaperHandleSizeChange"
 		        @current-change="mpaperHandleCurrentChange"
 		        :current-page="currentPage.mpaperPage"
-		        :page-sizes="[5, 10, 20, 50]"
 		        :page-size="pageSize.mpaperSize"
-		        layout="total, sizes, prev, pager, next, jumper"
+		        layout="total, prev, pager, next, jumper"
 		        :total="mpaperTable.length">
 		      </el-pagination>
 		    </div>
@@ -162,6 +163,7 @@
         <el-table
 			    :data="patentTable.slice((currentPage.patentPage-1)*pageSize.patentSize,currentPage.patentPage*pageSize.patentSize)"
 			    style="width: 100%"
+					:header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
 			    stripe
 			    row-key="patentIndex"
 			    @expand-change="patentExpandChange">
@@ -230,9 +232,8 @@
 			      @size-change="patentHandleSizeChange"
 			      @current-change="patentHandleCurrentChange"
 			      :current-page="currentPage.patentPage"
-			      :page-sizes="[5, 10, 20, 50]"
 			      :page-size="pageSize.patentSize"
-			      layout="total, sizes, prev, pager, next, jumper"
+			      layout="total, prev, pager, next, jumper"
 			      :total="patentTable.length">
 			    </el-pagination>
 			  </div>
@@ -241,6 +242,7 @@
         <el-table
 		      :data="projectTable.slice((currentPage.projectPage-1)*pageSize.projectSize,currentPage.projectPage*pageSize.projectSize)"
 		      style="width: 100%"
+					:header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
 		      stripe
 		      row-key="projectIndex"
 		      @expand-change="projectExpandChange">
@@ -297,9 +299,8 @@
 		        @size-change="projectHandleSizeChange"
 		        @current-change="projectHandleCurrentChange" 
 		        :current-page="currentPage.projectPage"
-		        :page-sizes="[5, 10, 20, 50]"
 		        :page-size="pageSize.projectSize"
-		        layout="total, sizes, prev, pager, next, jumper"
+		        layout="total, prev, pager, next, jumper"
 		        :total="projectTable.length">
 		      </el-pagination>
 		    </div>
@@ -308,6 +309,7 @@
         <el-table
 		      :data="subjectTable.slice((currentPage.subjectPage-1)*pageSize.subjectSize,currentPage.subjectPage*pageSize.subjectSize)"
 		      style="width: 100%"
+					:header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
 		      stripe
 		      row-key="subjectIndex"
 		      @expand-change="subjectExpandChange">
@@ -370,9 +372,8 @@
 		        @size-change="subjectHandleSizeChange"
 		        @current-change="subjectHandleCurrentChange"
 		        :current-page="currentPage.subjectPage"
-		        :page-sizes="[5, 10, 20, 50]"
 		        :page-size="pageSize.subjectSize"
-		        layout="total, sizes, prev, pager, next, jumper"
+		        layout="total, prev, pager, next, jumper"
 		        :total="subjectTable.length">
 		      </el-pagination>
 		    </div>
@@ -381,6 +382,7 @@
         <el-table
 			    :data="softwareTable.slice((currentPage.softwarePage-1)*pageSize.softwareSize,currentPage.softwarePage*pageSize.softwareSize)"
 			    style="width: 100%"
+					:header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
 			    stripe
 			    row-key="softwareIndex"
 			    @expand-change="softwareExpandChange">
@@ -431,9 +433,8 @@
 			      @size-change="softwareHandleSizeChange"
 			      @current-change="softwareHandleCurrentChange"
 			      :current-page="currentPage.softwarePage"
-			      :page-sizes="[5, 10, 20, 50]"
 			      :page-size="pageSize.softwareSize"
-			      layout="total, sizes, prev, pager, next, jumper"
+			      layout="total, prev, pager, next, jumper"
 			      :total="softwareTable.length">
 			    </el-pagination>
 			  </div>
@@ -442,6 +443,7 @@
         <el-table
 		      :data="affairsTable.slice((currentPage.affairsPage-1)*pageSize.affairsSize,currentPage.affairsPage*pageSize.affairsSize)"
 		      style="width: 100%"
+					:header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
 		      stripe
 		      row-key="affairsIndex"
 		      @expand-change="affairsExpandChange">
@@ -492,9 +494,8 @@
 		        @size-change="affairsHandleSizeChange"
 		        @current-change="affairsHandleCurrentChange"
 		        :current-page="currentPage.affairsPage"
-		        :page-sizes="[5, 10, 20, 50]"
 		        :page-size="pageSize.affairsSize"
-		        layout="total, sizes, prev, pager, next, jumper"
+		        layout="total, prev, pager, next, jumper"
 		        :total="affairsTable.length">
 		      </el-pagination>
 		    </div>
@@ -535,7 +536,7 @@
         },
         value: '',
         expands: [],
-        activeName: '',
+        activeName: '1',
         jpaperTable: [],
         mpaperTable: [],
         patentTable: [],
@@ -555,7 +556,7 @@
 					var _this = this
 					var Params = { userId: _this.$userInfo.id }
 					this.$ajax.get('/api/myAudit', {params: Params}).then( res => {
-						console.log(res)
+						// console.log(res)
 						if(res.data.errCode == 20){
 							/**************************************************************************************************jpaper***/
 							var jpaper = res.data.jpaperModels

@@ -25,7 +25,7 @@
                 <i class="el-icon-document"></i>
                 <span slot="title">个人主页</span>
               </el-menu-item>
-              <el-submenu index="1" v-show="this.teacherShow || this.studentShow">
+              <el-submenu index="1" v-show="teacherShow || studentShow">
                 <template slot="title">
                   <i class="el-icon-edit"></i>
                   <span>添加成果</span>
@@ -35,29 +35,19 @@
                   <el-menu-item index="/system/addauto">自动录入</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
-              <el-menu-item index="/system/mystudent" v-show="this.teacherShow">
+              <el-menu-item index="/system/mystudent" v-show="teacherShow">
                 <i class="el-icon-star-on"></i>
                 <span slot="title">我的学生</span>
               </el-menu-item>
-              <el-menu-item index="/system/audit" v-show="this.teacherShow">
+              <el-menu-item index="/system/audit" v-show="teacherShow || manageinfoShow">
                 <i class="el-icon-news"></i>
-                <span slot="title">学生成果审核<el-badge class="mark" :value="this.num2" :hidden="this.num2 === 0" :max="99"/></span>
+                <span slot="title">学生成果审核<el-badge class="mark" :value="num2" :hidden="num2 === 0" :max="99"/></span>
               </el-menu-item>
-              <el-menu-item index="/system/myaudit" v-show="this.studentShow">
+              <el-menu-item index="/system/myaudit" v-show="studentShow">
                 <i class="el-icon-news"></i>
                 <span slot="title">成果审核情况</span>
               </el-menu-item>
-              <el-submenu index="2">
-                <template slot="title">
-                  <i class="el-icon-setting"></i>
-                  <span>账号管理</span>
-                </template>
-                <el-menu-item-group>
-                  <el-menu-item index="/system/manageinfo" :disabled="this.manageinfoShow">修改基本信息</el-menu-item>
-                  <el-menu-item index="/system/managepwd">修改密码</el-menu-item>
-                </el-menu-item-group>
-              </el-submenu>
-              <el-submenu index="3" v-show="this.managerShow">
+              <el-submenu index="2" v-show="managerShow">
                 <template slot="title">
                   <i class="el-icon-star-on"></i>
                   <span>成果管理</span>
@@ -67,7 +57,7 @@
                   <el-menu-item index="/system/mharvestcopy">学生成果管理</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
-              <el-submenu index="4" v-show="this.managerShow">
+              <el-submenu index="3" v-show="managerShow">
                 <template slot="title">
                   <i class="el-icon-star-off"></i>
                   <span>信息管理</span>
@@ -77,14 +67,28 @@
                   <el-menu-item index="/system/mstudent">学生信息管理</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
-              <el-menu-item index="/system/checkCount" v-show="this.managerShow">
+              <el-menu-item index="/system/search" v-show="managerShow">
                 <i class="el-icon-search"></i>
                 <span slot="title">查询统计</span>
               </el-menu-item>
-              <el-menu-item index="/system/outputResume" v-show="this.teacherShow">
+              <el-menu-item index="/system/outputResume" v-show="teacherShow">
                 <i class="el-icon-tickets"></i>
-                <span slot="title">简历生成</span>
+                <span slot="title">主页生成</span>
               </el-menu-item>
+              <el-menu-item index="/system/webMaintain" v-show="managerShow">
+                <i class="el-icon-menu"></i>
+                <span slot="title">官网信息维护</span>
+              </el-menu-item>
+              <el-submenu index="4">
+                <template slot="title">
+                  <i class="el-icon-setting"></i>
+                  <span>账号管理</span>
+                </template>
+                <el-menu-item-group>
+                  <el-menu-item index="/system/manageinfo" :disabled="manageinfoShow">修改基本信息</el-menu-item>
+                  <el-menu-item index="/system/managepwd">修改密码</el-menu-item>
+                </el-menu-item-group>
+              </el-submenu>
             </el-menu>
           </el-aside>
         </div>
@@ -142,14 +146,18 @@
         }else if(_this.$type == 2){//student
           _this.studentShow = true
         }
-        this.getNum2()
+        if(_this.$type != 2) this.getNum2()
       })
     },
     methods: {
       getNum2 () {
         var _this = this
-          var Params = { userId: _this.$userInfo.id }
-          this.$ajax.get('/api/audit', {params: Params}).then( res => {
+        var Params = { 
+          userType: _this.$type,
+          userId: _this.$userInfo.id 
+        }
+        this.$ajax.get('/api/audit', {params: Params}).then( res => {
+          if(res.data.errCode == 20){
             for (var i=0; i<res.data.jpaperModels.length; i++) 
               if(res.data.jpaperModels[i].review === 1) _this.num2++
             for (var i=0; i<res.data.mpaperModels.length; i++) 
@@ -164,9 +172,12 @@
               if(res.data.softwareModels[i].review === 1) _this.num2++
             for (var i=0; i<res.data.affairsModels.length; i++) 
               if(res.data.affairsModels[i].review === 1) _this.num2++
-          }).catch( () => {
+          }else if(res.data.errCode == 21){
             alert("出错！请联系管理员")
-          });
+          }
+        }).catch( () => {
+          // alert("出错！请联系管理员")
+        });
       },
       handleCommand (command) {
         this.$confirm('确定退出系统?', '提示', {
@@ -182,10 +193,10 @@
         });
       },
       handleOpen(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       handleSelect(key, keyPath) {
         // console.log(key, keyPath);
@@ -196,8 +207,8 @@
 
 <style scoped>
 .el-header {
-  /*background-color: #545c64;*/
-  background-color: rgb(79,184,238);
+  background-color: #545c64;
+  /* background-color: rgb(79,184,238); */
   color: #1874CD;
   width: 100%;
   font-size: 22px;

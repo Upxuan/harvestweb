@@ -6,7 +6,7 @@
           <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000">
             <h3>团队合照</h3>
           </div>
-          <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.teamPeople" :key="index">
+          <div class="col-xs-6 col-sm-4 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.team.People" :key="index">
             <div class="myteam1_thumb">
               <img :src="item.img" class="img-responsive">
             </div>
@@ -20,7 +20,7 @@
           <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000">
             <h3>“惬意”的外地开发及竞赛备战</h3>
           </div>
-          <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.teamDevelop" :key="index">
+          <div class="col-xs-6 col-sm-4 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.team.Develop" :key="index">
             <div class="myteam1_thumb" style="height: 180px;">
               <img :src="item.img" class="img-responsive">
             </div>
@@ -35,7 +35,7 @@
             <h3>多彩的团建生活</h3>
           </div>
           <div class="col-md-1" style="margin-right:45px;"></div>
-          <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.teamBuliding" :key="index">
+          <div class="col-xs-6 col-sm-4 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.team.Buliding" :key="index">
             <div class="myteam1_thumb">
               <img :src="item.img" class="img-responsive">
             </div>
@@ -49,7 +49,7 @@
           <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000">
             <h3>户外活动</h3>
           </div>
-          <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.teamOutdoor" :key="index">
+          <div class="col-xs-6 col-sm-4 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.team.Outdoor" :key="index">
             <div class="myteam1_thumb" style="height: 180px;">
               <img :src="item.img" class="img-responsive">
             </div>
@@ -63,7 +63,7 @@
           <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000">
             <h3>年终聚餐及颁奖</h3>
           </div>
-          <div class="col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.teamParty" :key="index">
+          <div class="col-xs-6 col-sm-4 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.team.Party" :key="index">
             <div class="myteam1_thumb" style="height: 180px;">
               <img :src="item.img" class="img-responsive">
             </div>
@@ -75,20 +75,29 @@
 </template>
 
 <script>
+import team from '../../static/mock/team.json';
 export default {
   name: 'myteam',
   data () {
     return {
-
+      team: {
+        People: team.teamPeople,
+        Develop: team.teamDevelop,
+        Buliding: team.teamBuliding,
+        Outdoor: team.teamOutdoor,
+        Party: team.teamParty
+      }
     }
   },
 }
 </script>
 
 <style scoped>
+@import '../css/templatemo-style.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
 /* start myteam1 */
 #myteam1 {
-  background: url('../images/team/team-flow.jpg') no-repeat center center;
+  background: url('../../static/images/team/team-flow.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   color: #FFFFFF;

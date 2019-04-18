@@ -1,36 +1,58 @@
 <template>
   <div id="index">
 		<el-container>
-			<!-- <el-header> -->
-				<!-- <el-menu :default-active="activeIndex" class="el-menu-demo" mode="vertical" @select="handleSelect" v-for="(item, index) in barData" :key="index">
-					<el-menu-item :index="item.route">{{ item.name }}</el-menu-item>
-				</el-menu> -->
-				<!-- <el-menu 
-				:unique-opened='true'
-				:default-active="this.$route.path"
-				router
-				class="el-menu-demo"
-				@select="handleSelect">
-					<el-menu-item index="/">home</el-menu-item>
-					<el-menu-item index="/researchTeam">researchTeam</el-menu-item>
-				</el-menu>
-			</el-header> -->
-
 			<el-header>
 				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 					<div class="header-container">
 						<div class="row">
 							<div class="navbar-header">
-								<a href="/" class="navbar-brand"><h3>CLOUD</h3></a>
+								<!-- <img class="navbar-brand navbar-img" style="width:55px;height:55px;" src="../images/cloud.png" alt=""> -->
+								<a v-if="!isMinScreenWidth" class="navbar-brand" href="" @click="gotoHome"><h3>CLOUD</h3></a>
+								<el-dropdown v-else @command="handleCommand">
+										<span class="el-dropdown-link">
+												<a class="navbar-brand" href="" @click="gotoHome"><h3>CLOUD</h3></a>
+										</span>
+										<el-dropdown-menu slot="dropdown">
+											<el-dropdown-item command="/">首页</el-dropdown-item>
+											<el-dropdown-item command="/teacher">科研团队</el-dropdown-item>
+											<el-dropdown-item command="/achievement">研究成果</el-dropdown-item>
+											<el-dropdown-item command="/result">特色成果</el-dropdown-item>
+											<el-dropdown-item command="/exchange">学术交流</el-dropdown-item>
+											<el-dropdown-item command="/student">学生发展</el-dropdown-item>
+											<el-dropdown-item command="/team">团队建设</el-dropdown-item>
+											<el-dropdown-item command="/joinus">加入我们</el-dropdown-item>
+											<el-dropdown-item command="/login">登录</el-dropdown-item>
+										</el-dropdown-menu>
+									</el-dropdown>
 							</div>
 							<div class="collapse navbar-collapse">
-								<ul class="nav navbar-nav navbar-right">
-									<li v-for="(item, index) in barData" :key="index">
-										<router-link :to="item.route">
-											{{ item.name }}
-										</router-link>
-									</li>
-								</ul>
+								<div v-if="!isMinScreenWidth">
+									<ul class="nav navbar-nav navbar-right">
+										<li v-for="(item, index) in barData" :key="index">
+											<router-link :to="item.route">
+												{{ item.name }}
+											</router-link>
+										</li>
+										<li><router-link to="/login" target="_blank">登录</router-link></li>
+									</ul>
+								</div>
+								<!-- <div v-else>
+									<el-dropdown @command="handleCommand">
+										<span class="el-dropdown-link">
+												<a class="navbar-brand" href="" @click="gotoHome()"><h3>CLOUD</h3></a>
+										</span>
+										<el-dropdown-menu slot="dropdown">
+											<el-dropdown-item command="home">首页</el-dropdown-item>
+											<el-dropdown-item command="teacher">科研团队</el-dropdown-item>
+											<el-dropdown-item command="achievement">研究成果</el-dropdown-item>
+											<el-dropdown-item command="result">特色成果</el-dropdown-item>
+											<el-dropdown-item command="exchange">学术交流</el-dropdown-item>
+											<el-dropdown-item command="student">学生发展</el-dropdown-item>
+											<el-dropdown-item command="team">团队建设</el-dropdown-item>
+											<el-dropdown-item command="joinus">加入我们</el-dropdown-item>
+										</el-dropdown-menu>
+									</el-dropdown>
+								</div> -->
 							</div>
 						</div>			
 					</div>
@@ -39,7 +61,7 @@
       <transition> 
         <router-view></router-view>
       </transition>
-			<footer id="footer">
+			<!-- <footer id="footer">
 				<div class="footer-container">
 					<div class="col-md-8"><br>
 						<div class="footer-container-msg">
@@ -64,17 +86,18 @@
 					</div>
 					<div class="clearfix"></div>
 				</div>
-			<div class="footer-copyright">
-				<div class="row myfooter text-center">
-					<div class="team_overlay">
-						<ul class="social_icon">
-							<li><a href="#" class="fa fa-angle-double-up"></a></li>
-						</ul>								
+				<div class="footer-copyright">
+					<div class="row myfooter text-center">
+						<div class="team_overlay">
+							<ul class="social_icon">
+								<li><a href="#" class="fa fa-angle-double-up"></a></li>
+							</ul>								
+						</div>
+						<div class="mylink">Copyright © 2019. All rights reserved. Designed by <a href="http://cloud.hdu.edu.cn" target="_blank">CLOUD</a>.</div>
 					</div>
-					<div class="mylink">Copyright © 2019. All rights reserved. Designed by <a href="http://cloud.hdu.edu.cn" target="_blank">CLOUD</a>.</div>
 				</div>
-			</div>
-		</footer>
+			</footer> -->
+			<my-footer></my-footer>
 		</el-container>
   </div>
 </template>
@@ -88,6 +111,7 @@ import exchange from '@/cloud/exchange'
 import student from '@/cloud/student'
 import team from '@/cloud/team'
 import JoinUs from '@/cloud/joinus'
+import MyFooter from '@/cloud/footer'
 export default {
   name: 'index',
   components: {
@@ -98,10 +122,13 @@ export default {
     exchange,
     student,
     team,
-    JoinUs
+		JoinUs,
+		MyFooter
   },
   data () {
     return {
+			screenWidth: document.body.clientWidth,
+			isMinScreenWidth: false,
 			activeIndex: '/',
 			barData: [
 				{ name: '首页', route: '/'},
@@ -115,17 +142,64 @@ export default {
 			]
     }
 	},
+	mounted () {
+		var _this = this
+		// console.log(this.screenWidth)
+		if(_this.screenWidth < 1280) {
+			_this.isMinScreenWidth = true
+		}else {
+			_this.isMinScreenWidth = false
+		}
+		window.onresize = () => {
+			return (() => {
+				window.screenWidth = document.body.clientWidth
+				_this.screenWidth = window.screenWidth
+			})();
+		} 
+	},
+	watch: {
+		screenWidth (val) {
+			// if (!this.timer) {
+				this.screenWidth = val
+				// this.timer = true
+				var _this = this
+				// setTimeout(function () {
+					// console.log(_this.screenWidth)
+					
+					if(_this.screenWidth < 1280) {
+						_this.isMinScreenWidth = true
+					}else {
+						_this.isMinScreenWidth = false
+					}
+					// _this.init()
+					// _this.timer = false
+				// }, 400);
+			// }
+		}
+	},
 	methods: {
 		handleSelect(key, keyPath) {
-			console.log(key, keyPath);
+			// console.log(key, keyPath);
+		},
+		gotoHome () {
+			this.$router.push({path:"/"});
+		},
+		handleCommand(command) {
+			// this.$message('click on item ' + command);
+			this.$router.push({path:command});
 		}
 	}
 }
 </script>
 
-<style>
+<style scoped>
+@import '../css/templatemo-style.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
 .header-container {
 	min-width: 600px;
+}
+.navbar-img {
+	margin: 5px 5px 0 0;
 }
 #footer {
 	width: 100%;
@@ -136,6 +210,7 @@ export default {
 .header-container {
   margin: 0px 18%;
   width: 60%;
+	min-width: 400px;
 }
 .footer-container {
   margin: 0px 17%;
@@ -148,5 +223,9 @@ export default {
 	padding-top: 5px;
 	padding-bottom: 10px;
 	background-color: rgb(51, 51, 51);
+}
+.el-dropdown-link {
+	cursor: pointer;
+	color: #409EFF;
 }
 </style>

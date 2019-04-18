@@ -3,17 +3,18 @@
     <div class="index-wrap1">
       <div class="all-title1">
         <p class="main-font">我的学生总数：<span class="msg-num">{{ count }}</span>人</p>
+        <el-dialog :title="tableTitle" :visible.sync="dialogTableVisible" v-if='dialogTableVisible' width="1000px" @close="closeTableDialog()">
+          <harvest-list :harvestParams="harvestParams"></harvest-list>
+        </el-dialog>
       </div>
       <el-table
         :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         stripe
-        style="width: 100%">
-        <el-table-column
-          label="头像"
-          width="100"
-          prop="img">
-          <template slot-scope="scope">
-            <img :src="scope.row.img" width="40" height="40" class="head_pic"/>
+        style="width: 100%"
+        :header-cell-style="{background:'#8DB6CD', color:'#FFF'}">
+        <el-table-column label="头像" width="100" prop="img">
+          <template slot-scope="props">
+            <img :src="props.row.img" width="40" height="40" class="head_pic"/>
           </template>
         </el-table-column>
         <el-table-column prop="name" label="姓名" width="120" align="center"></el-table-column>
@@ -25,10 +26,8 @@
         <el-table-column prop="softwareNum" label="软件著作权" width="100" align="center"></el-table-column>
         <el-table-column prop="affairsNum" label="公共事务" width="100" align="center"></el-table-column>
         <el-table-column label="操作" align="center">
-          <template slot-scope="scope">
-            <router-link to="">
-              <el-button size="mini" type="primary" @click="checkHarvest(scope.row.id)">查看成果</el-button>
-            </router-link>
+          <template slot-scope="props">
+            <el-button size="mini" type="" @click="checkHarvest(props.row)">查看成果</el-button>
           </template>
         </el-table-column>
       </el-table><br>
@@ -37,9 +36,8 @@
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :current-page="currentPage"
-          :page-sizes="[5, 10, 20, 50]"
           :page-size="pagesize"
-          layout="total, sizes, prev, pager, next, jumper"
+          layout="total, prev, pager, next, jumper"
           :total="tableData.length">
           </el-pagination>
       </div>
@@ -48,16 +46,21 @@
 </template>
 
 <script>
+  import HarvestList from '@/components/tex/texHarvestList'
   export default{
     name: 'sysMyStudent',
-    components:{
+    components: {
+      HarvestList
     },
     data() {
       return {
         currentPage: 1,
         pagesize: 10,
         count: 0,
-        tableData: []
+        tableData: [],
+        dialogTableVisible: false,
+        harvestParams: {},
+        tableTitle: '',
       }
     },
     mounted () {
@@ -66,15 +69,16 @@
           var _this = this
           var data = []
           var Params = { userId: _this.$userInfo.id }
-          console.log(Params)
+          // console.log(Params)
           this.$ajax.get('/api/myStudentCount', {params: Params}).then( res => {
-            console.log(res)
+            // console.log(res)
             _this.count = res.data.length
             for(let i=0; i<res.data.length; i++) {
               var obj = {}
               obj.img = "../assets/hp.png"
               obj.id = res.data[i].stuId
               obj.name = res.data[i].stuName
+              obj.username = res.data[i].username
               obj.jpaperNum = res.data[i].jpaperNum
               obj.mpaperNum = res.data[i].mpaperNum
               obj.patentNum = res.data[i].patentNum
@@ -86,21 +90,28 @@
             }
             _this.tableData = data
           }).catch( error => {
-            console.log(error)
+            // console.log(error)
           })
         }
       })
     },
     methods: {
       checkHarvest (row) {
-        console.log(row)
-        alert("跳转查看学生的个人简介页面")
-        // api.$emit("checkStu", )
+        var _this = this
+        _this.tableTitle = row.name + " / 个人成果"
+        _this.harvestParams = {
+          userType: 2,
+          username: row.username
+        }
+        _this.dialogTableVisible = true
       },
-      handleSizeChange: function (size) {
+      closeTableDialog() {
+        this.dialogTableVisible = false
+      },
+      handleSizeChange (size) {
         this.pagesize = size;
       },
-      handleCurrentChange: function (currentPage) {
+      handleCurrentChange (currentPage) {
        this.currentPage = currentPage;
       }
     }

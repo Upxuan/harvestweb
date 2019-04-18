@@ -3,7 +3,7 @@
     <div class = "all-title">
       <p class="main-font">
         作者详情(非空)
-        <el-button size="small" type="primary" @click="addRow()">添加作者</el-button>
+        <el-button size="small" type="warning" @click="addRow()">添加作者</el-button>
         <el-button
         size="small"
         type="danger"
@@ -114,7 +114,7 @@
             obj.nature2 = _this.tableData[i].nature2
             if(!_this.tableData[i].nature1) obj.nature1 = false
             if(!_this.tableData[i].nature2) obj.nature2 = false
-            console.log(obj)
+            // console.log(obj)
             data[i] = obj
           }
         }

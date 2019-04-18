@@ -14,7 +14,7 @@
           <div class="col-md-12 wow fadeInDown" data-wow-delay="2000">
 						<form role="form">
               <div class="col-md-1"></div>
-							<div class="col-md-2 bold-h4" v-for="(item, index) in this.achievementData" :key="index">
+							<div class="col-md-2 bold-h4" v-for="(item, index) in this.Data" :key="index">
                 <h1 style="font-size: 40px">{{ item.num }}</h1>
                 <div class="white-title-line"></div>
                 <h4>{{ item.name }}</h4>
@@ -46,11 +46,11 @@
           </div>
           <!-- <div class="col-md-12"> -->
           <div class="col-md-1"></div>
-          <div class="col-sm-2 col-md-2 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.achievementImages" :key="index">
+          <div class="col-sm-2 col-md-2 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.Images" :key="index">
             <div class="ach1_thumb">
               <img :src="item.img" class="img-responsive" alt="ach1">
               <div class="ach1_overlay">
-                <a href="#"><i class="fa"><h5>{{ item.msg }}</h5></i></a>
+                <i class="fa"><h5>{{ item.msg }}</h5></i>
               </div>
             </div>
             <!-- <div class="ach1_description">
@@ -65,20 +65,22 @@
     <section id="ach2">
       <div class="container">
         <div class="row bold-h4">
-          <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000">
+          <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000" style="margin-bottom:20px;">
             <h3>科研之项目</h3>
           </div>
           <div class="col-md-12">
-            <h4>国家级(<span class="green-font">26项</span>)</h4>
-            <div v-for="(item, index) in this.achievementProject1" :key="index">
+            <h4>国家级(<span class="green-font">{{ project1length }}项</span>)</h4>
+            <pre>{{ project1 }}</pre>
+            <!-- <div v-for="(item, index) in this.project1" :key="index">
               <p>{{ item.msg }}</p>
-            </div>
+            </div> -->
           </div>
           <div class="col-md-12" style="margin-top:30px;">
-            <h4>省市级(<span  class="green-font">34项</span>)</h4>
-            <div v-for="(item, index) in this.achievementProject2" :key="index">
+            <h4>省市级(<span  class="green-font">{{ project2length }}项</span>)</h4>
+            <pre>{{ project2 }}</pre>
+            <!-- <div v-for="(item, index) in this.project2" :key="index">
               <p>{{ item.msg }}</p>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="row ach2-paper">
@@ -86,9 +88,10 @@
             <h3>科研之代表性论文<br><span>(近三年部分)</span></h3>
           </div>
           <div class="col-md-12">
-            <div v-for="(item, index) in this.achievementPaper" :key="index">
-              <p>{{ item.msg }}</p>
-            </div>
+            <pre>{{ paper }}</pre>
+            <!-- <div v-for="(item, index) in this.paper" :key="index">
+              <p>{{ index+1 }}. {{ item.msg }}</p>
+            </div> -->
           </div>
         </div>
       </div> 
@@ -97,17 +100,68 @@
 </template>
 
 <script>
+// import achievement from '../data/achievement.json';
+import achievement from '../../static/mock/achievement.json';
 export default {
   name: 'achievement',
   data () {
     return {
-
+      Data: achievement.achievementData,
+      Images: achievement.achievementImages,
+      project1: '',
+      project2: '',
+      paper: '',
+      project1length: 0,
+      project2length: 0,
+      // project1: achievement.achievementProject1,
+      // project2: achievement.achievementProject2,
+      // paper: achievement.achievementPaper
     }
+  },
+  mounted () {
+    var _this = this;
+    var Params = { userType: -1 };
+    this.$ajax.get('/api/getAchievement', {params: Params}).then( res => {
+      // console.log(res);
+      if(res.data.errCode == 20){
+        _this.project1 = res.data.achievement.project1;
+        _this.project2 = res.data.achievement.project2;
+        _this.paper = res.data.achievement.paper;
+
+        var project1 = _this.project1;
+        var project2 = _this.project2;
+        var index = project1.indexOf("\n");
+        var k=1;
+        while(index >= 0){
+          project1 = project1.substr(index+1);
+          index = project1.indexOf("\n");
+          k++;
+        }
+        _this.project1length = k;
+        // console.log(k);
+        index = project2.indexOf("\n");
+        k=1;
+        while(index >= 0){
+          project2 = project2.substr(index+1);
+          index = project2.indexOf("\n");
+          k++;
+        }
+        _this.project2length = k;
+        // console.log(k);
+      }else if(res.data.errCode == 21){
+        alert("出错！请联系管理员");
+      }
+    }).catch( err => {
+      // console.log(err)
+      // alert("出错！请联系管理员")
+    });
   }
 }
 </script>
 
 <style scoped>
+@import '../css/templatemo-style.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
 /* 66AF33 */
 .white-title-line {
   margin: 15px auto;
@@ -119,6 +173,17 @@ export default {
 h3 {
   font-weight: bold;
   letter-spacing: 1px !important;
+}
+pre {
+  background: #FFF;
+  white-space: pre-wrap; 
+  border: dashed 0px;
+  font-size: 14px;
+  line-height: 30px;
+  font-family: "SimSun"; 
+  text-align: justify;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-size: 16px; */
 }
 .bold-h4 h4 {
   font-weight: bold;
@@ -133,7 +198,7 @@ h3 {
 
 /* start achflow */
 #achflow {
-  background: url('../images/achievement/ach-flow.jpg') no-repeat center center;
+  background: url('../../static/images/achievement/ach-flow.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   color: #FFFFFF;

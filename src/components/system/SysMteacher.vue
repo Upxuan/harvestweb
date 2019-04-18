@@ -49,6 +49,7 @@
     </div>
     <el-table
       :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
+      :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
       style="width: 100%"
       stripe
       row-key="index"
@@ -93,7 +94,7 @@
       <el-table-column prop="email" label="电子邮箱" width="275" align="center"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
-          <el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+          <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -167,7 +168,7 @@
           var data = [];
           var Params = { userType: _this.$type }
           this.$ajax.get('/api/getTeacher', {params: Params}).then( res => {
-            console.log(res);
+            // console.log(res);
             var teacherData = res.data.teacherModels
             for (var i = 0; i<teacherData.length; i++) {
               teacherData[i].index = i+1;
@@ -175,7 +176,7 @@
             _this.number = teacherData.length
             _this.tableData = teacherData
           }).catch( error => {
-            console.log(error);
+            // console.log(error);
           });
         }
       })
@@ -187,7 +188,7 @@
       handleEdit(row) {
         if(this.judgeLogin()){
           var _this = this
-          console.log(row);
+          // console.log(row);
           _this.ruleForm.id = row.id
           _this.ruleForm.name = row.name
           _this.ruleForm.username = row.username
@@ -234,7 +235,7 @@
                     link: _this.ruleForm.link
                   }
                 }
-                console.log(Params)
+                // console.log(Params)
                 this.$ajax({
                   url: '/api/handleTeacher',
                   method: 'post',
@@ -242,7 +243,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                  console.log(res)
+                  // console.log(res)
                   if(res.data.errCode == 20){
                     var msg = '录入成功'
                     if(_this.dialogType == 1) 
@@ -291,7 +292,7 @@
                 dataType: "json",
                 data: Params
               }).then( res => {
-                console.log(res)
+                // console.log(res)
                 if(res.data.errCode == 20){
                   this.reload();
                   this.$message({ type: 'success', message: '删除成功' });
@@ -299,7 +300,7 @@
                   this.$message({ type: 'error', message: '删除失败' });
                 }
               }).catch( error => {
-                console.log(error)
+                // console.log(error)
               })
             }).catch( () => {});
 

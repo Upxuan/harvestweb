@@ -3,6 +3,7 @@
     <el-table
       :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
       style="width: 100%"
+      :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
       stripe
       row-key="jpaperIndex"
       :expand-row-keys="expands"
@@ -46,14 +47,13 @@
       <el-table-column prop="jpaperIndex" label="序号" width="60" align="center"></el-table-column>
       <el-table-column prop="jpaperType" label="收录" width="200" align="center"></el-table-column>
       <el-table-column prop="jpaperTitle" label="标题" width="540"></el-table-column>
-      <el-table-column prop="jpaperAuthors" label="作者" width="200"></el-table-column>
+      <el-table-column prop="jpaperAuthors" label="作者"></el-table-column>
     </el-table>
     <div class="block">
       <el-pagination
         @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage"
-        :page-sizes="[5, 10, 20, 50]"
         :page-size="pagesize"
-        layout="total, sizes, prev, pager, next, jumper"
+        layout="total, prev, pager, next, jumper"
         :total="tableData.length">
       </el-pagination>
     </div>
@@ -67,7 +67,7 @@
     data () {
       return {
         currentPage: 1,
-        pagesize: 5,
+        pagesize: 20,
         tableData: [], //表格中的所有数据
         selectionData: [], //表格选中时的数据
         expands: [] //要展开的行，数值的元素是row的key值
@@ -123,7 +123,7 @@
 }
 .el-button{
   margin-right: 5px;
-  float:right;
+  /* float:right; */
 }
 .demo-table-expand {
   font-size: 0;

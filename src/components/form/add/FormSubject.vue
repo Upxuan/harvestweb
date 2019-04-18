@@ -59,7 +59,7 @@
     },
     created () {
       var _this = this
-      console.log(_this.row)
+      // console.log(_this.row)
       if(_this.row != null) {
         _this.ruleForm.title = _this.row.subjectTitle
         _this.ruleForm.bookName = _this.row.subjectBookName

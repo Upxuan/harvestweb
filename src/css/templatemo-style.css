@@ -399,7 +399,7 @@ h1 { margin: 0; }
   }  
 #team .team_description
   {
-    height: 130px;
+    height: 145px;
     background: #303030;
     padding: 10px;
   }
@@ -500,7 +500,7 @@ ul
 /* start newsletter */
 #newsletter
   {
-    background: url('../images/newsletter-bg.jpg') no-repeat center center;
+    background: url('../../static/images/home/newsletter-bg.jpg') no-repeat center center;
     background-size: cover;
    background-attachment: fixed;
     color: #FFFFFF;
@@ -701,7 +701,7 @@ ul
 /* start contact */
 #contact
   {
-    background: #404040 url('../images/contact-bg.jpg') no-repeat;
+    background: #404040 url('../../static/images/contact-bg.jpg') no-repeat;
     background-size: cover;
     background-attachment: fixed;
     color: #FFFFFF;

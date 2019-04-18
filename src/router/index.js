@@ -24,16 +24,18 @@ import Mteacher from '@/components/system/SysMteacher'
 import Mstudent from '@/components/system/SysMstudent'
 import Mharvest from '@/components/system/SysMharvest'
 import Mharvestcopy from '@/components/system/SysMharvestcopy'
-import CheckCount from '@/components/system/SysCheckCount'
+import Search from '@/components/system/SysSearch'
 import OutputResume from '@/components/system/SysOutputResume'
+import WebMaintain from '@/components/system/SysWebMaintain'
 Vue.use(Router)
 
 export default new Router({
   mode:'history',
+  base:'/lab/',
   routes: [
     {
       path: '/',
-      name: 'Index',
+      // name: 'Index',
       component: Index,
       children: [
         {
@@ -42,7 +44,7 @@ export default new Router({
           component: Home
         },
         {
-          path: '/teacher',
+          path: 'teacher',
           name: 'Teacher',
           component: Teacher
         },
@@ -154,15 +156,20 @@ export default new Router({
           component: Mharvestcopy
         },
         {
-          path: 'checkCount',
-          name: 'CheckCount',
-          component: CheckCount
+          path: 'search',
+          name: 'Search',
+          component: Search
         },
         {
           path: 'outputResume',
           name: 'OutputResume',
           component: OutputResume
-        }
+        },
+        {
+          path: 'webMaintain',
+          name: 'WebMaintain',
+          component: WebMaintain
+        },
       ]
     }
   ]

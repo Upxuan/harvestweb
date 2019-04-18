@@ -3,7 +3,7 @@
     <div class = "all-title">
       <p class="main-font">
         <span>自动录入</span>
-        <el-button type="primary" size="small" @click="submitForm()">选择录入</el-button>
+        <el-button type="warning" size="small" @click="submitForm()">选择录入</el-button>
         <el-select v-model="value" placeholder="请选择类别" @change="selectGet" size="small">
           <el-option
             v-for="item in options"
@@ -83,7 +83,7 @@
         var _this = this
         //处理selections，使之id变成List数组传值
         _this.selections = this.handleSelections(_this.$refs.msg.selectionData)
-        console.log(_this.selections)
+        // console.log(_this.selections)
         if(_this.selections.length == 0){
           this.$message('请选择要输入的成果');
         } else {

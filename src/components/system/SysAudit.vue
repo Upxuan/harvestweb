@@ -2,6 +2,7 @@
   <div id="sysAudit">
     <div class = "all-title">
       <p class="main-font">
+        学生成果审核 /
         待审核:&nbsp;<span>{{ number.unReviseNum }}</span>项&nbsp;&nbsp;
         已通过:&nbsp;<span>{{ number.reviseSuccessNum }}</span>项&nbsp;&nbsp;
         未通过:&nbsp;<span>{{ number.reviseFailNum }}</span>项
@@ -14,6 +15,7 @@
           :data="jpaperTable.slice((currentPage.jpaperPage-1)*pageSize.jpaperSize,currentPage.jpaperPage*pageSize.jpaperSize)"
           stripe
           style="width: 100%"
+          :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
           row-key="jpaperIndex"
           @expand-change="jpaperExpandChange">
           <el-table-column type="expand">
@@ -59,9 +61,10 @@
               <span v-else-if="scope.row.review===3" style="color:#409EFF">已通过</span>
             </template>
           </el-table-column>
+          <el-table-column prop="submitName" label="提交者" width="80" align="center" ></el-table-column>
           <el-table-column prop="reviseName" label="审核人" width="80" align="center" ></el-table-column>
           <el-table-column label="操作" align="center">
-            <template slot-scope="props">
+            <template slot-scope="props" style="margin:0px auto;text-align:center;">
               <el-button size="mini" type="primary" :disabled="props.row.review!=1" @click="handlePass(1, props.row.jpaperId, props.row.review)">通过</el-button>
               <el-button  size="mini" type="danger" :disabled="props.row.review!=1" @click="handleReject(1, props.row.jpaperId, props.row.review)">否决</el-button>
             </template>
@@ -72,9 +75,8 @@
             @size-change="jpaperHandleSizeChange"
             @current-change="jpaperHandleCurrentChange"
             :current-page="currentPage.jpaperPage"
-            :page-sizes="[5, 10, 20, 50]"
             :page-size="pageSize.jpaperSize"
-            layout="total, sizes, prev, pager, next, jumper"
+            layout="total, prev, pager, next, jumper"
             :total="jpaperTable.length">
           </el-pagination>
         </div>
@@ -83,6 +85,7 @@
         <el-table
           :data="mpaperTable.slice((currentPage.mpaperPage-1)*pageSize.mpaperSize,currentPage.mpaperPage*pageSize.mpaperSize)"
           style="width: 100%"
+          :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
           stripe
           row-key="mpaperIndex"
           @expand-change="mpaperExpandChange">
@@ -126,6 +129,7 @@
               <span v-else-if="scope.row.review===3" style="color:#409EFF">已通过</span>
             </template>
           </el-table-column>
+          <el-table-column prop="submitName" label="提交者" width="80" align="center" ></el-table-column>
           <el-table-column prop="reviseName" label="审核人" width="80" align="center" ></el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="props">
@@ -139,9 +143,8 @@
             @size-change="mpaperHandleSizeChange"
             @current-change="mpaperHandleCurrentChange"
             :current-page="currentPage.mpaperPage"
-            :page-sizes="[5, 10, 20, 50]"
             :page-size="pageSize.mpaperSize"
-            layout="total, sizes, prev, pager, next, jumper"
+            layout="total, prev, pager, next, jumper"
             :total="mpaperTable.length">
           </el-pagination>
         </div>
@@ -150,6 +153,7 @@
         <el-table
           :data="patentTable.slice((currentPage.patentPage-1)*pageSize.patentSize,currentPage.patentPage*pageSize.patentSize)"
           style="width: 100%"
+          :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
           stripe
           row-key="patentIndex"
           @expand-change="patentExpandChange">
@@ -199,6 +203,7 @@
               <span v-else-if="scope.row.review===3" style="color:#409EFF">已通过</span>
             </template>
           </el-table-column>
+          <el-table-column prop="submitName" label="提交者" width="80" align="center" ></el-table-column>
           <el-table-column prop="reviseName" label="审核人" width="80" align="center" ></el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="props">
@@ -212,9 +217,8 @@
             @size-change="patentHandleSizeChange"
             @current-change="patentHandleCurrentChange"
             :current-page="currentPage.patentPage"
-            :page-sizes="[5, 10, 20, 50]"
             :page-size="pageSize.patentSize"
-            layout="total, sizes, prev, pager, next, jumper"
+            layout="total, prev, pager, next, jumper"
             :total="patentTable.length">
           </el-pagination>
         </div>
@@ -223,6 +227,7 @@
         <el-table
           :data="projectTable.slice((currentPage.projectPage-1)*pageSize.projectSize,currentPage.projectPage*pageSize.projectSize)"
           style="width: 100%"
+          :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
           stripe
           row-key="projectIndex"
           @expand-change="projectExpandChange">
@@ -260,6 +265,7 @@
               <span v-else-if="scope.row.review===3" style="color:#409EFF">已通过</span>
             </template>
           </el-table-column>
+          <el-table-column prop="submitName" label="提交者" width="80" align="center" ></el-table-column>
           <el-table-column prop="reviseName" label="审核人" width="80" align="center" ></el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="props">
@@ -273,9 +279,8 @@
             @size-change="projectHandleSizeChange"
             @current-change="projectHandleCurrentChange" 
             :current-page="currentPage.projectPage"
-            :page-sizes="[5, 10, 20, 50]"
             :page-size="pageSize.projectSize"
-            layout="total, sizes, prev, pager, next, jumper"
+            layout="total, prev, pager, next, jumper"
             :total="projectTable.length">
           </el-pagination>
         </div>
@@ -284,6 +289,7 @@
         <el-table
           :data="subjectTable.slice((currentPage.subjectPage-1)*pageSize.subjectSize,currentPage.subjectPage*pageSize.subjectSize)"
           style="width: 100%"
+          :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
           stripe
           row-key="subjectIndex"
           @expand-change="subjectExpandChange">
@@ -327,6 +333,7 @@
               <span v-else-if="scope.row.review===3" style="color:#409EFF">已通过</span>
             </template>
           </el-table-column>
+          <el-table-column prop="submitName" label="提交者" width="80" align="center" ></el-table-column>
           <el-table-column prop="reviseName" label="审核人" width="80" align="center" ></el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="props">
@@ -340,9 +347,8 @@
             @size-change="subjectHandleSizeChange"
             @current-change="subjectHandleCurrentChange"
             :current-page="currentPage.subjectPage"
-            :page-sizes="[5, 10, 20, 50]"
             :page-size="pageSize.subjectSize"
-            layout="total, sizes, prev, pager, next, jumper"
+            layout="total, prev, pager, next, jumper"
             :total="subjectTable.length">
           </el-pagination>
         </div>
@@ -351,6 +357,7 @@
         <el-table
           :data="softwareTable.slice((currentPage.softwarePage-1)*pageSize.softwareSize,currentPage.softwarePage*pageSize.softwareSize)"
           style="width: 100%"
+          :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
           stripe
           row-key="softwareIndex"
           @expand-change="softwareExpandChange">
@@ -382,6 +389,7 @@
               <span v-else-if="scope.row.review===3" style="color:#409EFF">已通过</span>
             </template>
           </el-table-column>
+          <el-table-column prop="submitName" label="提交者" width="80" align="center" ></el-table-column>
           <el-table-column prop="reviseName" label="审核人" width="80" align="center" ></el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="props">
@@ -395,9 +403,8 @@
             @size-change="softwareHandleSizeChange"
             @current-change="softwareHandleCurrentChange"
             :current-page="currentPage.softwarePage"
-            :page-sizes="[5, 10, 20, 50]"
             :page-size="pageSize.softwareSize"
-            layout="total, sizes, prev, pager, next, jumper"
+            layout="total, prev, pager, next, jumper"
             :total="softwareTable.length">
           </el-pagination>
         </div>
@@ -406,6 +413,7 @@
         <el-table
           :data="affairsTable.slice((currentPage.affairsPage-1)*pageSize.affairsSize,currentPage.affairsPage*pageSize.affairsSize)"
           style="width: 100%"
+          :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
           stripe
           row-key="affairsIndex"
           @expand-change="affairsExpandChange">
@@ -437,6 +445,7 @@
               <span v-else-if="scope.row.review===3" style="color:#409EFF">已通过</span>
             </template>
           </el-table-column>
+          <el-table-column prop="submitName" label="提交者" width="80" align="center" ></el-table-column>
           <el-table-column prop="reviseName" label="审核人" width="80" align="center" ></el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="props">
@@ -450,9 +459,8 @@
             @size-change="affairsHandleSizeChange"
             @current-change="affairsHandleCurrentChange"
             :current-page="currentPage.affairsPage"
-            :page-sizes="[5, 10, 20, 50]"
             :page-size="pageSize.affairsSize"
-            layout="total, sizes, prev, pager, next, jumper"
+            layout="total, prev, pager, next, jumper"
             :total="affairsTable.length">
           </el-pagination>
         </div>
@@ -484,17 +492,17 @@
           affairsPage: 1
         },
         pageSize: {
-          jpaperSize: 5,
-          mpaperSize: 5,
-          patentSize: 5,
-          projectSize: 5,
-          subjectSize: 5,
-          softwareSize: 5,
-          affairsSize: 5,
+          jpaperSize: 10,
+          mpaperSize: 10,
+          patentSize: 10,
+          projectSize: 10,
+          subjectSize: 10,
+          softwareSize: 10,
+          affairsSize: 10
         },
         value: '',
         expands: [],
-        activeName: '',
+        activeName: '1',
         jpaperTable: [],
         mpaperTable: [],
         patentTable: [],
@@ -512,9 +520,12 @@
       this.$nextTick( function() {
         if(this.judgeLogin()){
           var _this = this
-          var Params = { userId: _this.$userInfo.id }
+          var Params = { 
+            userType: _this.$type,
+            userId: _this.$userInfo.id 
+          }
           this.$ajax.get('/api/audit', {params: Params}).then( res => {
-            console.log(res)
+            // console.log(res)
             if(res.data.errCode == 20 ){
               /**************************************************************************************************jpaper***/
               var jpaper = res.data.jpaperModels
@@ -635,11 +646,11 @@
     },
     methods: {
       handlePass(harType, harId, review) {
-        console.log("harType:" + harType + ", harId:" + harId + ", review:" + review);
+        // console.log("harType:" + harType + ", harId:" + harId + ", review:" + review);
         this.passMyAuditHarvest(harType, harId, review)
       },
       handleReject(harType, harId, review) {
-        console.log("harType:" + harType + ", harId:" + harId + ", review:" + review);
+        // console.log("harType:" + harType + ", harId:" + harId + ", review:" + review);
         this.rejectMyAuditHarvest(harType, harId, review)
       },
       filterHandler(value, row, column) {
@@ -734,7 +745,7 @@
 
 .el-button {
   margin-right: 5px;
-  float: right;
+  /* float: right; */
 }
 
 .el-pagination {
@@ -779,7 +790,6 @@
   width: 100%;
   color: #9C9C9C;
 }
-
 /* .el-tabs {
   margin-top: 15px;
 } */

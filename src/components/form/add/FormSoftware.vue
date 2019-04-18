@@ -37,7 +37,7 @@
     },
     created () {
       var _this = this
-      console.log(_this.row)
+      // console.log(_this.row)
       if(_this.row != null) {
         _this.ruleForm.name = _this.row.softwareName
         _this.ruleForm.num = _this.row.softwareNum

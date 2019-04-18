@@ -155,7 +155,7 @@
   import myapi from '@/api/myapi.js'
   export default {
     name: 'texHarvestList',
-    props: ["username"],
+    props: ["username", "harvestParams"],
     inject: ['reload'],
     data () {
       return {
@@ -195,18 +195,25 @@
     mounted () {
       this.$nextTick( function() {
         if(this.judgeLogin()){
-          var _this = this
-          if(this.$route.path == '/resume'){
-            _this.UserName = _this.username 
+          var _this = this;
+          var Params = {};
+          // console.log(this.harvestParams)//查找学生个人成果（mStudent/myStudent）
+          if(!this.isEmptyObject(_this.harvestParams)){
+            Params = _this.harvestParams
           }else {
-            _this.UserName = _this.$userInfo.username
-          }
-          var Params = { 
-            username: _this.UserName
+            if(this.$route.path == '/resume'){
+              _this.UserName = _this.username 
+            }else {
+              _this.UserName = _this.$userInfo.username
+            }
+            Params = { 
+              userType: _this.$type,
+              username: _this.UserName 
+            }
           }
           this.$ajax.get('/api/harvest', {params: Params}).then( res => {
-            console.log(res)
-            if(res.data.errCode == 20){
+            // console.log(res)
+            if(res.data.errCode == 20) {
               /**************************************************************************************************jpaper***/
               var jpaper = res.data.jpaperModels
               for (var i=0; i<jpaper.length; i++) {
@@ -284,6 +291,12 @@
       })
     },
     methods: {
+      isEmptyObject (obj) {
+        for(var key in obj){
+          return false;
+        }
+        return true;
+      },
       filterHandler(value, row, column) {
         const property = column['property'];
         return row[property] === value;

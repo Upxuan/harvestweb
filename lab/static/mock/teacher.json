@@ -1,0 +1,193 @@
+{
+  "teacherInfo": [
+    { 
+      "img": "./static/images/teacher/renyongjian.jpg",
+      "name": "任永坚",
+      "title": "教授级高工，博导",
+      "reward": "云技术中心主任",
+      "direction": "云计算，云存储，容灾备份技术。",
+      "link": "",
+      "msg": "杭州电子科技大学特聘教授，浙江大学工学博士，美国Florida Atlantic University哲学博士，1998年-2006年美国Datacore软件公司软件构架师在计算机网络存储及数据管理方面，拥有世界领先技术，主导开发了第一款虚拟存储产品SANsymphony，并取得了巨大的市场效益。任永坚博士留学其间任职美国Encore公司，参与开发了基于Unix操作系统的存储设备。该公司被SUN收购后，该产品成为今天SUN高端存储设备SUN StorageTek的原型。任教期间，其卓越的学术贡献和科研组织能力令其在中国力学界成绩斐然，成为中国力学界最年轻的力学专家，学科带头人。期间，任永坚博士发表了数十篇开创性的学术论文，并多次出席国际、国内学术会议。"
+    },
+    { 
+      "img": "./static/images/teacher/wanjian.jpg",
+      "name": "万健",
+      "title": "教授，博导，博士",
+      "reward": "实验室负责人，浙江省首批中青年学科带头人",
+      "direction": "虚拟计算，服务计算，大数据分析与处理。",
+      "link": "http://cloud.hdu.edu.cn/mediawiki/index.php/%E4%B8%87%E5%81%A5",
+      "msg": "现任浙江科技学院副校长，浙江省计算机科学与技术重点之重学科负责人，教育部复杂系统建模与仿真重点实验室常务副主任，主要研究方向：计算虚拟化、网格计算、服务计算、无线传感器网络。曾任杭州电子科技大学计算机学院院长、软件学院院长、工程研究院院长、地方合作处处长，现任浙江科技学院副校长、杭州电子科技大学浙江省高校“重中之重学科”计算机科学与技术学科负责人、教育部重点实验室常务副主任。浙江省政协委员，浙江省首批中青年学科带头人，浙江省“十五”制造业信息化工程专家组成员、服务业电子化工程专家组成员，浙江省“十一五”软件与集成电路专项科技咨询专家，浙江省“十一五”现代服务业优先主题科技咨询专家，浙江省“十二五”科技咨询专家，浙江省计算机学会副理事长，浙江省软件行业协会常务理事，杭州市计算机学会副理事长。近年来主持和参与国家科技支撑计划项目、国家自然科学基金项目、国防预研项目、教育部重点科研项目、信息产业部电子信息产业发展基金、浙江省重大科技专项项目、重点科研项目30余项，发表学术论文40余篇，三大检索收录30余篇。"
+    },
+    { 
+      "img": "./static/images/teacher/shiweisong.jpg",
+      "name": "施巍松",
+      "title": "IEEE Fellow，研究中心讲座教授",
+      "reward": "IEEE FELLOW，讲座教授",
+      "direction": "可持续计算，边缘计算等。",
+      "link": "http://cloud.hdu.edu.cn/mediawiki/index.php/Weisong_Shi",
+      "msg": "韦恩州立大学(Wayne State Univ)计算机系教授、终身教职，移动和因特网系统结构实验室主任，可持续计算实验室主任。美国国家科学基金会杰出青年教授奖获得者。主要研究方向包括计算机系统，移动云计算和可持续计算，在分布式共享存储系统，移动互联网计算和高效能系统结构等领域，并取得多项重要研究成果。他独立主持和作为课题负责人的项目经费超过6百万美元，并在相关领域的高级杂志和会议上发表了150多篇论文，其中SCI论文70多篇，论文被他引5000次以上，H-Index值为32。他编写的《Foundations of Computer Systems Research》一书2010年由高等教育出版社出版，全球发行。他的实验室研究开发的软件被学术界和工业界广泛使用，包括Intel，阿里巴巴等等。其中基于MapReduce的基因序列对准软件CloudAligner已经被来自十几个国家的研究教育机构下载1300次以上，进程级功耗分析工具pTop在过去四年里被30多个国家的科研人员下载600多次，软件功耗分析工具SPAN/Safari也被多次下载使用。他在博士期间的工作JIAJIA软件分布式共享存储系统也被世界20多个国家120多个大学和研究机构使用。"
+    },
+    { 
+      "img": "./static/images/teacher/xiongnaixue.jpg",
+      "name": "熊乃学",
+      "title": "教授(美国科罗拉多理工大学)，博士(日本北陆先端科学技术大学院大学)",
+      "reward": "讲座教授",
+      "direction":"云计算、容错安全系统、移动计算与无线网络、高性能计算等。",
+      "link": "",
+      "msg": "研究方向为云计算、容错安全系统、移动计算与无线网络、高性能计算等。在IEEE JSAC、IEEE TPDS、ACM Transactions、Information Science等国际期刊及会议发表论文400多篇。为国际核心期刊Journal of InternetTechnology(JIT)、Journal of parallel and cloud computing(PCC)主编。"
+    },
+    { 
+      "img": "./static/images/teacher/ChristopheCERIN.jpg",
+      "name": "Christophe CERIN(法国)",
+      "title": "教授，博士",
+      "reward": "讲座教授",
+      "direction": "网格和云计算领域的并行处理技术、高性能计算（HPC）",
+      "link": "",
+      "msg": "法国巴黎13大学任职，在LIPN实验室从事研究工作。他是多个地区组织主任委员，如：伊拉斯谟计划，法国大使馆与华盛顿计划，集群、网格、云计划（索邦巴黎西岱联合大学博士点），针对已工作人员的继续教育项目（大学自授文凭）。他的研究兴趣包括：网格和云计算领域的并行处理技术，高性能计算（HPC）。"
+    },
+    { 
+      "img": "./static/images/teacher/zhangjilin.jpg",
+      "name": "张纪林",
+      "title": "教授，硕导，博士(北京科技大学)",
+      "reward": "浙江省151人才工程第三层次人员",
+      "direction": "海量数据存储与处理，复杂系统建模与仿真。",
+      "link": "http://cloud.hdu.edu.cn/mediawiki/index.php/%E5%BC%A0%E7%BA%AA%E6%9E%97",
+      "msg": "1980年生，山东济南人，工学博士（后），教授，硕士导师，现任学校网络信息中心副主任，复杂系统建模与仿真教育部重点实验室副主任，云技术中心副主任，舟山海洋电子信息研究院院长，浙江省计算机学会云计算专委会秘书长，浙江省智慧校园工作小组副组长兼秘书长，入选浙江省151人才工程，中国计算机学会会员，中国计算机学会高性能计算专委会委员，IEEE/ACM会员。担任国家自然基金委、科技部、浙江省人社厅、科技厅、教育厅、浙江省工商局技术专家。研究方向为云计算与云存储、海量数据处理、大规模科学计算并行化、智慧教育。主持2项国家自然科学基金、2项浙江省自然基金、国防预研项目、杭州市安全局项目、萧山智慧城市建设项目、舟山科技合作项目等多项，并曾参与多项973、863、国家及省级自然基金、国家支撑计划、国防预研重点项目、教育部重点基金项目、浙江省重点研发计划/重大科技专项、IBM合作项目、中石化合作项目。已在《Sensors》《ACCESS》《Computer Physics Communications》、《软件学报》、《计算机学报》、《计算机研究与发展》、《Future Generation Computer Systems》(SCI)、《中国科学:F辑》(SCI)等重要期刊和会议中发表和录用30余篇SCI/EI检索论文。已申请国家发明专利20余项，授权7项，获浙江省科学进步奖二等奖1项（2017）、浙江省教学成果奖一等奖1项（2014）、浙江省科学进步奖三等奖1项（2012），浙江省高校成果奖2等奖1项（2011），曾多次受邀担任APSCC、CSE、CloudPerf、ENC等并行计算领域国际学术会议PC委员，SCI期刊特邀专刊编辑和审稿人。"
+    },
+    { 
+      "img": "./static/images/teacher/jiangcongfeng.jpg",
+      "name": "蒋从锋",
+      "title": "副教授，硕导，博士(华中科技大学)",
+      "reward": "",
+      "direction": "云计算与系统虚拟化，绿色计算，传感器网络和复杂系统建模与仿真。",
+      "link": "http://cloud.hdu.edu.cn/mediawiki/index.php/Congfeng_JIANG",
+      "msg": "主要研究方向为云计算与系统虚拟化、绿色计算、传感器网络和复杂系统建模与仿真。ACM、IEEE、CCF会员。2007年毕业于华中科技大学，获工学博士学位。2015年9月至2016年9月受国家留学基金管理委员会资助公派赴美国韦恩州立大学计算机系访学，从事数据中心能量有效性硏究。作为课题负责人，承担了国家自然科学基金面上项目和国家自然科学基金青年基金项目各1项，浙江省自然科学基金项目两项，浙江省教育厅科研项目1项。作为主要成员参与了973、国家自然科学基金、浙江省科技计划重大专项和多个国防预研项目的研究与开发。获中国国防船舶科技报告二级奖励。已在《Cluster Computing》、《Journal of information Science and Engineering》、《International Journal of Big Data Intelligence》、《小型微型计算机系统》等期刊和IEEE WCNC、IEEE Autonomic and Trusted Computing、GCA等国际学术会议上发表SCI/E论文30余篇，论文被引用次数超过150次。作为发起人创建了IEEE IPDPS HPDIC Workshop与IEEE SERVICES CloudPerf Workshop并多次担任共同主席，担任Elsevier Future Generation Computer Systems、Elsevier Sustainable Computing等杂志的客座编辑和特邀审稿人，并担任多个国际会议的本地主席及程序委员会委员。"
+    },
+    { 
+      "img": "./static/images/teacher/yinyuyu.jpg",
+      "name": "殷昱煜",
+      "title": "副教授，硕导，博士(浙江大学)",
+      "reward":"",
+      "direction": "边缘计算、服务计算、大数据分析、软件形式化方法等领域。",
+      "link": "http://xueshu.baidu.com/scholarID/CN-BU75ENXJ",
+      "msg": "杭州电子科技大学副教授，浙江大学电气工程学院博士后，浙江大学计算机科学与技术专业博士。2019-2020年度CCF YOCSEF杭州候任主席，2018-2019年度CCF YOCSEF杭州学术秘书，EAI Fellow，CCF高级会员，徐州市“双创”人才，EAI Endorsed Transactions on Internet of Things期刊共同主编，Collaboratecom 2018大会共同主席（CCF C类），Tridentcom2018/2019大会共同主席，Mobicase 2019大会共同主席。主要研究方向集中在边缘计算、服务计算、大数据分析、软件形式化方法等领域。曾作为主要完成人获得中国商业联合会服务业科技创新奖特等奖、浙江科技进步奖一等奖、浙江省科技进步二等奖及教育部科学技术进步奖一等奖。主持国防科工局技术基础科研项目、国家重点研发计划子课题、国家自然基金项目、浙江省重点研发计划、浙江省自然基金项目等多项国家级、省部级项目，作为核心成员参与国家支撑计划、国家863、浙江省重大科技专项等项目10余项。在TII、EAAI、ESA、EIS、FGCS等重要期刊以及ICWS、ICSOC、SCC等重要会议上发表论文50余篇，合著专著《面向普适环境的自适应中间件模型与方法》，参与撰写《服务计算与技术》。担任IJSEKE、IJCM、MONET、CAI、WNET等期刊的客座编辑。"
+    },
+    { 
+      "img":"./static/images/teacher/zhangwei.jpg",
+      "name": "张伟",
+      "title": "副教授，硕导，博士(武汉大学)",
+      "reward": "",
+      "direction": "智能计算，无线传感器网络，演化硬件，网络流媒体。",
+      "link":"",
+      "msg": "主要研究方向为智能计算、无线传感器网络、演化硬件、网络流媒体。CCF、ACM会员、浙江省Yocsef成员。2008年毕业于武汉大学，获计算机软件与理论专业工学博士学位，2013.8-2015.8担任国家自然科学基金委员会信息中心流动项目主任。主持国家自然科学基金青年科学基金项目“基于数据持久性的无线传感器网络资源优化分配策略研究”，主持浙江省自然科学基金一般项目2项，参与智能计算相关863项目、国家自然科学基金项目工作合计4项，参与科技部国家科技支撑计划“支撑智慧城市的海量数据共享与智能分析应用示范”，参与多媒体及网络技术相关橫冋项目多项。"
+    },
+    { 
+      "img": "./static/images/teacher/zhouli.jpg",
+      "name": "周丽",
+      "title": "副教授，硕导，硕士(杭州电子科技大学)",
+      "reward":"",
+      "direction": "网络安全，云计算等。",
+      "link": "http://cloud.hdu.edu.cn/mediawiki/index.php/%E5%91%A8%E4%B8%BD",
+      "msg": "主要研究方向为网络安全、云计算等。2003年毕业于杭州电子科技大学计算机应用技术专业，获工学硕士学位。主持浙江省重大专项1项，浙江省自然科学基金青年项目1项，信息产业部电子信息产业发展基金子课题1项，多项横向项目。参与省重点科研项目、省科技厅、省自然科学基金青年、省教育厅项目等十多项，在国际会议、国内期刊发表论文二十多篇，其中SCI论文《stability of discrete-time recurrent neural networks ith impulse effects》影响因子2009年位全校首位。2010年度校“十佳”教师，校级教坛新秀，2009年、2010年、2013年校教学优秀奖，2011年校优秀共产党员。"
+    },
+    { 
+      "img": "./static/images/teacher/jiagangyong.jpg",
+      "name": "贾刚勇",
+      "title": "副教授，硕导，博士(中国科技大学)",
+      "reward": "",
+      "direction": "操作系统，存储管理，功耗优化和云计算等。",
+      "link": "http://cloud.hdu.edu.cn/mediawiki/index.php/%E8%B4%BE%E5%88%9A%E5%8B%87",
+      "msg": "主要硏究方向为操作系统、存储管理、功耗优化和云计算等。2013年毕业于中国科学技术大学计算机学院，获工学博士学位。目前主持国家自然科学基金、浙江省自然科学基金各1项，参与国家自然科学基金、浙江省自然科学基金多项。发表论文40篇，其中30多篇已被SCI/EI检索。曾获航天科工奖学金、独墅湖奖学金等。2013年被评为中国科学技术大学优秀毕业生。"
+    },
+    { 
+      "img":"./static/images/teacher/zhourenjie.jpg",
+      "name": "周仁杰",
+      "title": "副教授，硕导，博士(哈尔滨工程大学)",
+      "reward": "浙江省151人才工程第三层次人员",
+      "direction": "网络态势感知，复杂网络分析和社会计算。",
+      "link": "http://cloud.hdu.edu.cn/mediawiki/index.php/%E5%91%A8%E4%BB%81%E6%9D%B0",
+      "msg":"主要研究方向为网络态势感知、复杂网络分析和社会计算。2009年赴世界一流大学美国University of Massachusetts，Amherst进行为期两年的联合培养，2012年毕业于哈尔滨工程大学，获工学博士学位。现主持国家自然科学基金青年项目、浙江省自然科学基金项目各1项，主持和参与证照共享系统、智慧城市信息资源共享平台等多项横向项目研发。在包括CCF推荐会议SIGCOMM IMC，推荐期刊 Neurocomputing、 Multimedia Tools and Applications等国内外学术会议和期刊上发表论文20余篇，SCI/EI收录15篇，被引用300余次。"
+    },
+    { 
+      "img": "./static/images/teacher/shenjing.jpg",
+      "name": "沈静",
+      "title": "副教授，硕导，博士(杭州电子科技大学)",
+      "reward": "",
+      "direction": "存储系统可靠性技术，机器学习，海量数据处理等。",
+      "link": "",
+      "msg": "主要研究方向为存储系统可靠性技术、机器学习、海量数据处理等。2004年毕业于杭州电子科技大学，获硕士学位，目前在读杭州电子科技大学博士生。主持浙江省自然科学基金项目1项，参与国家自然科学基金面上项目1项，浙江省自然科学基金、浙江省科技计划项目多项。发表论文两篇，其中1篇SCI检索(影响因子7.084)，1篇EI检索。"
+    },
+    { 
+      "img": "./static/images/teacher/sihuayou.jpg",
+      "name": "司华友",
+      "title": "讲师，博士(北京大学)",
+      "reward": "",
+      "direction": "大数据技术，知识工程，语义Web等。",
+      "link": "",
+      "msg": "主要研究方向为大数据技术、知识工程、语义Web等。2012年07月毕业于北京大学信息科学与技术学院，获的理学博士学位。在SOCA、JSW、APWEB2013、SEKE2012等重要的国际学术期刊和学术会议上发表高质量学术论文20余篇。现主持国家自然科学基金面上项目1项，曾主持浙江省科技厅面上工业项目和北京大学国家重点实验室开放基金各1项；另外，作为核心成员先后参与并完成了多项军方和政府部门的科研项目。目前在研系统有：健港HBI系统、网络舆情资讯系统和社交网络人物特征分析系统等。"
+    },
+    { 
+      "img": "./static/images/teacher/huangjie.jpg",
+      "name": "黄杰",
+      "title": "讲师，博士(浙江大学)",
+      "reward": "",
+      "direction": "云存储，地理计算，位置服务。",
+      "link": "",
+      "msg": "主要研究方向为云存储、地理计算、位置服务。2008年毕业于浙江大学，获得理学博士学位。作为核心成员参与国家863、国家自然基金等多项科研项目，主持完成浙江省科技重大专项一项。研究成果获省部级科技进步二等奖1项，相关的发明专利及实用软件多项。"
+    },
+    { 
+      "img": "./static/images/teacher/liyouhuizi.jpg",
+      "name": "李尤慧子",
+      "title": "讲师，博士(美国韦恩州立大学)",
+      "reward": "",
+      "direction": "可持续计算，移动互联网计算，高能效系统。",
+      "link": "",
+      "msg": "主要研究方向为可持续计算，移动互联网计算，高能效系统。2016年毕业于美国韦恩州立大学( Wayne State University)计算机科学专业，获工学博士学位。2010年至2015年受国家建设高水平大学公派研究生项目资助。曾参与美国自然科学基金项目“A Research and education Infrastructure for Power- and Thermal- Aware Computing”的研究。"
+    },
+    { 
+      "img": "./static/images/teacher/liyu.jpg",
+      "name": "李玉",
+      "title": "讲师，博士(香港理工大学)",
+      "reward": "",
+      "direction": "主要研究方向为数据库查询优化，众包优化，路径推荐。",
+      "link": "",
+      "msg": "主要研究方向为数据库查询优化，众包优化，路径推荐。CCF会员，浙江省Yocsef成员，2015年毕业于香港理工大学，获得计算机专业博士学位，2017年-2018年于香港理工大学从事博士后研究。承担国家自然科学基金青年基金项目1项，参与国家自然科学基金项目2项。已在IEEE TKDE，IEEE TSC，EDBT等顶级期刊及会议上发表多篇论文。"
+    },
+    { 
+      "img": "./static/images/teacher/linwenmin.jpg",
+      "name": "林文敏",
+      "title":"讲师，博士(南京大学)",
+      "reward": "",
+      "direction":"服务计算、区块链技术、云计算和大数据处理分析。",
+      "link": "",
+      "msg": "主要研究方向为服务计算、区块链技术、云计算和大数据处理分析。2015年6月毕业于南京大学并获得工学博士学位。2015年8月-2018年6月，就职于摩根士丹利（上海）管理服务有限公司，从事分布式全球股票证券交易系统设计与研究工作。2018年6月进入杭州电子科技大学任讲师，在Journal of Software and Systems、Concurrency and Computation: Practice and Experience、ICWS、ICSOC、CollaborateCom等国际期刊、会议上发表10余篇科研论文，获得国家发明专利授权1项。"
+    },
+    { 
+      "img": "./static/images/teacher/chenjunxiang.jpg",
+      "name":"陈军相",
+      "title": "在读博士",
+      "reward": "",
+      "direction": "分布式存储，大数据集成与分析，基于数据热度的分布式存储策略。",
+      "link": "",
+      "msg": "1980年出生，博士在读，硕士毕业于浙江大学软件工程专业。现为杭州电子科技大学网络信息中心现代教育技术科科长，并参与杭州电子科技大学信息化项目建设。曾主持教育厅课题1项，以重要成员（排名前三）参与省级以上项目3项，其中省重点研发项目1项（排名第二），公开发表论文2篇。研究方向：分布式存储，大数据集成与分析，基于数据热度的分布式存储策略。"
+    },
+    { 
+      "img": "./static/images/teacher/yuanjunfeng.jpg",
+      "name": "袁俊峰",
+      "title": "硕士",
+      "reward": "",
+      "direction": "智慧教育等方面。",
+      "link": "",
+      "msg": "浙江桐庐人，硕士就读于杭州电子科技大学，2013年参加工作，先后就职于百度、浙江工商大学杭州商学院，目前在杭州电子科技大学网络信息中心工作。"
+    },
+    { 
+      "img": "./static/images/teacher/zhangyan.jpg",
+      "name": "张艳",
+      "title": "实验室助理",
+      "reward": "实验室助理",
+      "direction": "",
+      "link": "",
+      "msg": "浙江桐庐人，毕业于西安电子科技大学人力资源管理专业，曾就职于浙江工商大学杭州商学院。"
+    }
+  ]
+}

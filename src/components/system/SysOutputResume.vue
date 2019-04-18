@@ -4,14 +4,14 @@
       <div class="all-title">
         <p class="main-font">
           <span>个人信息</span>
-          <el-button type="primary" size="small" @click="generateResume()">生成简历</el-button>
+          <el-button type="primary" size="small" @click="generateResume">生成主页</el-button>
         </p>
       </div>
       <div class="userinfo-content">
         <div class="myinfo">
           <user-info></user-info>
         </div>
-        <div class="myIntroduction">
+        <!-- <div class="myIntroduction">
           <el-popover
             width="500"
             placement="right"
@@ -24,7 +24,7 @@
             </el-input>
             <el-button type="primary" icon="el-icon-edit" circle slot="reference"></el-button>
           </el-popover>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="texHarvestList">
@@ -33,24 +33,35 @@
       </div>
       <harvest-list></harvest-list>
     </div>
+    <div class="texIntroduction">
+      <div class="all-title little-title">
+        <p class="main-font"><span>个人简介</span></p>
+      </div>
+      <el-input
+        type="textarea"
+        :autosize="{ minRows: 8, maxRows: 15 }"
+        placeholder="请输入个人简介"
+        v-model="textarea.introduction">
+      </el-input>
+    </div>
     <div class="texRewards">
-      <div class="all-title">
+      <div class="all-title little-title">
         <p class="main-font"><span>获得奖励</span></p>
       </div>
       <el-input
         type="textarea"
-        :autosize="{ minRows: 5, maxRows: 15 }"
+        :autosize="{ minRows: 8, maxRows: 15 }"
         placeholder="请输入获得的奖励信息"
         v-model="textarea.rewards">
       </el-input>
     </div>
     <div class="texAcademicWork">
-      <div class="all-title">
+      <div class="all-title little-title">
         <p class="main-font"><span>学术兼职</span></p>
       </div>
       <el-input
         type="textarea"
-        :autosize="{ minRows: 5, maxRows: 15 }"
+        :autosize="{ minRows: 12, maxRows: 15 }"
         placeholder="请输入学术兼职信息"
         v-model="textarea.academicwork">
       </el-input>
@@ -104,23 +115,28 @@
             data: Params
           }).then( res => {
             // console.log(res)
-            if(res.data.errCode == 20 ){
+            if(res.data.errCode == 20){
               this.reload()
               this.$message({ type: 'success', message: '已生成/更新简历' })
-              this.$router.push({  
+              let newpage = this.$router.resolve({ 
                 path: '/resume',
                 query: {
                   username: this.$userInfo.username
-                }
-              }) 
+                }  
+              })  
+              window.open(newpage.href, '_blank');
             }else {
               this.$message({ type: 'error', message: '操作失败' });
             }
           }).catch( error => {
-            console.log()
+            // console.log()
           })
         }
-      }
+      },
+      handlePageChange(val){
+        var startIndex = 1+(val-1)*10;
+        this.getAnswerFromGoogle(startIndex);
+      },
     }
   }
 </script>
@@ -134,6 +150,10 @@
   margin-top: 10px;
   height: 35px;
   border-bottom: 1px dashed #DCDFE6;
+}
+
+.little-title {
+  margin-top: 40px;
 }
 
 .main-font {

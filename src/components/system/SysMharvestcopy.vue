@@ -13,7 +13,8 @@
           :data="jpaperTable.slice((currentPage.jpaperPage-1)*pageSize.jpaperSize,currentPage.jpaperPage*pageSize.jpaperSize)"
           stripe
           style="width: 100%"
-          row-key="jpaperIndex"
+          :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
+					row-key="jpaperIndex"
           @expand-change="jpaperExpandChange"
           @selection-change='handleSelectionChange'>
           <el-table-column type="selection" width="60" align="center"></el-table-column>
@@ -55,7 +56,7 @@
 	        <el-table-column prop="jpaperAuthors" label="作者" width="240"></el-table-column>
 	        <el-table-column label="操作" align="center">
 	          <template slot-scope="props">
-							<el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+							<el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
 	          </template>
 	        </el-table-column>
         </el-table>
@@ -64,9 +65,8 @@
 	          @size-change="jpaperHandleSizeChange"
 	          @current-change="jpaperHandleCurrentChange"
 	          :current-page="currentPage.jpaperPage"
-	          :page-sizes="[5, 10, 20, 50]"
 	          :page-size="pageSize.jpaperSize"
-	          layout="total, sizes, prev, pager, next, jumper"
+	          layout="total, prev, pager, next, jumper"
 	          :total="jpaperTable.length">
 	        </el-pagination>
 	      </div>
@@ -75,7 +75,8 @@
         <el-table
 		      :data="mpaperTable.slice((currentPage.mpaperPage-1)*pageSize.mpaperSize,currentPage.mpaperPage*pageSize.mpaperSize)"
 		      style="width: 100%"
-		      stripe
+		      :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
+					stripe
 		      row-key="mpaperIndex"
 		      @expand-change="mpaperExpandChange"
           @selection-change='handleSelectionChange'>
@@ -115,7 +116,7 @@
 		      <el-table-column prop="mpaperAuthors" label="作者" width="240"></el-table-column>
 		      <el-table-column label="操作" align="center">
 		        <template slot-scope="props">
-		          <el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+		          <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
 		        </template>
 		      </el-table-column>
 		    </el-table>
@@ -124,9 +125,8 @@
 		        @size-change="mpaperHandleSizeChange"
 		        @current-change="mpaperHandleCurrentChange"
 		        :current-page="currentPage.mpaperPage"
-		        :page-sizes="[5, 10, 20, 50]"
 		        :page-size="pageSize.mpaperSize"
-		        layout="total, sizes, prev, pager, next, jumper"
+		        layout="total, prev, pager, next, jumper"
 		        :total="mpaperTable.length">
 		      </el-pagination>
 		    </div>
@@ -135,7 +135,8 @@
         <el-table
 			    :data="patentTable.slice((currentPage.patentPage-1)*pageSize.patentSize,currentPage.patentPage*pageSize.patentSize)"
 			    style="width: 100%"
-			    stripe
+			    :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
+					stripe
 			    row-key="patentIndex"
 			    @expand-change="patentExpandChange"
 					@selection-change='handleSelectionChange'>
@@ -181,7 +182,7 @@
 			    <el-table-column prop="patentAuthors" label="作者" width="240"></el-table-column>
 			    <el-table-column label="操作" align="center">
 			      <template slot-scope="props">
-			        <el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+			        <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
 			      </template>
 			    </el-table-column>
 			  </el-table>
@@ -190,9 +191,8 @@
 			      @size-change="patentHandleSizeChange"
 			      @current-change="patentHandleCurrentChange"
 			      :current-page="currentPage.patentPage"
-			      :page-sizes="[5, 10, 20, 50]"
 			      :page-size="pageSize.patentSize"
-			      layout="total, sizes, prev, pager, next, jumper"
+			      layout="total, prev, pager, next, jumper"
 			      :total="patentTable.length">
 			    </el-pagination>
 			  </div>
@@ -201,7 +201,8 @@
         <el-table
 		      :data="projectTable.slice((currentPage.projectPage-1)*pageSize.projectSize,currentPage.projectPage*pageSize.projectSize)"
 		      style="width: 100%"
-		      stripe
+		      :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
+					stripe
 		      row-key="projectIndex"
 		      @expand-change="projectExpandChange"
 					@selection-change='handleSelectionChange'>
@@ -235,7 +236,7 @@
 		      <el-table-column prop="projectAuthors" label="作者" width="240"></el-table-column>
 		      <el-table-column label="操作" align="center">
 		        <template slot-scope="props">
-		          <el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+		          <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
 		        </template>
 		      </el-table-column>
 		    </el-table>
@@ -244,9 +245,8 @@
 		        @size-change="projectHandleSizeChange"
 		        @current-change="projectHandleCurrentChange" 
 		        :current-page="currentPage.projectPage"
-		        :page-sizes="[5, 10, 20, 50]"
 		        :page-size="pageSize.projectSize"
-		        layout="total, sizes, prev, pager, next, jumper"
+		        layout="total, prev, pager, next, jumper"
 		        :total="projectTable.length">
 		      </el-pagination>
 		    </div>
@@ -255,7 +255,8 @@
         <el-table
 		      :data="subjectTable.slice((currentPage.subjectPage-1)*pageSize.subjectSize,currentPage.subjectPage*pageSize.subjectSize)"
 		      style="width: 100%"
-		      stripe
+		      :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
+					stripe
 		      row-key="subjectIndex"
 		      @expand-change="subjectExpandChange"
 					@selection-change='handleSelectionChange'>
@@ -295,7 +296,7 @@
 		      <el-table-column prop="subjectAuthors" label="作者" width="240"></el-table-column>
 		      <el-table-column label="操作" align="center">
 		        <template slot-scope="props">
-		          <el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+		          <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
 		        </template>
 		      </el-table-column>
 		    </el-table>
@@ -304,9 +305,8 @@
 		        @size-change="subjectHandleSizeChange"
 		        @current-change="subjectHandleCurrentChange"
 		        :current-page="currentPage.subjectPage"
-		        :page-sizes="[5, 10, 20, 50]"
 		        :page-size="pageSize.subjectSize"
-		        layout="total, sizes, prev, pager, next, jumper"
+		        layout="total, prev, pager, next, jumper"
 		        :total="subjectTable.length">
 		      </el-pagination>
 		    </div>
@@ -315,7 +315,8 @@
         <el-table
 			    :data="softwareTable.slice((currentPage.softwarePage-1)*pageSize.softwareSize,currentPage.softwarePage*pageSize.softwareSize)"
 			    style="width: 100%"
-			    stripe
+			    :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
+					stripe
 			    row-key="softwareIndex"
 			    @expand-change="softwareExpandChange"
 					@selection-change='handleSelectionChange'>
@@ -343,7 +344,7 @@
 			    <el-table-column prop="softwareAuthors" label="作者" width="240"></el-table-column>
 			    <el-table-column label="操作" align="center">
 			      <template slot-scope="props">
-			        <el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+			        <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
 			      </template>
 			    </el-table-column>
 			  </el-table>
@@ -352,9 +353,8 @@
 			      @size-change="softwareHandleSizeChange"
 			      @current-change="softwareHandleCurrentChange"
 			      :current-page="currentPage.softwarePage"
-			      :page-sizes="[5, 10, 20, 50]"
 			      :page-size="pageSize.softwareSize"
-			      layout="total, sizes, prev, pager, next, jumper"
+			      layout="total, prev, pager, next, jumper"
 			      :total="softwareTable.length">
 			    </el-pagination>
 			  </div>
@@ -363,7 +363,8 @@
         <el-table
 		      :data="affairsTable.slice((currentPage.affairsPage-1)*pageSize.affairsSize,currentPage.affairsPage*pageSize.affairsSize)"
 		      style="width: 100%"
-		      stripe
+		      :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
+					stripe
 		      row-key="affairsIndex"
 		      @expand-change="affairsExpandChange"
 					@selection-change='handleSelectionChange'>
@@ -391,7 +392,7 @@
 		      <el-table-column prop="affairsAuthors" label="作者" width="240"></el-table-column>
 		      <el-table-column label="操作" align="center">
 		        <template slot-scope="props">
-		          <el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+		          <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
 		        </template>
 		      </el-table-column>
 		    </el-table>
@@ -400,9 +401,8 @@
 		        @size-change="affairsHandleSizeChange"
 		        @current-change="affairsHandleCurrentChange"
 		        :current-page="currentPage.affairsPage"
-		        :page-sizes="[5, 10, 20, 50]"
 		        :page-size="pageSize.affairsSize"
-		        layout="total, sizes, prev, pager, next, jumper"
+		        layout="total, prev, pager, next, jumper"
 		        :total="affairsTable.length">
 		      </el-pagination>
 		    </div>
@@ -438,13 +438,13 @@
           affairsPage: 1
         },
         pageSize: {
-          jpaperSize: 5,
-          mpaperSize: 5,
-          patentSize: 5,
-          projectSize: 5,
-          subjectSize: 5,
-          softwareSize: 5,
-          affairsSize: 5
+          jpaperSize: 10,
+          mpaperSize: 10,
+          patentSize: 10,
+          projectSize: 10,
+          subjectSize: 10,
+          softwareSize: 10,
+          affairsSize: 10
 				},
 				selectionData:[]
       }
@@ -455,7 +455,7 @@
 					var _this = this
 					var Params = { userType: _this.$type }
 					this.$ajax.get('/api/getHarvestCopy', {params: Params}).then( res => {
-						console.log(res)
+						// console.log(res)
 						/**************************************************************************************************jpaper***/
 						var jpaper = res.data.jpaperModels
 						for (var i=0; i<jpaper.length; i++) {
@@ -532,7 +532,7 @@
         this.selectionData = val
 			},
 			handleEdit (row) {
-				console.log(row)
+				// console.log(row)
 				this.$router.push({ 
 					name: 'Addmanual', 
 					params: { row: row, harReturnRouter: 'Mharvestcopy' }
@@ -593,7 +593,7 @@
 								dataType: "json",
 								data: Params
 							}).then( res => {
-								console.log(res);
+								// console.log(res);
 								if(res.data.errCode == 20){
 									this.reload();
 									this.$message({ type: 'success', message: '删除成功' });

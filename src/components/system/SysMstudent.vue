@@ -8,6 +8,9 @@
           <el-button size="small" type="danger" @click="delSelections()" style="margin-right:15px;">批量删除</el-button>
         </p>
       </div>
+      <el-dialog :title="tableTitle" :visible.sync="dialogTableVisible" v-if='dialogTableVisible' width="1000px" @close="closeTableDialog()">
+        <harvest-list :harvestParams="harvestParams"></harvest-list>
+      </el-dialog>
       <el-dialog title="添加学生" :visible.sync="dialogFormVisible" width="480px" @close="closeDialog()">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm" >
           <el-form-item label="姓名：" prop="name">
@@ -53,6 +56,7 @@
     </div>
     <el-table
       :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
+      :header-cell-style="{background:'#8DB6CD', color:'#FFF'}"
       style="width: 100%"
       stripe
       row-key="index"
@@ -101,7 +105,8 @@
       <el-table-column prop="email" label="电子邮箱" width="270" align="center"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
-          <el-button size="mini" type="primary" @click="handleEdit(props.row)">编辑</el-button>
+          <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
+          <el-button size="mini" type="info" @click="checkHarvest(props.row)">查看成果</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -118,9 +123,13 @@
 </template>
 
 <script>
+  import HarvestList from '@/components/tex/texHarvestList'
   export default {
     name:'sysaudit',
     inject: ['reload'],
+    components: {
+      HarvestList
+    },
     data() {
       var validateUsername = (rule, value, callback) => {
         var targ = /^[A-Za-z0-9]+$/;
@@ -140,6 +149,9 @@
         dialogType: 0,
         usernameShow: false,
         dialogFormVisible: false,
+        dialogTableVisible: false,
+        harvestParams: {},
+        tableTitle: '',
         option: [
           { value: '0', label: '学硕' },
           { value: '1', label: '专硕' },
@@ -172,7 +184,7 @@
           var data = [];
           var Params = { userType: _this.$type }
           this.$ajax.get('/api/getStudent', {params: Params}).then( res => {
-            console.log(res);
+            // console.log(res);
             var studentData = res.data.studentModels
             for (var i = 0; i<studentData.length; i++) {
               studentData[i].index = i+1;
@@ -193,7 +205,7 @@
       handleEdit(row) {
         if(this.judgeLogin()){
           var _this = this
-          console.log(row);
+          // console.log(row);
           _this.ruleForm.id = row.id
           _this.ruleForm.name = row.name
           _this.ruleForm.username = row.username
@@ -210,11 +222,24 @@
           _this.dialogFormVisible = true
         }
       },
+      checkHarvest (row) {
+        var _this = this
+        _this.tableTitle = row.name + " / 个人成果"
+        _this.harvestParams = {
+          userType: 2,
+          username: row.username
+        }
+        _this.dialogTableVisible = true
+      },
+      closeTableDialog() {
+        this.dialogTableVisible = false
+      },
       closeDialog() {
+        var _this = this
         this.$refs.ruleForm.resetFields();
-        this.dialogType = 0
-        this.usernameShow = false
-        this.ruleForm = {}
+        _this.dialogType = 0
+        _this.usernameShow = false
+        _this.ruleForm = {}
       },
       handleStudent () {
         if(this.judgeLogin()){
@@ -236,7 +261,7 @@
                   direction: _this.ruleForm.direction
                 }
               }
-              console.log(Params)
+              // console.log(Params)
               this.$ajax({
                   url: '/api/handleStudent',
                   method: 'post',
@@ -244,7 +269,7 @@
                   dataType: "json",
                   data: Params
                 }).then( res => {
-                console.log(res)
+                // console.log(res)
                 if(res.data.errCode == 20){
                   var msg = '录入成功'
                   if(_this.dialogType == 1) 
@@ -294,7 +319,7 @@
                 dataType: "json",
                 data: Params
               }).then( res => {
-                console.log(res)
+                // console.log(res)
                 if(res.data.errCode == 20){
                   this.reload();
                   this.$message({ type: 'success', message: '删除成功' });

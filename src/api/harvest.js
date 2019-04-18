@@ -51,7 +51,7 @@ export default {
         _this.tableData = jpaper;
         // console.log(this.tableData);
       }).catch( error => {
-        console.log(error);
+        // console.log(error);
         alert("出错！请联系管理员")
       });
     }
@@ -312,7 +312,7 @@ export default {
         //   data[i] = obj;
         // }
         _this.tableData = affairs;
-        console.log(this.tableData);
+        // console.log(this.tableData);
       }).catch( error => {
         // console.log(error);
         alert("出错！请联系管理员")

@@ -3,7 +3,7 @@
     <div class = "all-title">
       <p class="main-font">
         <span>修改密码</span>
-        <el-button type="primary" size="small" @click="submitForm()" >确认修改</el-button>
+        <el-button type="warning" size="small" @click="submitForm()" >确认修改</el-button>
         <el-button size="small" @click="resetForm()" type="danger" style="margin-right: 15px">重置</el-button>
       </p>
     </div>
@@ -88,7 +88,7 @@
                   checkPass: this.ruleForm.checkPass1
                 }
                 this.$ajax.get('/api/revisePwd', {params: Params}).then( res => {
-                  console.log(res)
+                  // console.log(res)
                   if(res.data.errCode == 20){
                     this.$message({ type: 'success', message: '修改成功' });
                     this.resetForm()
@@ -105,7 +105,7 @@
               });
             }
           } else {
-            console.log('error submit!!')
+            // console.log('error submit!!')
             return false
           }
         });
@@ -124,7 +124,7 @@
 .base-msg-all{
   margin-left: 70px;
   width: 800px;
-  margin-top:20px;
+  margin-top:50px;
 }
 .manual-wrap {
   margin: 0 auto;

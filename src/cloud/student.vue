@@ -38,7 +38,7 @@
               <div class="black-title-line"></div>
             </h3>
           </div>
-          <div class="col-md-12" v-for="(items, index) in this.studentDoc" :key="index" style="margin-bottom:15px;">
+          <div class="col-md-12" v-for="(items, index) in this.student.Doc" :key="index" style="margin-bottom:15px;">
             <h4>博士研究生<span class="green-font">{{ items.title }}</span>级</h4>
             <p>{{ items.msg }}</p>
             <!-- <span>{{ items.msg[0].name }}</span>
@@ -53,7 +53,7 @@
               <div class="black-title-line"></div>
             </h3>
           </div>
-          <div class="col-md-12" v-for="(items, index) in this.studentMd" :key="index + '-label'" style="margin-bottom:15px;">
+          <div class="col-md-12" v-for="(items, index) in this.student.Md" :key="index + '-label'" style="margin-bottom:15px;">
             <h4>硕士研究生<span class="green-font">{{ items.title }}</span>级</h4>
             <p>{{ items.msg }}</p>
           </div>
@@ -67,27 +67,25 @@
 						<h3>学生获奖<br><span class="deepred-font">(近两年部分)</span></h3>
 					</div>
           <div class="col-md-12">
-            <div class="col-xs-3 col-sm-3 col-md-3 wow fadeInLeft" style="margin-bottom:10px;" data-wow-delay="2000" v-for="(item, index) in this.studentRewards" :key="index">
+            <div class="col-xs-3 col-sm-3 col-md-3 wow fadeInLeft" style="margin-bottom:10px;" data-wow-delay="2000" v-for="(item, index) in this.student.Rewards" :key="index">
               <div class="stu3_thumb">
                 <img :src="item.img" class="img-responsive" alt="stu3">
                 <div class="stu3_overlay">
-                  <a href="#"><i class="fa"><h5>{{ item.msg }}<br><span class="deepred-font">{{ item.name }}</span></h5></i></a>
+                  <i class="fa"><h5>{{ item.msg }}<br><span class="deepred-font">{{ item.name }}</span></h5></i>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-12 stu3-honor">
-            <div class="col-md-4" style="margin-right:40px;"></div>
-            <div class="col-md-3 wow fadeInLeft" data-wow-delay="2000">
+            <div class="col-xs-4 col-sm-4 col-md-4" style="margin-right:4%;"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
               <div class="stu3_thumb">
-                <img src="../images/student/reward-team17-2.jpg" class="img-responsive" alt="stu3">
+                <img src="../../static/images/student/reward-team17-2.jpg" class="img-responsive" alt="stu3">
                 <div class="stu3_overlay">
-                  <a href="#">
-                    <i class="fa" style="height:110px;width:140px;">
-                      <h5>2017年第八届中国计算机学会服务计算会议软件服务创新大赛优胜奖<br>
-                      <span class="deepred-font">高敏，陈璐，王兴菲，余方正，张伟鹏</span></h5>
-                    </i>
-                  </a>
+                  <i class="fa" style="height:110px;width:140px;">
+                    <h5>2017年第八届中国计算机学会服务计算会议软件服务创新大赛优胜奖<br>
+                    <span class="deepred-font">高敏，陈璐，王兴菲，余方正，张伟鹏</span></h5>
+                  </i>
                 </div>
               </div>
             </div>
@@ -100,12 +98,12 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <div class="col-md-12" v-for="(item, index) in this.studentRewards" :key="index + 'model'">
+            <div class="col-md-12" v-for="(item, index) in this.student.Rewards" :key="index + 'model'">
               <h5>{{ item.msg }}（<span class="deepred-font">{{item.name}}</span>）</h5>
             </div>
           </div>
           <div class="col-md-6">
-            <div class="col-md-12" v-for="(item, index) in this.studentRewardHonor" :key="index">
+            <div class="col-md-12" v-for="(item, index) in this.student.RewardHonor" :key="index">
               <h5>{{ item.msg }}（<span class="deepred-font">{{item.name}}</span>）</h5>
             </div>
           </div>
@@ -121,11 +119,17 @@
 </template>
 
 <script>
+import student from '../../static/mock/student.json';
 export default {
   name: 'student',
   data () {
     return {
-      
+      student: {
+        RewardHonor: student.studentRewardHonor,
+        Rewards: student.studentRewards,
+        Doc: student.studentDoc,
+        Md: student.studentMd
+      }
     }
   },
   mounted () {
@@ -282,6 +286,8 @@ export default {
 </script>
 
 <style scoped>
+@import '../css/templatemo-style.css';
+@import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
 h3 {
   font-weight: bold;
   letter-spacing: 1px !important;
@@ -308,7 +314,7 @@ h3 {
 
 /* start stuflow */
 #stuflow {
-  background: url('../images/student/stu-flow.jpg') no-repeat center center;
+  background: url('../../static/images/student/stu-flow.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   color: #FFFFFF;
@@ -368,7 +374,7 @@ h3 {
 
 /* start stu3 */
 #stu3 {
-  background: url('../images/student/stu-flow.jpg') no-repeat center center;
+  background: url('../../static/images/student/stu-flow.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   color: #FFFFFF;

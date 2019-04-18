@@ -76,11 +76,12 @@ export default {
       }).then(() => {
         var _this = this;
         var Params = {
+              userType: _this.$type,
               userId: _this.$userInfo.id,
               harType: harType,
               harId: harId};
         this.$ajax.get('/api/passMyAuditHarvest', {params: Params}).then( res => {
-          console.log(res);
+          // console.log(res);
           if(res.data.errCode == 20){
             if(review === 1)
               _this.number.unReviseNum--
@@ -108,17 +109,18 @@ export default {
       }).then(() => {
         var _this = this;
         var Params = {
+              userType: _this.$type,
               userId: _this.$userInfo.id,
               harType: harType,
               harId: harId};
         this.$ajax.get('/api/rejectMyAuditHarvest', {params: Params}).then( res => {
-          console.log(res);
+          // console.log(res);
           if(res.data.errCode == 20){
             if(review === 1)
               _this.number.unReviseNum--
             _this.number.reviseFailNum++
             this.reload();
-            console.log("reject")
+            // console.log("reject")
             this.$message({ type: 'success', message: '操作成果' });
           }else if(res.data.errCode == 21){
             this.$message({ type: 'error', message: '操作失败' });
@@ -146,7 +148,7 @@ export default {
           harType: val,
           selections: _this.selections
         };
-        console.log(Params)
+        // console.log(Params)
         this.$ajax({
           url: '/api/autoAdd',
           method: 'post',
@@ -154,7 +156,7 @@ export default {
           dataType: "json",
           data: Params
         }).then( res => {
-          console.log(res)
+          // console.log(res)
           if(res.data.errCode == 20){
             this.reload();
             this.$message({ type:'success', message:'成果录入成功'})
@@ -162,7 +164,7 @@ export default {
             this.$message({ type: 'error', message: '录入失败' });
           }
         }).catch( error => {
-          console.log(error);
+          // console.log(error);
         });
       }).catch( () => {});
     }
@@ -177,13 +179,16 @@ export default {
       this.$ajax.get('/api/getTeacherMsg', {params: Params}).then( res => {
         // console.log(res)
         if(res.data.errCode == 20){
+          this.myInfo = res.data.teacherModel
           if(handleType == 0){
             _this.textarea.introduction = res.data.teacherModel.introduction
             _this.textarea.rewards = res.data.teacherModel.rewards
             _this.textarea.academicwork = res.data.teacherModel.academicwork
-          }else {
-            _this.myInfo = res.data.teacherModel
           }
+          // console.log(this.myInfo)
+          // else {
+          //   _this.myInfo = res.data.teacherModel
+          // }
         }else if(res.data.errCode == 21){
           alert("出错！请联系管理员")
         }

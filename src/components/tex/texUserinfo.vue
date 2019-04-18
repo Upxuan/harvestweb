@@ -1,12 +1,14 @@
 <template>
   <div id="texUserInfo">
     <div class="user-img">
-      <img src="@/images/user-blue.png">
+      <img v-if="imgurl != '' && imgurl != null" :src="imgurl">
+      <img v-else src="../../../static/images/user-blue.png">
     </div>
     <div class="index-usermsg">
       <div class="namefont"><span>{{ myInfo.name }}</span></div>
       <div class="elsefont">
-        <div v-if="UserName.length === 5">
+        <div v-if="UserName == 'Admin'">欢迎来到管理员端！</div>
+        <div v-else-if="UserName.length === 5">
           <span>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称： {{ myInfo.title }}</span><br>
           <span>组&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别： {{ myInfo.team }}</span><br>
           <span>联系方式： {{ myInfo.tel }}</span><br>
@@ -23,7 +25,6 @@
           <span>电子邮箱： {{ myInfo.email }}</span><br>
           <span>研究方向： {{ myInfo.direction }}</span><br>
         </div>
-        <div v-else>欢迎来到管理员端！</div>
       </div>
     </div>
   </div>
@@ -38,6 +39,7 @@
     data () {
       return {
         UserName: '',
+        imgurl: this.$userInfo.imgurl,
         myInfo: {}
       }
     },
@@ -61,6 +63,11 @@
          _this.myInfo.direction = this.$userInfo.direction
       }
       // console.log(_this.UserName.length)
+    },
+    mounted () {
+      if(this.imgurl != '' && this.imgurl != null) {
+        this.imgurl = '../../../static/images/avatar/' + this.$userInfo.imgurl;
+      }
     }
   }
 </script>

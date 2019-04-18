@@ -27,4 +27,4 @@ function delCookie(name)
         document.cookie= name + "="+val+";expires="+exp.toGMTString();
 }
 
-export {setCookie, getCookie, updateCookie, delCookie}
+export {setCookie, getCookie, delCookie}
