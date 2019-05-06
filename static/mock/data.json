@@ -1,4 +1,5 @@
 {
+  "basePng": "./static/images/user-blue.png",
   "searchTypes": [
     { "value": 1, "label": "标题" },
     { "value": 6, "label": "作者" },
@@ -7,7 +8,6 @@
     { "value": 4, "label": "提交审核者" },
     { "value": 5, "label": "审核人" }
   ],
-
   "searchDate": [
     { "value": "1989", "label": "1989年" },
     { "value": "1990", "label": "1990年" },

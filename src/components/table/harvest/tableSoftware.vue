@@ -28,7 +28,7 @@
       <el-table-column prop="softwareName" label="软件名称" width="300" align="center"></el-table-column>
       <el-table-column prop="softwareAcquireType" label="权利获得方式" width="170" align="center"></el-table-column>
       <el-table-column prop="softwareNum" label="登记号" width="170" align="center"></el-table-column>
-      <el-table-column prop="softwareAuthors" label="作者" width="180"></el-table-column>
+      <el-table-column prop="softwareAuthors" label="作者" width="300"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
           <el-button size="mini" type="danger" @click="handleDelete(props.row)">删除</el-button>

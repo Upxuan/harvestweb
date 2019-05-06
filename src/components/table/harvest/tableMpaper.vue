@@ -41,7 +41,7 @@
       <el-table-column prop="mpaperType" label="收录" width="160" align="center"></el-table-column>
       <el-table-column prop="mpaperTitle" label="标题" width="400"></el-table-column>
       <el-table-column prop="mpaperPublishDate" label="发表日期" width="100" align="center"></el-table-column>
-      <el-table-column prop="mpaperAuthors" label="作者" width="160"></el-table-column>
+      <el-table-column prop="mpaperAuthors" label="作者" width="300"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
           <el-button size="mini" type="danger" @click="handleDelete(props.row)">删除</el-button>

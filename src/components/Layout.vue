@@ -1,7 +1,7 @@
 <template>
   <div id="layout">
     <el-container>
-      <el-header>
+      <el-header id="myheader">
         <span>&nbsp;&nbsp;HARVEST</span>
         <el-dropdown @command="handleCommand">
           <span class="el-dropdown-link">
@@ -12,7 +12,7 @@
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
-      <el-container class="container">
+      <el-container class="mycontainer">
         <div class="backbar">
           <el-aside>
             <el-menu
@@ -60,11 +60,11 @@
               <el-submenu index="3" v-show="managerShow">
                 <template slot="title">
                   <i class="el-icon-star-off"></i>
-                  <span>信息管理</span>
+                  <span>用户管理</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="/system/mteacher">教师信息管理</el-menu-item>
-                  <el-menu-item index="/system/mstudent">学生信息管理</el-menu-item>
+                  <el-menu-item index="/system/mteacher">教师用户管理</el-menu-item>
+                  <el-menu-item index="/system/mstudent">学生用户管理</el-menu-item>
                 </el-menu-item-group>
               </el-submenu>
               <el-menu-item index="/system/search" v-show="managerShow">
@@ -79,6 +79,10 @@
                 <i class="el-icon-menu"></i>
                 <span slot="title">官网信息维护</span>
               </el-menu-item>
+              <el-menu-item index="/system/graduation" v-show="studentShow">
+                <i class="el-icon-share"></i>
+                <span slot="title">毕业交接</span>
+              </el-menu-item>
               <el-submenu index="4">
                 <template slot="title">
                   <i class="el-icon-setting"></i>
@@ -92,7 +96,7 @@
             </el-menu>
           </el-aside>
         </div>
-        <div class="content">
+        <div id="content">
           <el-main>
             <transition> 
               <router-view ref="note"></router-view>
@@ -132,7 +136,9 @@
         studentShow: false,
         manageinfoShow: false,
         num2: 0,
-        disabledNum2: false
+        disabledNum2: false,
+        // screenWidth: document.body.clientWidth,
+        // mainWidth: document.body.clientWidth-240,
       }
     },
     mounted () {
@@ -146,9 +152,32 @@
         }else if(_this.$type == 2){//student
           _this.studentShow = true
         }
-        if(_this.$type != 2) this.getNum2()
+        if(_this.$type != 2) this.getNum2();
+        // window.onresize = () => {
+        //   return (() => {
+        //     window.screenWidth = document.body.clientWidth
+        //     _this.screenWidth = window.screenWidth
+        //     _this.mainWidth = window.screenWidth - 240
+        //   })();
+        // }
+        // document.getElementById("content").style.width=_this.screenWidth+"px";
+        // console.log(_this.screenWidth)
+        // console.log(_this.mainWidth)
+        // document.getElementById("myheader").style.width=(_this.mainWidth)+"px";
       })
     },
+    // watch: {
+    //   screenWidth (val) {
+    //     console.log(val)
+    //     var _this = this
+    //     if(val > 1200){
+    //       console.log(1)
+    //       _this.screenWidth = val
+    //       document.getElementById("content").style.width=(_this.screenWidth)+"px";
+    //       document.getElementById("myheader").style.width=(_this.mainWidth)+"px";
+    //     }
+    //   }
+    // },
     methods: {
       getNum2 () {
         var _this = this
@@ -206,6 +235,9 @@
 </script>
 
 <style scoped>
+#layout {
+  min-width: 1600px;
+}
 .el-header {
   background-color: #545c64;
   /* background-color: rgb(79,184,238); */
@@ -216,11 +248,16 @@
   font-family: Hiragino Sans GB;
   float: left;
   line-height: 60px;
+  /* min-width: 1200px; */
 }
 .el-header span {
   color: #fff;
 }
-.container {
+.mycontainer {
+  /* padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; */
   height: 80%;
 }
 .el-dropdown{
@@ -236,7 +273,11 @@
   font-weight: normal;
   overflow: hidden;
 }
-.content {
+.el-main {
+  /* width: 100%; */
+  /* min-width: 1200px; */
+}
+#content {
   width: 100%;
   border-left: 1px solid #E4E7ED;
 }

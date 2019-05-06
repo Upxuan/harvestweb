@@ -30,6 +30,9 @@ export default {
 </script>
 
 <style>
+#app {
+  /* min-width: 1600px; */
+}
 body {
   margin: 0px;
   padding: 0px;

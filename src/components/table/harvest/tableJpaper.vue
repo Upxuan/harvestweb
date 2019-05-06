@@ -43,7 +43,7 @@
       <el-table-column prop="jpaperType" label="收录" width="160" align="center"></el-table-column>
       <el-table-column prop="jpaperTitle" label="标题" width="400"></el-table-column>
       <el-table-column prop="jpaperPublishDate" label="发表日期" width="100" align="center"></el-table-column>
-      <el-table-column prop="jpaperAuthors" label="作者" width="160" align="center"></el-table-column>
+      <el-table-column prop="jpaperAuthors" label="作者" width="300" align="center"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
           <el-button size="mini" type="danger" @click="handleDelete(props.row)">删除</el-button>

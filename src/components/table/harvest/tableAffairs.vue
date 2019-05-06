@@ -27,7 +27,7 @@
       <el-table-column prop="affairsIndex" label="序号" width="50" align="center"></el-table-column>
       <el-table-column prop="affairsTitle" label="主题" width="320"></el-table-column>
       <el-table-column prop="affairsDate" label="起止日期" width="260" align="center"></el-table-column>
-      <el-table-column prop="affairsAuthors" label="作者" width="240"></el-table-column>
+      <el-table-column prop="affairsAuthors" label="作者" width="300"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
           <el-button size="mini" type="danger" @click="handleDelete(props.row)">删除</el-button>

@@ -4,14 +4,17 @@
       <div class="content-head">
         <p class="main-font">
           学生信息管理：共<span>{{ number }}</span>人
-          <el-button size="small " type="warning"  @click="dialogFormVisible = true">添加学生</el-button>
+          <el-button size="small " type="warning"  @click="formDialogVisible = true">添加学生</el-button>
           <el-button size="small" type="danger" @click="delSelections()" style="margin-right:15px;">批量删除</el-button>
         </p>
       </div>
-      <el-dialog :title="tableTitle" :visible.sync="dialogTableVisible" v-if='dialogTableVisible' width="1000px" @close="closeTableDialog()">
+      <el-dialog :title="graduationTitle" :visible.sync="graduationDialogVisible" v-if='graduationDialogVisible' width="40%" @close="closeGraduationDialog()">
+        <graduation-status :graduationParams="graduationParams"></graduation-status>
+      </el-dialog>
+      <el-dialog :title="tableTitle" :visible.sync="tableDialogVisible" v-if='tableDialogVisible' width="1000px" @close="closeTableDialog()">
         <harvest-list :harvestParams="harvestParams"></harvest-list>
       </el-dialog>
-      <el-dialog title="添加学生" :visible.sync="dialogFormVisible" width="480px" @close="closeDialog()">
+      <el-dialog title="添加学生" :visible.sync="formDialogVisible" width="480px" @close="closeDialog()">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="130px" class="demo-ruleForm" >
           <el-form-item label="姓名：" prop="name">
             <el-input v-model="ruleForm.name"></el-input>
@@ -49,7 +52,7 @@
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
+          <el-button @click="formDialogVisible = false">取 消</el-button>
           <el-button type="primary" @click="handleStudent()">确 定</el-button>
         </div>
       </el-dialog>
@@ -105,8 +108,9 @@
       <el-table-column prop="email" label="电子邮箱" width="270" align="center"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
-          <el-button size="mini" @click="handleEdit(props.row)">编辑</el-button>
-          <el-button size="mini" type="info" @click="checkHarvest(props.row)">查看成果</el-button>
+          <el-button size="mini" type="info"  plain @click="handleEdit(props.row)">编辑</el-button>
+          <el-button size="mini" type="info" @click="checkHarvest(props.row)">个人成果</el-button>
+          <el-button size="mini" @click="graduationStatus(props.row)">毕业交接情况</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -123,12 +127,14 @@
 </template>
 
 <script>
+  import GraduationStatus from '@/components/tex/texGraduationStatus'
   import HarvestList from '@/components/tex/texHarvestList'
   export default {
     name:'sysaudit',
     inject: ['reload'],
     components: {
-      HarvestList
+      HarvestList,
+      GraduationStatus
     },
     data() {
       var validateUsername = (rule, value, callback) => {
@@ -145,13 +151,15 @@
         tableData: [],
         expand: [],
         selectionData: [],
+        graduationTitle: '',
+        tableTitle: '',
         dialogTitle: '添加学生',
         dialogType: 0,
         usernameShow: false,
-        dialogFormVisible: false,
-        dialogTableVisible: false,
+        formDialogVisible: false,
+        tableDialogVisible: false,
+        graduationDialogVisible: false,
         harvestParams: {},
-        tableTitle: '',
         option: [
           { value: '0', label: '学硕' },
           { value: '1', label: '专硕' },
@@ -174,7 +182,8 @@
           first: [{ required: true, message: '请输入第一导师', trigger: 'blur'}],
           degree: [{ required: true, message: '请选择学位', trigger: 'blur'}],
           tel: [{ min: 11, max: 11, message: '请输入11位电话号码', trigger: 'blur' }]
-        }
+        },
+        graduationParams: {}
       }
     },
     mounted () {
@@ -219,20 +228,33 @@
           _this.dialogTitle = '更新学生信息'
           _this.dialogType = 1
           _this.usernameShow = true
-          _this.dialogFormVisible = true
+          _this.formDialogVisible = true
         }
       },
-      checkHarvest (row) {
+      checkHarvest(row) {
         var _this = this
         _this.tableTitle = row.name + " / 个人成果"
         _this.harvestParams = {
           userType: 2,
           username: row.username
         }
-        _this.dialogTableVisible = true
+        _this.tableDialogVisible = true
+      },
+      graduationStatus(row) {
+        var _this = this
+        _this.graduationTitle = row.name + " / 毕业交接情况"
+        _this.graduationParams = {
+          id: row.id,
+          name: row.name,
+          username: row.username,
+        }
+        _this.graduationDialogVisible = true
+      },
+      closeGraduationDialog() {
+        this.graduationDialogVisible = false;
       },
       closeTableDialog() {
-        this.dialogTableVisible = false
+        this.tableDialogVisible = false
       },
       closeDialog() {
         var _this = this
@@ -277,7 +299,7 @@
                   this.$message({ type:'success', message:msg})
                   this.ruleForm = {}
                   this.$refs.ruleForm.resetFields();
-                  _this.dialogFormVisible = false//如果成功就结束dialog
+                  _this.formDialogVisible = false//如果成功就结束dialog
                   this.reload()
                 }else if(res.data.errCode == 21){
                   this.$message({ type: 'error', message: '操作失败' });
@@ -289,7 +311,7 @@
                   this.$message({ type: 'error', message: '第一导师ID不存在' });
                 }
               }).catch( error => {
-                alert("出错！请联系管理员")
+                alert("出错！请联系管理员");
               });
             }
           })

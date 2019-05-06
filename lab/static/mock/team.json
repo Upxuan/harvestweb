@@ -29,7 +29,8 @@
     { "img": "./static/images/team/develop/pk1.jpg"},
     { "img": "./static/images/team/develop/pk2.jpg" },
     { "img": "./static/images/team/develop/pk3.jpg"},
-    { "img": "./static/images/team/develop/pk4.jpg" }
+    { "img": "./static/images/team/develop/pk4.jpg" },
+	{ "img": "./static/images/team/develop/pk5.jpg" }
   ],
 
   "teamBuliding": [

@@ -67,9 +67,17 @@
 						<h3>学生获奖<br><span class="deepred-font">(近两年部分)</span></h3>
 					</div>
           <div class="col-md-12">
-            <div class="col-xs-3 col-sm-3 col-md-3 wow fadeInLeft" style="margin-bottom:10px;" data-wow-delay="2000" v-for="(item, index) in this.student.Rewards" :key="index">
+            <div class="col-xs-4 col-sm-4 col-md-3 wow fadeInLeft" data-wow-delay="2000">
               <div class="stu3_thumb">
-                <img :src="item.img" class="img-responsive" alt="stu3">
+                <img src="../../static/images/student/rew18-1.jpg" class="img-responsive">
+                <div class="stu3_overlay">
+                  <i class="fa"><h5>2018年“华为杯”第15届中国研究生数学建模竞赛三等奖<br><span class="deepred-font">范禹辰</span></h5></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.student.Rewards" :key="index">
+              <div class="stu3_thumb" style="height: 170px;">
+                <img :src="item.img" class="img-responsive">
                 <div class="stu3_overlay">
                   <i class="fa"><h5>{{ item.msg }}<br><span class="deepred-font">{{ item.name }}</span></h5></i>
                 </div>
@@ -77,7 +85,7 @@
             </div>
           </div>
           <div class="col-md-12 stu3-honor">
-            <div class="col-xs-4 col-sm-4 col-md-4" style="margin-right:4%;"></div>
+            <div class="col-xs-2 col-sm-2 col-md-2" style="margin-right:4%;"></div>
             <div class="col-xs-3 col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
               <div class="stu3_thumb">
                 <img src="../../static/images/student/reward-team17-2.jpg" class="img-responsive" alt="stu3">
@@ -89,7 +97,19 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-1"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3 wow fadeInLeft" data-wow-delay="2000">
+              <div class="stu3_thumb">
+                <img src="../../static/images/student/reward-team18-1.jpg" class="img-responsive" alt="stu3">
+                <div class="stu3_overlay">
+                  <i class="fa" style="height:110px;width:140px;">
+                    <h5>2018年全国并行应用挑战赛赛区一等奖<br>
+                    <span class="deepred-font">范禹辰，阳瑞，樊甜甜，裘烨亮<br>指导老师：张纪林，蒋从锋</span></h5>
+                  </i>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3"></div>
           </div>
 				</div>
 			</div>

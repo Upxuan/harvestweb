@@ -3,6 +3,9 @@
     <div class="index-wrap1">
       <div class="all-title1">
         <p class="main-font">我的学生总数：<span class="msg-num">{{ count }}</span>人</p>
+        <el-dialog :title="graduationTitle" :visible.sync="graduationDialogVisible" v-if='graduationDialogVisible' width="40%" @close="closeGraduationDialog()">
+          <graduation-status :graduationParams="graduationParams"></graduation-status>
+        </el-dialog>
         <el-dialog :title="tableTitle" :visible.sync="dialogTableVisible" v-if='dialogTableVisible' width="1000px" @close="closeTableDialog()">
           <harvest-list :harvestParams="harvestParams"></harvest-list>
         </el-dialog>
@@ -27,7 +30,8 @@
         <el-table-column prop="affairsNum" label="公共事务" width="100" align="center"></el-table-column>
         <el-table-column label="操作" align="center">
           <template slot-scope="props">
-            <el-button size="mini" type="" @click="checkHarvest(props.row)">查看成果</el-button>
+            <el-button size="mini" type="info" @click="checkHarvest(props.row)">个人成果</el-button>
+          <el-button size="mini" @click="graduationStatus(props.row)">毕业交接情况</el-button>
           </template>
         </el-table-column>
       </el-table><br>
@@ -46,10 +50,12 @@
 </template>
 
 <script>
+  import GraduationStatus from '@/components/tex/texGraduationStatus'
   import HarvestList from '@/components/tex/texHarvestList'
   export default{
     name: 'sysMyStudent',
     components: {
+      GraduationStatus,
       HarvestList
     },
     data() {
@@ -59,8 +65,10 @@
         count: 0,
         tableData: [],
         dialogTableVisible: false,
+        graduationDialogVisible: false,
         harvestParams: {},
         tableTitle: '',
+        graduationTitle: '',
       }
     },
     mounted () {
@@ -104,6 +112,19 @@
           username: row.username
         }
         _this.dialogTableVisible = true
+      },
+      graduationStatus(row) {
+        var _this = this
+        _this.graduationTitle = row.name + " / 毕业交接情况"
+        _this.graduationParams = {
+          id: row.id,
+          name: row.name,
+          username: row.username,
+        }
+        _this.graduationDialogVisible = true
+      },
+      closeGraduationDialog() {
+        this.graduationDialogVisible = false;
       },
       closeTableDialog() {
         this.dialogTableVisible = false

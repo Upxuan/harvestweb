@@ -46,7 +46,7 @@
       <el-table-column prop="patentType" label="专利类别" width="100" align="center"></el-table-column>
       <el-table-column prop="patentTitle" label="专利名称" width="320"></el-table-column>
       <el-table-column prop="patentEffectDate" label="生效日期" width="210" align="center"></el-table-column>
-      <el-table-column prop="patentAuthors" label="作者" width="190"></el-table-column>
+      <el-table-column prop="patentAuthors" label="作者" width="300"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
           <el-button size="mini" type="danger" @click="handleDelete(props.row)">删除</el-button>

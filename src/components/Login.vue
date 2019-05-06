@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div id="login" class="wrap">
     <div class="container">
       <br><br><br><br><br><br>
       <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" >
@@ -62,7 +62,7 @@
   import {getCookie,delCookie,setCookie} from '../api/Cookie.js'
   import myapi from '../api/myapi.js'
   export default {
-    name: 'Login',
+    name: 'login',
     data () {
       var validateAccount = (rule, value, callback) => {
         if (!value) {
@@ -85,7 +85,7 @@
           account: [{ validator: validateAccount, trigger: 'blur' }],
           checkPass: [
               { required: true, message: '请输入密码', trigger: 'blur' },
-              { min: 3, max: 16, required: true, message: '密码长度于3-16位之间', trigger: 'blur' },
+              { min: 6, max: 16, required: true, message: '密码长度于6-16位之间', trigger: 'blur' },
           ]
         }
       }

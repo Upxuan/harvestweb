@@ -27,6 +27,7 @@ import Mharvestcopy from '@/components/system/SysMharvestcopy'
 import Search from '@/components/system/SysSearch'
 import OutputResume from '@/components/system/SysOutputResume'
 import WebMaintain from '@/components/system/SysWebMaintain'
+import Graduation from '@/components/system/SysGraduation'
 Vue.use(Router)
 
 export default new Router({
@@ -169,6 +170,11 @@ export default new Router({
           path: 'webMaintain',
           name: 'WebMaintain',
           component: WebMaintain
+        },
+        {
+          path: 'graduation',
+          name: 'graduation',
+          component: Graduation
         },
       ]
     }

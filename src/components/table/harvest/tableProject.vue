@@ -35,7 +35,7 @@
       <el-table-column prop="projectType" label="类别" width="130"></el-table-column>
       <el-table-column prop="projectTitle" label="标题" width="340"></el-table-column>
       <el-table-column prop="projectDate" label="起止日期" width="210" align="center"></el-table-column>
-      <el-table-column prop="projectAuthors" label="作者" width="130"></el-table-column>
+      <el-table-column prop="projectAuthors" label="作者" width="300"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
           <el-button size="mini" type="danger" @click="handleDelete(props.row)">删除</el-button>

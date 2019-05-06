@@ -40,7 +40,7 @@
       <el-table-column prop="subjectTitle" label="专著题目" width="380"></el-table-column>
       <el-table-column prop="subjectStatus" label="出版状态" width="110" align="center"></el-table-column>
       <el-table-column prop="subjectPublishDate" label="出版日期" width="110" align="center"></el-table-column>
-      <el-table-column prop="subjectAuthors" label="作者" width="220"></el-table-column>
+      <el-table-column prop="subjectAuthors" label="作者" width="300"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="props">
           <el-button size="mini" type="danger" @click="handleDelete(props.row)">删除</el-button>

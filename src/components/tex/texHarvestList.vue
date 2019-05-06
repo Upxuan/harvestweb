@@ -211,6 +211,7 @@
               username: _this.UserName 
             }
           }
+          // console.log(Params)
           this.$ajax.get('/api/harvest', {params: Params}).then( res => {
             // console.log(res)
             if(res.data.errCode == 20) {

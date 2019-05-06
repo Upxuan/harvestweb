@@ -192,6 +192,7 @@ export default {
       }
     }).catch( err => {
       // console.log(err)
+      console.log(1)
       alert("出错！请联系管理员")
     });
   },
@@ -213,6 +214,9 @@ export default {
 <style scoped>
 @import '../../css/templatemo-style.css';
 @import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
+#resume {
+  min-width: 1200px;
+}
 pre {
   white-space: pre-wrap; 
   border: dashed 0px;
