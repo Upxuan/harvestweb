@@ -1,7 +1,7 @@
 {
   "studentRewardHonor": [
     {"msg": "2017年第八届中国计算机学会服务计算会议软件服务创新大赛优胜奖", "name":"高敏，陈璐，王兴菲，余方正，张伟鹏" },
-	{"msg": "2018年全国并行应用挑战赛赛区一等奖", "name":"范禹辰，阳瑞，樊甜甜，裘烨亮 / 指导老师：张纪林，蒋从锋" },
+	{"msg": "2018年全国并行应用挑战赛赛区一等奖", "name":"范禹辰，阳瑞，樊甜甜，仇烨亮 / 指导老师：张纪林，蒋从锋" },
     {"msg": "2017年研究生国家奖学金", "name": "汪玉美，徐文庭，何简繁，余方正"},
     {"msg": "2018年研究生国家奖学金/省优秀毕业生", "name": "陈璐"},
     {"msg": "2018年校优秀毕业生", "name":"张蓉"}
@@ -15,9 +15,9 @@
     { "img": "./static/images/student/rew17-3.jpg", "msg": "2017华为软件精英挑战赛二等奖", "name":"陈彬彬，陈志辉，金厅" },
     { "img": "./static/images/student/rew18-3.jpg", "msg": "2018华为软件精英挑战赛二等奖", "name":"陈璐，张坚成，常健飞" },
     { "img": "./static/images/student/rew18-4.jpg", "msg": "2018华为软件精英挑战赛三等奖", "name":"孙文，陈冲" },
-	{ "img": "./static/images/student/rew19-1.jpg", "msg": "2018华为软件精英挑战赛二等奖", "name":"裘烨亮，樊甜甜" },
+	{ "img": "./static/images/student/rew19-1.jpg", "msg": "2018华为软件精英挑战赛二等奖", "name":"仇烨亮，樊甜甜" },
 	{ "img": "./static/images/student/rew19-2.jpg", "msg": "2018华为软件精英挑战赛二等奖", "name":"程小兰，陈冲" },
-	{ "img": "./static/images/student/rew19-3.jpg", "msg": "2018华为软件精英挑战赛二等奖", "name":"张赟辰 陈硕 张忠义" },
+	{ "img": "./static/images/student/rew19-3.jpg", "msg": "2018华为软件精英挑战赛二等奖", "name":"张赟辰，陈硕，张忠义" },
 	{ "img": "./static/images/student/rew19-4.jpg", "msg": "2018华为软件精英挑战赛二等奖", "name":"刘臣" }
   ],
 

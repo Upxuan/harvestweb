@@ -6,19 +6,21 @@
         <el-button class="right-div" size="small" type="warning" @click="submitForm">提交</el-button>
         <el-button class="right-div" size="small" @click="resetForm" type="danger" style="margin-right: 15px">重置</el-button>
         <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" v-if='dialogVisible' width="30%" @close="closeDialog">
-          <file-list :fileParams="fileParams" @fileListChange="fileListChange"></file-list>
-          <!-- <el-row>
+          <!-- <file-list :fileParams="fileParams" @fileListChange="fileListChange"></file-list> -->
+          <el-row>
             <el-col :span="24">
               <div class="col-md-12" v-for="(item, index) in fileList" :key="index">
                 <div class="fileCard filelink">
                   <el-row>
                     <el-col :span="18">
-                      <a :href="fileHref" :download="downloadFileName" onclick="downloadFile()">{{ item }}</a>
+                      <a :href="fileHref+'/'+fileList[index]" :download="fileList[index]">{{ item }}</a>
+                      <!-- <el-button size="mini" type="text" style="color:#555;font-size:14px;" @click="downloadFile(item)">{{ item }}</el-button> -->
                     </el-col>
                     <el-col :span="6">
                       <el-button size="mini" type="danger" icon="el-icon-delete" circle class="right-div" style="margin-left:10px;" @click="deleteFile(index)"></el-button>
-                      <a :href="fileHref" :download="downloadFileName" onclick="downloadFile()">
+                      <a :href="fileHref+'/'+fileList[index]" :download="fileList[index]">
                         <el-button size="mini" type="success" icon="el-icon-download" circle class="right-div"></el-button>
+                        <!-- <el-button size="mini" type="success" icon="el-icon-download" circle class="right-div" @click="downloadFile(item)"></el-button> -->
                       </a>
                     </el-col>
                   </el-row>
@@ -30,9 +32,9 @@
           <el-row>
             <el-col :span="24" style="margin-top:30px;">
               <el-button class="right-div" size="small" type="info" plain @click="deleteAllFile()">清除所有文件</el-button>
-              <span class="right-div" style="margin:6px 15px;"><span style="color:#F56C6C;">{{ folderSize }}</span> / 300MB</span>
+              <!-- <span class="right-div" style="margin:6px 15px;"><span style="color:#F56C6C;">{{ folderSize }}</span> / 300MB</span> -->
             </el-col>
-          </el-row> -->
+          </el-row>
         </el-dialog>
       </div>
     </div>
@@ -53,19 +55,18 @@
               ref="uploadFile"
               action="/api/uploadGraduation"
               :limit=limitNum
-              :data="ruleForm"
+              :data="uploadParam"
               :auto-upload="false"
               :before-upload="beforeUploadFile"
               :on-change="handleChange"
               :on-exceed="HandleExceed"
               :on-success="handleSuccess"
               :on-error="handleError"
-              :http-request="handleHttpRequest"
-              :file-list="curFileList">
+              :file-list="uploadFileList">
               <i class="el-icon-upload"></i>
               <div class="el-upload__text">将压缩文件拖到此处，或<em>点击上传</em></div>
               <div slot="tip" class="el-upload__tip" style="color:#8C8C8C;">
-                <el-alert title="注意：只能上传不超过200M的不重名文件" type="warning" show-icon style="height:30px;" :closable="false"></el-alert>
+                <el-alert title="注意：只能上传不超过1G的不重名文件，单次上传文件不超过3个" type="warning" show-icon style="height:30px;" :closable="false"></el-alert>
               </div>
             </el-upload>
           </template>
@@ -115,17 +116,21 @@
 </template>
 
 <script>
-  import FileList from '@/components/tex/texFileList'
+  // import FileList from '@/components/tex/texFileList'
   import {getCookie,delCookie,updateCookie,setCookie} from '@/api/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default{
     name:'sysGraduation',
     inject: ['reload'],
-    components: {
-      FileList
-    },
+    // components: {
+    //   FileList
+    // },
     data() {
       return {
+        uploadParam: {
+          username: this.$userInfo.username,
+          // files: [],
+        },
         ruleForm: {
           userType: this.$type,
           userId: this.$userInfo.id,
@@ -139,15 +144,16 @@
         },
         rules: {},
         limitNum: 3,
-        curFileList: [],  //当前提交成功的fileList
-        fileList: [],  //ftp服务器上实际所存储的fileList
+        uploadFileList: [],  //当前提交成功的fileList
+        fileList: [],  //服务器上实际所存储的fileList
         folderSize: 0,  //个人文件夹目前所占空间大小
         formData: "",  //文件上传给后端的文件param
         dialogVisible: false,
         dialogTitle: '',
-        fileHref: 'http://cloud.hdu.edu.cn/lab/cloud/graduation/files' + "/" + this.$userInfo.username,
-        downloadFileName: '',
-        fileParams: {}
+        fileHref: 'http://cloud.hdu.edu.cn/lab/download/graduation/' + this.$userInfo.username,
+        count: 0, //上传文件时候的数量控制
+        cnt: 0, //上传文件时候的数量控制 增量
+        errcode: 20,
       }
     },
     mounted () {
@@ -183,45 +189,14 @@
               }).then(() => {
                 var _this = this;
                 // console.log(_this.ruleForm.files);
-                this.formData = new FormData()
-                this.formData.append("username", this.$userInfo.username);
-                //文件上传 没有文件的时候不会执行submit方法
-                this.$refs.uploadFile.submit();
-                //重写文件上传函数，试所有文件同时上传 :http-request
-                let config = { headers: { 'Content-Type': 'multipart/form-data' } };
-                this.$ajax.post("/api/uploadGraduation", this.formData, config).then( res => {
-                  // console.log(res);
-                  if(res.data.errCode == 25) {
-                    this.$message({ type: 'warning', message: '上传的文件重复！' });
-                    this.clearFiles();//清空fileList
-                  }else if(res.data.errCode == 26) {
-                    this.$message({ type: 'error', message: '文件上传失败！请检查文件状况或联系管理员' });
-                    this.clearFiles();//清空fileList
-                  }else if(res.data.errCode == 20) {
-                    var Params = {
-                      userType: _this.ruleForm.userType,
-                      userId: _this.ruleForm.userId,
-                      username: _this.ruleForm.username,
-                      workDescribe: _this.ruleForm.workDescribe,
-                      works: _this.ruleForm.works,
-                      deviceDescribe: _this.ruleForm.deviceDescribe,
-                      devices: _this.ruleForm.devices,
-                      keyss: _this.ruleForm.keyss
-                    };
-                    this.$ajax.post('/api/uploadGraduationMsg', Params).then( res => {
-                      // console.log(res);
-                      if(res.data.errCode == 20) {
-                        this.$message({ type: 'success', message: '提交成功' });
-                        this.reload();//成功后更新界面，主要是清空了fileList和更新信息
-                      }else if(res.data.errCode == 21) {
-                        this.$message({ type: 'error', message: '毕业信息更新失败！请联系管理员' });
-                        this.clearFiles();//清空fileList
-                      }
-                    }).catch(() => {});
-                  }
-                });
+                _this.count = _this.ruleForm.files.length;
+                if(_this.count > 0){
+                  this.$refs.uploadFile.submit();
+                }else {
+                  this.reviseBaseInfoRequest();
+                }
               });
-            }
+            }    
           });
         }
       },
@@ -251,23 +226,31 @@
         // if(extension !== 'zip') {
         //   this.$message({ type: 'warning', message: '只能上传zip文件' });
         // }
-        if(size > 200) {
-          this.$message({ type: 'warning', message: '单个文件大小不得超过10M' });
+        if(size > 1024) {
+          this.$message({ type: 'warning', message: '单个文件大小不得超过1G' });
         }
       },
       // 文件上传成功时的钩子
       handleSuccess(res, file, fileList) {
         // console.log(res);
-        this.uploadResultHandle(res.errCode);
+        this.cnt++;
+        if(res.errCode != 20) this.errcode = res.errCode;
+        if(this.cnt == this.count) { //文件全部上传完后进行反馈处理
+          if(this.errcode == 20) {
+              this.reviseBaseInfoRequest();
+          }else {
+            if(this.errcode == 25) {
+              this.$message({ type: 'warning', message: '上传的文件列表中有重名文件！' });
+            }else if(this.errcode == 26) {
+              this.$message({ type: 'error', message: '文件上传失败！请检查文件状况或联系管理员' });
+            }
+            this.reload();//清空fileList
+          }
+        }
       },
       // 文件上传失败时的钩子
       handleError(err, file, fileList) {
         this.$message({ type: 'error', message: '文件上传失败！请检查文件状况或联系管理员' });
-      },
-      //覆盖默认的上传行为，自定义上传的实现
-      handleHttpRequest(file) {
-        // console.log(file);
-        this.formData.append('files', file.file);
       },
       clearFiles() {
         this.$refs.uploadFile.clearFiles();
@@ -276,14 +259,44 @@
         var _this = this;
         _this.dialogTitle = this.$userInfo.name + " / 已上传文件列表";
         _this.dialogVisible = true;
-        _this.fileParams = {
-          username: this.$userInfo.username,
-          fileList: _this.fileList,
-          folderSize: _this.folderSize
-        };
+        // _this.fileParams = {
+        //   username: this.$userInfo.username,
+        //   fileList: _this.fileList,
+        //   folderSize: _this.folderSize
+        // };
       },
       closeDialog() {
         this.dialogVisible = false;
+      },
+      downloadFile(filename) {
+        // console.log(filename);
+        if(this.judgeLogin()){
+          var Params = {
+            username: this.$userInfo.username,
+            filename: filename
+          };
+          this.$ajax({
+            url: '/api/downloadFile',
+            method: 'post',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: Params,
+            responseType: 'blob'
+          }).then( res => {
+            // console.log(res);
+            let url = window.URL.createObjectURL(res.data); //创建一个新的 URL 对象
+            // console.log(url)
+            //以下代码一句话解释，在页面上生成一个a标签并指定href为上面的url,然后模拟点击，以实现自动下载
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            a.href = url;
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+          }).catch( error => {
+            // console.log(error);
+          });
+        }
       },
       deleteAllFile() {
         if(this.judgeLogin()){
@@ -311,7 +324,7 @@
           }
         }
       },
-      deleteFile(index){
+      deleteFile(index) {
         // console.log(this.fileList[index]);
         if(this.judgeLogin()){
           var _this = this;
@@ -335,27 +348,31 @@
           // });
         }
       },
-      downloadFile(index) {
-        if(this.judgeLogin()){
-          this.fileHref += "/" + this.fileList[index];
-          this.downloadFileName = this.fileList[index];
-          // console.log(this.fileHref);
-          // var _this = this;
-          // this.$ajax.get('/api/downloadFile', {params: {
-          //   username: this.$userInfo.username,
-          //   filename: _this.fileList[index]
-          // }}).then( res => {
-          //   console.log(res);
-          //   if(res.data.errCode == 20) {
-          //     this.$message({ type: 'success', message: '下载所选文件' });
-          //   }else if(res.data.errCode == 21) {
-          //     this.$message({ type: 'error', message: '操作失败！请联系管理员' });
-          //   }
-          // });
-        }
-      },
-      resetForm () {
+      resetForm() {
         this.reload();
+      },
+      reviseBaseInfoRequest() {
+        var _this = this;
+        var Params = {
+          userType: _this.ruleForm.userType,
+          userId: _this.ruleForm.userId,
+          username: _this.ruleForm.username,
+          workDescribe: _this.ruleForm.workDescribe,
+          works: _this.ruleForm.works,
+          deviceDescribe: _this.ruleForm.deviceDescribe,
+          devices: _this.ruleForm.devices,
+          keyss: _this.ruleForm.keyss
+        };
+        this.$ajax.post('/api/uploadGraduationMsg', Params).then( res => {
+          // console.log(res);
+          if(res.data.errCode == 20) {
+            this.$message({ type: 'success', message: '提交成功' });
+            this.reload();//成功后更新界面，主要是清空了fileList和更新信息
+          }else if(res.data.errCode == 21) {
+            this.$message({ type: 'error', message: '毕业信息更新失败！请联系管理员' });
+            this.clearFiles();//清空fileList
+          }
+        });
       },
       // uploadResultHandle(errCode) {
       //   if(errCode == 20) {
@@ -382,6 +399,9 @@
 <style>
 li {
   list-style-type:none;
+}
+input[type="file"] {
+    display: none;
 }
 #sysGraduation .base-msg-all{
   margin-left: 70px;

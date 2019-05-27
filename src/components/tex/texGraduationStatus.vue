@@ -4,21 +4,23 @@
       <el-row>
         <el-col :span="24">
           <div class="col-md-12" v-for="(item, index) in fileList" :key="index">
-          <div class="fileCard filelink">
-            <el-row>
-              <el-col :span="18">
-                <!-- <a href="javascript:void(0);" :download="fileList[index]" onclick="redirect($(this))" :val="fileHref+'/'+fileList[index]">{{ item }}</a> -->
-                <a :href="fileHref+'/'+fileList[index]" :download="fileList[index]">{{ item }}</a>
-              </el-col>
-              <el-col :span="6">
-                <el-button size="mini" type="danger" icon="el-icon-delete" circle class="right-div" style="margin-left:10px;" @click="deleteFile(index)"></el-button>
-                <a :href="fileHref+'/'+fileList[index]" :download="fileList[index]">
-                  <el-button size="mini" type="success" icon="el-icon-download" circle class="right-div"></el-button>
-                </a>
-              </el-col>
-            </el-row>
-          </div>
-          <el-divider></el-divider>
+            <div class="fileCard filelink">
+              <el-row>
+                <el-col :span="18">
+                  <!-- <a href="javascript:void(0);" :download="fileList[index]" onclick="redirect($(this))" :val="fileHref+'/'+fileList[index]">{{ item }}</a> -->
+                  <a :href="fileHref+'/'+fileList[index]" :download="fileList[index]">{{ item }}</a>
+                  <!-- <el-button size="mini" type="text" style="color:#555;font-size:14px;" @click="downloadFile(item)">{{ item }}</el-button> -->
+                </el-col>
+                <el-col :span="6">
+                  <el-button size="mini" type="danger" icon="el-icon-delete" circle class="right-div" style="margin-left:10px;" @click="deleteFile(index)"></el-button>
+                  <a :href="fileHref+'/'+fileList[index]" :download="fileList[index]">
+                    <el-button size="mini" type="success" icon="el-icon-download" circle class="right-div"></el-button>
+                    <!-- <el-button size="mini" type="success" icon="el-icon-download" circle class="right-div" @click="downloadFile(item)"></el-button> -->
+                  </a>
+                </el-col>
+              </el-row>
+            </div>
+            <el-divider></el-divider>
           </div>
         </el-col>
       </el-row>
@@ -83,7 +85,7 @@
     data () {
       return {
         dialogVisible: false,
-        fileHref: 'http://cloud.hdu.edu.cn/lab/cloud/graduation/files' + "/" + this.graduationParams.username,
+        fileHref: 'http://cloud.hdu.edu.cn/lab/download/graduation/' + this.graduationParams.username,
         downloadFileName: '',
         folderSize: 0,
         fileList: [],
@@ -107,7 +109,7 @@
         userId: this.graduationParams.id,
         username: this.graduationParams.username
       };
-      // console.log(Params)
+      // console.log(Params);
       this.$ajax.post('/api/getGraduationMsg', Params).then( res => {
         // console.log(res);
         if(res.data.errCode == 20) {
@@ -118,7 +120,6 @@
           _this.ruleForm.workDescribe = res.data.workDescribe;
           _this.fileList = res.data.fileList;
           _this.folderSize = (res.data.folderSize/(1024 * 1024)).toFixed(2) + "MB"
-          // console.log(_this.ruleForm)
         }else if(res.data.errCode == 21) {
           alert("出错！请联系管理员");
         }
@@ -172,6 +173,36 @@
         var _this = this;
         _this.dialogTitle = this.graduationParams.name + " / 已上传文件列表";
         _this.dialogVisible = true;
+      },
+      downloadFile(filename) {
+        // console.log(filename);
+        if(this.judgeLogin()){
+          var Params = {
+            username: this.graduationParams.username,
+            filename: filename
+          };
+          this.$ajax({
+            url: '/api/downloadFile',
+            method: 'post',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: Params,
+            responseType: 'blob'
+          }).then( res => {
+            // console.log(res);
+            let url = window.URL.createObjectURL(res.data); //创建一个新的 URL 对象
+            // console.log(url)
+            //以下代码一句话解释，在页面上生成一个a标签并指定href为上面的url,然后模拟点击，以实现自动下载
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            a.href = url;
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+          }).catch( error => {
+            // console.log(error);
+          });
+        }
       },
       deleteAllFile() {
         if(this.judgeLogin()){
@@ -230,6 +261,9 @@
 </script>
 
 <style scoped>
+pre {
+  background: #FFF;
+}
 .right-div{
   float: right;
 }

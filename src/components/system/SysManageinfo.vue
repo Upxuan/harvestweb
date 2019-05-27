@@ -15,16 +15,17 @@
             class="avatar-uploader"
             accept="image/jpeg, image/png"
             ref="upload"
-            action="/api/user/saveImage/"
+            action="/api/uploadSculpture"
             :headers="myHeader"
             :show-file-list="false"
             :with-credentials="true"
             :auto-upload="false"
-            :on-change="addFile">
-            <!-- <img v-if="ruleForm.imageUrl" src="../../../static/images/avatar/1553431446491.jpg" class="avatar"> -->
+            :on-change="addFile"
+            :on-success="handleSuccess"
+            :on-error="handleError">
             <img v-if="imageUrl!='' && imageUrl!=null" :src="imageUrl" class="avatar">
             <img v-else-if="imgurl!='' && imgurl!=null" :src="imgurl" class="avatar">
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            <i v-else class="el-icon-plus avatar-uploader-icon" style="line-height:178px;y"></i>
           </el-upload>
         </el-form-item>
         <el-form-item label="账号：">{{ ruleForm.username }}</el-form-item>
@@ -85,7 +86,7 @@
     mounted () {
       // console.log(this.ruleForm.imgname)
       if(this.ruleForm.imgname != '' && this.ruleForm.imgname != null) {
-        this.imgurl = '../../../static/images/avatar/' + this.$userInfo.imgurl;
+        this.imgurl = 'http://cloud.hdu.edu.cn/lab/download/sculptures/' + this.$userInfo.imgurl;
       }
       // console.log(this.ruleForm.imgname)
       // console.log(this.imgurl)
@@ -129,105 +130,82 @@
                 }else if (_this.$type == 2 && JSON.stringify(_this.imgFile) == "{}" && reForm.tel == myInfo.tel && reForm.email == myInfo.email && reForm.direction == myInfo.direction) {
                   this.$message({ type: 'error', message: '基础信息未经修改' });
                 }else {
-                  // this.$refs.upload.submit();
                   if(JSON.stringify(_this.imgFile) != "{}") {
-                    var fileName = _this.imgFile.name;
-                    var reader = new FileReader();
-                    reader.readAsDataURL(this.imgFile.raw);
-                    reader.onload = function(e) {
-                      var data = this.result; // 这个就是base64编码了
-                      var Params = {
-                        imageUrl: data,
-                        fileName: fileName,
-                        userType: _this.$type,
-                        userId: _this.$userInfo.id,
-                        link: reForm.link,
-                        tel: reForm.tel,
-                        email: reForm.email,
-                        direction: reForm.direction,
-                      }
-                      // console.log(Params)
-                      $.ajax({
-                        data: Params,
-                        type: "POST",
-                        url: '/api/reviseBaseInfo',
-                        async: false,
-                        success (res) {
-                          if(res.errCode == 20) {
-                            var userModel = _this.$userInfo
-                            if(_this.$type == 1) userModel.link = _this.ruleForm.link
-                            userModel.imgurl = res.imgName
-                            userModel.tel = _this.ruleForm.tel
-                            userModel.email = _this.ruleForm.email
-                            userModel.direction = _this.ruleForm.direction
-                            var user = JSON.stringify(userModel)
-                            setCookie('userInfo', user);
-                            // setTimeout("alert('修改成功')",100);
-                          }else if(res.errCode == 21) {
-                            // setTimeout("alert('修改失败')",100);
-                          }
-                        }
-                      });
-                    }
+                    this.$refs.upload.submit();
                   }else {
-                    var Params = {
-                      imageUrl: "",
-                      fileName: "",
-                      userType: _this.$type,
-                      userId: _this.$userInfo.id,
-                      link: reForm.link,
-                      tel: reForm.tel,
-                      email: reForm.email,
-                      direction: reForm.direction,
-                    }
-                    // console.log(Params)
-                    this.$ajax.get('/api/reviseBaseInfo', {params: Params}).then( res => {
-                      // console.log(res)
-                      if(res.data.errCode == 20) {
-                          var userModel = _this.$userInfo
-                          if(_this.$type == 1) userModel.link = _this.ruleForm.link
-                          // userModel.imgurl = res.data.imgName
-                          userModel.tel = _this.ruleForm.tel
-                          userModel.email = _this.ruleForm.email
-                          userModel.direction = _this.ruleForm.direction
-                          // console.log(userModel)
-                          var user = JSON.stringify(userModel)
-                          setCookie('userInfo', user)
-                          this.$message({ type: 'success', message: '修改成功' });
-                        }else if(res.data.errCode == 21) {
-                          this.$message({ type: 'error', message: '修改失败' });
-                        }
-                    }).catch( err=> {});
+                    // console.log("无头像");
+                    this.reviseBaseInfoRequest(0);
                   }
-                  
-                  // var Params = {
-                  //   userType: _this.$type,
-                  //   imageUrl: data,
-                  //   userType: _this.$type,
-                  //   userId: _this.$userInfo.id,
-                  //   link: reForm.link,
-                  //   tel: reForm.tel,
-                  //   email: reForm.email,
-                  //   direction: reForm.direction,
-                  // }
-                  // this.$ajax.get('/api/reviseBaseInfo', {params: Params}).then( res => {
-                  //   console.log(res)
-                  //   if(res.data.errCode == 20) {
-                  //     var userModel = _this.$userInfo
-                  //     if(_this.$type == 1) userModel.link = _this.ruleForm.link
-                  //     userModel.tel = _this.ruleForm.tel
-                  //     userModel.email = _this.ruleForm.email
-                  //     userModel.direction = _this.ruleForm.direction
-                      
-                  //     var user = JSON.stringify(userModel)
-                  //     setCookie('userInfo', user)
-                  //     this.$message({ type: 'success', message: '修改成功' });
-                  //   }else if(res.data.errCode == 21){
-                  //     this.$message({ type: 'error', message: '修改失败' });
+                  // if(JSON.stringify(_this.imgFile) != "{}") {
+                  //   var fileName = _this.imgFile.name;
+                  //   var reader = new FileReader();
+                  //   reader.readAsDataURL(this.imgFile.raw);
+                  //   reader.onload = function(e) {
+                  //     var data = this.result; // 这个就是base64编码了
+                  //     var Params = {
+                  //       imageUrl: data,
+                  //       fileName: fileName,
+                  //       userType: _this.$type,
+                  //       userId: _this.$userInfo.id,
+                  //       link: reForm.link,
+                  //       tel: reForm.tel,
+                  //       email: reForm.email,
+                  //       direction: reForm.direction,
+                  //     }
+                  //     // console.log(Params)
+                  //     $.ajax({
+                  //       data: Params,
+                  //       type: "POST",
+                  //       url: '/api/reviseBaseInfo',
+                  //       async: false,
+                  //       success (res) {
+                  //         console.log(res)
+                  //         if(res.errCode == 20) {
+                  //           var userModel = _this.$userInfo
+                  //           if(_this.$type == 1) userModel.link = _this.ruleForm.link
+                  //           userModel.imgurl = res.imgName
+                  //           userModel.tel = _this.ruleForm.tel
+                  //           userModel.email = _this.ruleForm.email
+                  //           userModel.direction = _this.ruleForm.direction
+                  //           var user = JSON.stringify(userModel)
+                  //           setCookie('userInfo', user);
+                  //           // setTimeout("alert('修改成功')",100);
+                  //         }else if(res.errCode == 21) {
+                  //           // setTimeout("alert('修改失败')",100);
+                  //         }
+                  //       }
+                  //     });
                   //   }
-                  // }).catch( error => {
-                  //   console.log(error)
-                  // })
+                  // }else {
+                  //   var Params = {
+                  //     imageUrl: "",
+                  //     fileName: "",
+                  //     userType: _this.$type,
+                  //     userId: _this.$userInfo.id,
+                  //     link: reForm.link,
+                  //     tel: reForm.tel,
+                  //     email: reForm.email,
+                  //     direction: reForm.direction,
+                  //   }
+                  //   // console.log(Params)
+                  //   this.$ajax.get('/api/reviseBaseInfo', {params: Params}).then( res => {
+                  //     // console.log(res)
+                  //     if(res.data.errCode == 20) {
+                  //         var userModel = _this.$userInfo
+                  //         if(_this.$type == 1) userModel.link = _this.ruleForm.link
+                  //         // userModel.imgurl = res.data.imgName
+                  //         userModel.tel = _this.ruleForm.tel
+                  //         userModel.email = _this.ruleForm.email
+                  //         userModel.direction = _this.ruleForm.direction
+                  //         // console.log(userModel)
+                  //         var user = JSON.stringify(userModel)
+                  //         setCookie('userInfo', user)
+                  //         this.$message({ type: 'success', message: '修改成功' });
+                  //       }else if(res.data.errCode == 21) {
+                  //         this.$message({ type: 'error', message: '修改失败' });
+                  //       }
+                  //   }).catch( err=> {});
+                  // }
                 }
               }).catch( () => {});
             }else {
@@ -235,6 +213,20 @@
             }
           });
         }
+      },
+      // 文件上传成功时的钩子
+      handleSuccess(res, file, fileList) {
+        // console.log(res);
+        if(res.errCode == 20) {
+          // console.log("有头像");
+          this.reviseBaseInfoRequest(1);
+        }else {
+          this.$message({ type: 'error', message: '图片上传失败！请检查文件状况或联系管理员' });
+        }
+      },
+      // 文件上传失败时的钩子
+      handleError(err, file, fileList) {
+        this.$message({ type: 'error', message: '图片上传失败！请检查文件状况或联系管理员' });
       },
       resetForm () {
         this.reload();
@@ -244,12 +236,50 @@
           return false;
         }
         return true;
+      },
+      reviseBaseInfoRequest(isfile) {
+        var _this = this;
+        var reForm = _this.ruleForm
+        var myInfo = _this.$userInfo
+        // console.log(_this.imgFile);
+        var Params = {
+          userType: _this.$type,
+          userId: _this.$userInfo.id,
+          filename: _this.imgFile.name,
+          link: reForm.link,
+          tel: reForm.tel,
+          email: reForm.email,
+          direction: reForm.direction,
+        };
+        // console.log(Params);
+        this.$ajax.post('/api/reviseBaseInfo', Params).then( res => {
+          // console.log(res);
+          if(res.data.errCode == 20) {
+            var userModel = _this.$userInfo;
+            if(_this.$type == 1) userModel.link = _this.ruleForm.link;
+            if(isfile == 1) userModel.imgurl = _this.imgFile.name;
+            userModel.tel = _this.ruleForm.tel;
+            userModel.email = _this.ruleForm.email;
+            userModel.direction = _this.ruleForm.direction;
+            var user = JSON.stringify(userModel);
+            setCookie('userInfo', user);
+            this.$message({ type: 'success', message: '修改成功' });
+            this.reload();
+          }else if(res.data.errCode == 21){
+            this.$message({ type: 'error', message: '修改失败' });
+          }
+        }).catch( error => {
+          // console.log(error);
+        })
       }
     }
   }
 </script>
 
 <style>
+.el-upload__input {
+  display: none;
+}
 #sysManageInfo .el-button{
   float: right;
 }

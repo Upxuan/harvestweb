@@ -238,6 +238,10 @@
 #layout {
   min-width: 1600px;
 }
+.mark {
+    padding: .2em;
+    background-color: transparent;
+}
 .el-header {
   background-color: #545c64;
   /* background-color: rgb(79,184,238); */

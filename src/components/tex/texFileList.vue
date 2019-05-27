@@ -41,6 +41,9 @@
         folderSize: this.fileParams.folderSize
       }
     },
+    mounted() {
+      console.log(this.fileParams);
+    },
     methods: {
       deleteAllFile() {
         if(this.judgeLogin()){

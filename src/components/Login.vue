@@ -136,7 +136,6 @@
                 userModel.name = model.name
                 userModel.username = model.username
                 userModel.password = model.password
-                
                 user = JSON.stringify(userModel);
                 setCookie('userInfo', user);
                 setCookie('type', type);

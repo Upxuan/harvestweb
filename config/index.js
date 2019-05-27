@@ -17,7 +17,7 @@ module.exports = {
         pathRewrite: {
           '^/api': 'http://localhost:8082' //路径重写
         }
-      }
+      } 
     },
 
     // Various Dev Server settings
@@ -50,7 +50,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../lab'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',
+    assetsPublicPath: '/lab/',
 
     /**
      * Source Maps

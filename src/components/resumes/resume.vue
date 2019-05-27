@@ -183,7 +183,7 @@ export default {
         _this.textarea.academicwork = _this.myInfo.academicwork
         _this.imgurl = _this.myInfo.imgurl
         if(_this.imgurl != '' && _this.imgurl != null) {
-          _this.imgurl = '../../../static/images/avatar/' + _this.imgurl;
+          _this.imgurl = 'http://cloud.hdu.edu.cn/lab/download/sculptures/' + _this.imgurl;
         }
         // console.log(this.myInfo.name)
         _this.pinyinName = ConvertPinyin(_this.myInfo.name)
@@ -192,7 +192,7 @@ export default {
       }
     }).catch( err => {
       // console.log(err)
-      console.log(1)
+      // console.log(1)
       alert("出错！请联系管理员")
     });
   },

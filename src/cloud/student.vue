@@ -104,7 +104,7 @@
                 <div class="stu3_overlay">
                   <i class="fa" style="height:110px;width:140px;">
                     <h5>2018年全国并行应用挑战赛赛区一等奖<br>
-                    <span class="deepred-font">范禹辰，阳瑞，樊甜甜，裘烨亮<br>指导老师：张纪林，蒋从锋</span></h5>
+                    <span class="deepred-font">范禹辰，阳瑞，樊甜甜，仇烨亮<br>指导老师：张纪林，蒋从锋</span></h5>
                   </i>
                 </div>
               </div>

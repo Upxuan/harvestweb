@@ -2,8 +2,7 @@
   <div id="texUserInfo">
     <div class="user-img">
       <img v-if="imgurl != '' && imgurl != null" :src="imgurl">
-      <!-- <img v-else src="../../../static/images/user-blue.png"> -->
-      <img v-else :src="basePng">
+      <img v-else src="../../../static/images/user-blue.png" width="130">
     </div>
     <div class="index-usermsg">
       <div class="namefont"><span>{{ myInfo.name }}</span></div>
@@ -32,7 +31,6 @@
 </template>
 
 <script>
-  import mydata from '../../../static/mock/data.json';
   import {getCookie,delCookie,setCookie} from '@/api/Cookie.js'
   import myapi from '@/api/myapi.js'
   export default {
@@ -41,7 +39,6 @@
     data () {
       return {
         UserName: '',
-        basePng: mydata.basePng,
         imgurl: this.$userInfo.imgurl,
         myInfo: {}
       }
@@ -69,14 +66,14 @@
     },
     mounted () {
       if(this.imgurl != '' && this.imgurl != null) {
-        this.imgurl = '../../../static/images/avatar/' + this.$userInfo.imgurl;
+        this.imgurl = 'http://cloud.hdu.edu.cn/lab/download/sculptures/' + this.$userInfo.imgurl;
       }
     }
   }
 </script>
 
 <style>
-div#texUserInfo{
+#texUserInfo{
   height: 240px;
   width: 600px;
   /* margin: 0px; */

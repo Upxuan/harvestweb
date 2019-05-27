@@ -6,7 +6,7 @@
 					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
 						<h3>学术交流</h3>
 					</div>
-          <div class="col-md-12" style="margin-bottom:40px;">
+          <div class="col-md-12" style="height:190px;;">
             <div class="col-md-1"></div>
             <div class="col-md-10 text-center">
               <p style="font-size:15px;">学术界有我们的声音，有效社交很重要。</p>
@@ -19,90 +19,42 @@
     <section id="exchange1">
       <div class="container">
         <div class="row">
-          <!-- <div class="col-md-12 wow fadeInDown text-center" data-wow-delay="2000">
-            <h3>学术交流</h3>
-          </div>
-          <div class="col-md-12" style="margin-bottom:40px;">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 text-center">
-              <p>学术界有我们的声音，有效社交很重要。</p>
-            </div>
-            <div class="col-md-1"></div>
-          </div> -->
-          <div class="col-md-12">
+          <div class="col-md-12" style="margin-bottom:50px;" v-for="(item, indexs) in this.exchangesData" :key="indexs">
             <i class="fa fa-calendar fa-lg" style="color:#606060;float:left"></i> 
-            <h1>&nbsp;&nbsp;&nbsp;Year of 2018</h1>
-            <div class="card1">
-              <i class="fa fa-send" style="color:#66AF33;float:left;margin-right:10px;"></i><h2>走出去</h2> 
-              <h4>参加ICSOC 2018（中国浙江杭州第16届面向服务的计算国际会议）、参加CCF YOCSEF杭州2018换届会议（实验室殷昱煜副教授荣任CCF YOCSEF杭州候任主席）、参加NASAC 2018（第十七届全国软件与应用学术会议）、成立了校地合作，舟山研究院、参加HPC（中国青岛2018全国高性能计算学术年会）、参加教育部重点实验室新一轮评估期战略规划会暨全体动员大会等。</h4>
-              <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.exchange.GoOut2018" :key="index" style="height: 190px">
-                <div class="exchange1_thumb">
-                  <img :src="item.img" class="img-responsive" alt="exchange1">
-                  <div class="exchange1_overlay">
-                    <i class="fa"><h5>{{ item.name }}</h5></i>
+            <h1>&nbsp;&nbsp;&nbsp;{{ item.title }}</h1>
+            <div class="card1" v-show="item.out_message.length>0">
+              <i class="fa fa-send exchange-logo"></i><h2>走出去</h2> 
+              <div class="col-md-12" v-for="(list, index) in item.out_message" :key="index">
+                <h4>
+                  <div v-html="list.description"></div>
+                  <!-- <span>{{ list.description }}</span> -->
+                  <!-- <a onclick="" v-show="">了解更多</a> -->
+                </h4>
+                <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(imglist, index1) in list.imageslist" :key="index1">
+                  <div class="exchange1_thumb exchange-demo">
+                    <img :src="imglist.img" class="img-responsive" alt="exchange1">
+                    <div class="exchange1_overlay" v-show="imglist.name != ''">
+                      <i class="fa"><h5>{{ imglist.name }}</h5></i>
+                    </div>
                   </div>
-                </div>         
+                </div>
               </div>
             </div>
-            <div class="card1" style="margin-top:30px;">
-              <i class="fa fa-signing" style="color:#66AF33;float:left;margin-right:10px;"></i><h2>请进来</h2> 
-              <h4>实验室邀请印度理工学院教授R.K. Shyamasundar讲座、维也纳技术大学Hong-Linh Truong博士讲座、荷兰阿姆斯特丹大学的Zhming Zhao教授讲座、实验室联合举办HASE 2019（中国杭州第十九届高可靠系统工程国际会议）等。</h4>
-              <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.exchange.Please2018" :key="index" style="height: 190px">
-                <div class="exchange1_thumb">
-                  <img :src="item.img" class="img-responsive" alt="exchange1">
-                  <div class="exchange1_overlay">
-                    <i class="fa"><h5>{{ item.name }}</h5></i>
-                  </div>
-                </div>  
-              </div>       
+            <div class="card1" v-show="item.in_message.length>0">
+              <i class="fa fa-signing exchange-logo"></i><h2>请进来</h2> 
+              <div class="col-md-12" v-for="(list, index) in item.in_message" :key="index">
+                <h4><div v-html="list.description"></div></h4>
+                <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(imglist, index2) in list.imageslist" :key="index2">
+                  <div class="exchange1_thumb exchange-demo">
+                    <img :src="imglist.img" class="img-responsive" alt="exchange1">
+                    <div class="exchange1_overlay" v-show="imglist.name != ''">
+                      <i class="fa"><h5>{{ imglist.name }}</h5></i>
+                    </div>
+                  </div>  
+                </div>     
+              </div>  
             </div>
           </div>
-          <!-- <h1 style="border-bottom : 1px solid #DDDDDD;">&nbsp;</h1> -->
-          <div class="col-md-12" style="margin-top:50px"> 
-              <i class="fa fa-calendar fa-lg" style="color:#606060;float:left"></i> 
-              <h1>&nbsp;&nbsp;&nbsp;Year of 2017</h1>
-              <div class="card1">
-                <i class="fa fa-send" style="color:#66AF33;float:left;margin-right:10px;"></i><h2>走出去</h2> 
-                <h4>实验室参加中国湘潭2017第八届中国计算机学会服务计算会议、参加ICDCS 2017（美国亚特兰大IEEE分布式计算系统国际会议）、成功举办复杂系统建模与仿真教育部重点实验室学术研讨会第一届云计算与边缘计算研讨会。</h4>
-                <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.exchange.GoOut2017" :key="index" style="height: 190px">
-                  <div class="exchange1_thumb">
-                    <img :src="item.img" class="img-responsive" alt="exchange1">
-                    <div class="exchange1_overlay">
-                      <i class="fa"><h5>{{ item.name }}</h5></i>
-                    </div>
-                  </div>         
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-12"  style="margin-top:50px">
-                <i class="fa fa-calendar fa-lg" style="color:#606060;float:left"></i> 
-                <h1>&nbsp;&nbsp;&nbsp;更早</h1>
-                <div class="card1">
-                    <i class="fa fa-send" style="color:#66AF33;float:left;margin-right:10px;"></i><h2>走出去</h2> 
-                    <h4>APSCC 2010 中国杭州第五届IEEE亚太服务计算国际会议、EduCloudSummit 2012中国杭州教育科研云技术高峰论坛、HPDIC 2013 美国第27届IEEE并行与分布式处理国际会议、PQoSCOM 2012 中国北京功率和QoS感知计算国际研讨会等。在知名学术会议如PDPS、Cluster、APSCC、SERVICES、ICSOC、WAIM等举办了CloudPerf 2011-2014,FM-S&C 2011-2014,HPDIC 2012-2014,PQosCom 2012,MDSP 2012,DISA 2012等Workshop。</h4>
-                    <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.exchange.GoOut" :key="index" style="height: 135px">
-                      <div class="exchange1_thumb">
-                        <img :src="item.img" class="img-responsive" alt="exchange1">
-                        <div class="exchange1_overlay">
-                          <i class="fa"><h5>{{ item.name }}</h5></i>
-                        </div>
-                      </div>         
-                  </div>
-                </div>
-                <div class="card1">
-                  <i class="fa fa-signing" style="color:#66AF33;float:left;margin-right:10px;"></i><h2>请进来</h2> 
-                  <h4>实验室邀请H.J.Siegel教授、施巍松教授、Smets教授等教授来访进行学术交流，同韦恩州立大学、约克大学、巴黎十三大学等知名国外学府进行了合作研究。</h4>
-                  <div class="col-sm-6 col-md-3 wow fadeInLeft" data-wow-delay="2000" v-for="(item, index) in this.exchange.Please" :key="index" style="height: 190px">
-                    <div class="exchange1_thumb">
-                      <img :src="item.img" class="img-responsive" alt="exchange1">
-                      <div class="exchange1_overlay" v-show="item.name!=''">
-                        <i class="fa"><h5>{{ item.name }}</h5></i>
-                      </div>
-                    </div>  
-                  </div>       
-                </div>
-              </div>
         </div>
       </div> 
     </section>
@@ -115,13 +67,24 @@ export default {
   name: 'exchange',
   data () {
     return {
-      exchange: {
-        GoOut2018: exchange.exchangeGoOut2018,
-        Please2018: exchange.exchangePlease2018,
-        GoOut2017: exchange.exchangeGoOut2017,
-        GoOut: exchange.exchangeGoOut,
-        Please: exchange.exchangePlease
-      }
+      exchangesData: exchange.all_exchanges
+    }
+  },
+  mounted() {
+    for(let i=0; i<this.exchangesData.length; i++){
+      let out_message = this.exchangesData[i].out_message;
+      let in_message = this.exchangesData[i].in_message;
+      for(let j=0; j<out_message.length; j++)
+        this.exchangesData[i].out_message[j].description =  this.trim(out_message[j].description);
+      for(let j=0; j<in_message.length; j++)
+        this.exchangesData[i].in_message[j].description = this.trim(in_message[j].description);
+    }
+  },
+  methods: {
+    //json中字符串换行转换
+    trim(str) {  
+      str = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + str;
+      return str.replace(/\n|\r\n/g, "<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
     }
   }
 }
@@ -130,6 +93,9 @@ export default {
 <style scoped>
 @import '../css/templatemo-style.css';
 @import 'http://www.jq22.com/jquery/bootstrap-3.3.4.css';
+/* span {
+  text-align: justify;
+} */
 /* start exchangeflow */
 #exchangeflow {
   background: url('../../static/images/exchange/exchange-flow.jpg') no-repeat center center;
@@ -242,8 +208,19 @@ export default {
 #exchange1 h5 {
   font-size: 15px;
   color: #66AF33;
-  text-align: justify;
+  /* text-align: justify; */
   padding-bottom: 5px;
+}
+
+#exchange1 .exchange-demo {
+  min-height: 180px;
+  margin-bottom: 10px;
+}
+
+#exchange1 .exchange-logo {
+  color: #66AF33;
+  float: left;
+  margin-right: 10px;
 }
 
 /* end exchange1 */

@@ -1,5 +1,4 @@
 {
-  "basePng": "./static/images/user-blue.png",
   "searchTypes": [
     { "value": 1, "label": "标题" },
     { "value": 6, "label": "作者" },

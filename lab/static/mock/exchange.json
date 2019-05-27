@@ -1,52 +1,118 @@
 {
-  "exchangeGoOut2018": [
-    { "img": "./static/images/exchange/2018goout/1.png", "name":"CCF YOCSEF中国杭州2018换届会议" },
-    { "img": "./static/images/exchange/2018goout/2.jpg", "name":"CCF YOCSEF中国杭州2018换届会议"},
-    { "img": "./static/images/exchange/2018goout/3.jpg", "name":"ICSOC 中国浙江杭州第16届面向服务的计算国际会议" },
-    { "img": "./static/images/exchange/2018goout/4.jpg", "name":"ICSOC 中国浙江杭州第16届面向服务的计算国际会议" },
-    { "img": "./static/images/exchange/2018goout/5.jpg", "name":"NASAC 中国深圳第十七届全国软件与应用学术会议"},
-    { "img": "./static/images/exchange/2018goout/6.jpg", "name":"校地合作，舟山研究院" },
-    { "img": "./static/images/exchange/2018goout/7.jpg", "name":"HPC 中国青岛2018全国高性能计算学术年会" },
-    { "img": "./static/images/exchange/2018goout/8.jpg", "name":"教育部重点实验室新一轮评估期战略规划会暨全体动员大会" }
-  ],
-
-  "exchangePlease2018": [
-    { "img": "./static/images/exchange/2018please/1.jpg", "name":"印度理工学院教授R.K. Shyamasundar" },
-    { "img": "./static/images/exchange/2018please/2.jpg", "name":"印度理工学院教授R.K. Shyamasundar"},
-    { "img": "./static/images/exchange/2018please/3.jpg", "name":"维也纳技术大学Hong-Linh Truong博士" },
-    { "img": "./static/images/exchange/2018please/4.jpg", "name":"维也纳技术大学Hong-Linh Truong博士" },
-    { "img": "./static/images/exchange/2018please/5.jpg", "name":"维也纳技术大学Hong-Linh Truong博士" },
-    { "img": "./static/images/exchange/2018please/6.jpg", "name":"阿姆斯特丹大学的Zhming Zhao教授" },
-    { "img": "./static/images/exchange/2018please/7.jpg", "name":"阿姆斯特丹大学的Zhming Zhao教授" },
-    { "img": "./static/images/exchange/2018please/8.jpg", "name":"阿姆斯特丹大学的Zhming Zhao教授"}
-  ],
-
-  "exchangeGoOut2017": [
-    { "img": "./static/images/exchange/2017goout/1.jpg", "name":"2017第八届中国计算机学会服务计算会议湖南湘潭" },
-    { "img": "./static/images/exchange/2017goout/2.jpg", "name":"ICDCS 2017美国亚特兰大"},
-    { "img": "./static/images/exchange/2017goout/3.jpg", "name":"当选SSYSF副主席" },
-    { "img": "./static/images/exchange/2017goout/4.jpg", "name":"实验室第一届云计算与边缘计算研讨会"}
-  ],
-
-  "exchangeGoOut": [
-    { "img": "./static/images/exchange/goout/5.png", "name":"APSCC 2010 中国杭州第五届IEEE亚太服务计算国际会议"},
-    { "img": "./static/images/exchange/goout/6.png", "name":"EduCloudSummit 2012中国杭州教育科研云技术高峰论坛"},
-    { "img": "./static/images/exchange/goout/7.png", "name":"HPDIC 2013 美国第27届IEEE并行与分布式处理国际会议"},
-    { "img": "./static/images/exchange/goout/8.png", "name":"PQoSCOM 2012 中国北京功率和QoS感知计算国际研讨会" }
-  ],
-
-  "exchangePlease": [
-    { "img": "./static/images/exchange/please/2.png", "name":"" },
-    { "img": "./static/images/exchange/please/3.png", "name":""  },
-    { "img": "./static/images/exchange/please/4.png", "name":"" },
-    { "img": "./static/images/exchange/please/1.png", "name":"" },
-    { "img": "./static/images/exchange/please/5.jpg", "name":""  },
-    { "img": "./static/images/exchange/please/6.jpg", "name":""  },
-    { "img": "./static/images/exchange/please/10.jpg", "name":""  },
-    { "img": "./static/images/exchange/please/12.jpg", "name":"" },
-    { "img": "./static/images/exchange/please/7.jpg", "name":""  },
-    { "img": "./static/images/exchange/please/8.jpg", "name":""  },
-    { "img": "./static/images/exchange/please/9.jpg", "name":""  },
-    { "img": "./static/images/exchange/please/11.jpg", "name":"" }
+  "all_exchanges": [
+    {
+      "title": "Year of 2019",
+      "out_message": [
+        {
+          "description": "2019年5月24日，我实验室殷昱煜老师参加在成都举行的一年一度的中国计算机学会青年精英大会，并与全国28个CCF YOCSEF分论坛一起完成主席换届，正式成为CCF YOCSEF杭州主席。",
+          "imageslist": [
+            { "img": "./static/images/exchange/out/2019-5.jpg", "name":"中国计算机学会青年精英大会" },
+            { "img": "./static/images/exchange/out/2019-6.jpg", "name":"殷昱煜老师正式成为CCF YOCSEF杭州主席" }
+          ]
+        },
+        {
+          "description": "2019年5月10日—12日，由杭州电子科技大学和之江实验室主办、浙江工业大学和浙江科技学院承办的2019第三届边缘计算技术研讨会在杭州召开。来自高校、科研院所、企业从事边缘计算相关领域研究开发、行业应用的220余位代表参加研讨会。\n本届边缘计算技术研讨会邀请了中国移动、华为、中科曙光、海康威视、Xilinx、虹软科技、研境科技、中科云达等国内外在边缘计算领域的知名企业专家和中国科学院计算所、浙江大学、华中科技大学、杭州电子科技大学、中南大学、天津大学、韦恩州立大学等国内外高校从事相关研究的知名学者做大会主题报告，涵盖了边缘计算的不同应用场景，从边缘体系结构、边缘操作系统、云边融合、边缘安全及隐私等方面对边缘计算各方面的最新进展进行讨论和交流。\n边缘计算技术研讨会是国内边缘计算领域受众最广泛的顶级会议，同时也是一个学术界和产业界交流的平台，本届研讨会一共20个报告，学术界11个、产业界9个，学术界和产业界碰撞有助于边缘计算走的更快。\n会上，贾刚勇老师发表了以边缘实时操作系统为主题的报告，提出了一种边缘实时操作系统。报告对比了目前国内外发展状况和当前高可靠实时操作系统的设计，并介绍了边缘实时操作系统的相关特性。同时对该系统做了相关验证，包括小车的手柄控制以及自主导航功能，并测试了其负载特性及系统的可预测性。最后贾老师介绍了实验室当前目标及现有成果：包括面向智能应用的异构计算平台和边缘智能平台研究状况。此次报告得到了业内许多专家学者的广泛关注，后续将与多家单位开展相关合作。",
+          "imageslist": [
+            { "img": "./static/images/exchange/out/2019-2.jpg", "name":"第三届边缘计算技术研讨会" },
+            { "img": "./static/images/exchange/out/2019-1.jpg", "name":"第三届边缘计算技术研讨会" },
+            { "img": "./static/images/exchange/out/2019-3.jpg", "name":"第三届边缘计算技术研讨会" },
+            { "img": "./static/images/exchange/out/2019-4.jpg", "name":"第三届边缘计算技术研讨会" }
+          ]
+        }
+      ],
+      "in_message": [
+        {
+          "description": "5月18日上午10:00实验室邀请了Nazarbayev University, IEEE Fellow, Mohammad S. Obaidat教授于计算机学院三楼会议室开展了以“Risk-Based Authentication Scheme Using Biometrics in Web Environment Systems”为主题的报告会。",
+          "imageslist": [
+            { "img": "./static/images/exchange/in/2019-1.jpg", "name":"IEEE Fellow,  Mohammad S.Obaidat教授学术报告会" },
+            { "img": "./static/images/exchange/in/2019-2.jpg", "name":"IEEE Fellow,  Mohammad S.Obaidat教授学术报告会" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Year of 2018",
+      "out_message": [
+        {
+          "description": "参加ICSOC 2018（中国浙江杭州第16届面向服务的计算国际会议）、参加CCF YOCSEF杭州2018换届会议（实验室殷昱煜副教授荣任CCF YOCSEF杭州候任主席）、参加NASAC 2018（第十七届全国软件与应用学术会议）、成立了校地合作，舟山研究院、参加HPC（中国青岛2018全国高性能计算学术年会）、参加教育部重点实验室新一轮评估期战略规划会暨全体动员大会等。",
+          "imageslist": [
+            { "img": "./static/images/exchange/out/2018-1.png", "name":"CCF YOCSEF中国杭州2018换届会议" },
+            { "img": "./static/images/exchange/out/2018-2.jpg", "name":"CCF YOCSEF中国杭州2018换届会议"},
+            { "img": "./static/images/exchange/out/2018-3.jpg", "name":"ICSOC 中国浙江杭州第16届面向服务的计算国际会议" },
+            { "img": "./static/images/exchange/out/2018-4.jpg", "name":"ICSOC 中国浙江杭州第16届面向服务的计算国际会议" },
+            { "img": "./static/images/exchange/out/2018-5.jpg", "name":"NASAC 中国深圳第十七届全国软件与应用学术会议"},
+            { "img": "./static/images/exchange/out/2018-6.jpg", "name":"校地合作，舟山研究院" },
+            { "img": "./static/images/exchange/out/2018-7.jpg", "name":"HPC 中国青岛2018全国高性能计算学术年会" },
+            { "img": "./static/images/exchange/out/2018-8.jpg", "name":"教育部重点实验室新一轮评估期战略规划会暨全体动员大会" }
+          ]
+        }
+      ],
+      "in_message": [
+        {
+          "description": "实验室邀请印度理工学院教授R.K. Shyamasundar讲座、维也纳技术大学Hong-Linh Truong博士讲座、荷兰阿姆斯特丹大学的Zhming Zhao教授讲座、实验室联合举办HASE 2019（中国杭州第十九届高可靠系统工程国际会议）等。",
+          "imageslist": [
+            { "img": "./static/images/exchange/in/2018-1.jpg", "name":"印度理工学院教授R.K. Shyamasundar" },
+            { "img": "./static/images/exchange/in/2018-2.jpg", "name":"印度理工学院教授R.K. Shyamasundar"},
+            { "img": "./static/images/exchange/in/2018-3.jpg", "name":"维也纳技术大学Hong-Linh Truong博士" },
+            { "img": "./static/images/exchange/in/2018-4.jpg", "name":"维也纳技术大学Hong-Linh Truong博士" },
+            { "img": "./static/images/exchange/in/2018-5.jpg", "name":"维也纳技术大学Hong-Linh Truong博士" },
+            { "img": "./static/images/exchange/in/2018-6.jpg", "name":"阿姆斯特丹大学的Zhming Zhao教授" },
+            { "img": "./static/images/exchange/in/2018-7.jpg", "name":"阿姆斯特丹大学的Zhming Zhao教授" },
+            { "img": "./static/images/exchange/in/2018-8.jpg", "name":"阿姆斯特丹大学的Zhming Zhao教授"}
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Year of 2017",
+      "out_message": [
+        {
+          "description": "实验室参加中国湘潭2017第八届中国计算机学会服务计算会议、参加ICDCS 2017（美国亚特兰大IEEE分布式计算系统国际会议）、成功举办复杂系统建模与仿真教育部重点实验室学术研讨会第一届云计算与边缘计算研讨会。",
+          "imageslist": [
+            { "img": "./static/images/exchange/out/2017-1.jpg", "name":"2017第八届中国计算机学会服务计算会议湖南湘潭" },
+            { "img": "./static/images/exchange/out/2017-2.jpg", "name":"ICDCS 2017美国亚特兰大"},
+            { "img": "./static/images/exchange/out/2017-3.jpg", "name":"当选SSYSF副主席" },
+            { "img": "./static/images/exchange/out/2017-4.jpg", "name":"实验室第一届云计算与边缘计算研讨会"}
+          ]
+        }
+      ],
+      "in_message": [
+        
+      ]
+    },
+    {
+      "title": "更早",
+      "out_message": [
+        {
+          "description": "APSCC 2010 中国杭州第五届IEEE亚太服务计算国际会议、EduCloudSummit 2012中国杭州教育科研云技术高峰论坛、HPDIC 2013 美国第27届IEEE并行与分布式处理国际会议、PQoSCOM 2012 中国北京功率和QoS感知计算国际研讨会等。在知名学术会议如PDPS、Cluster、APSCC、SERVICES、ICSOC、WAIM等举办了CloudPerf 2011-2014,FM-S&C 2011-2014,HPDIC 2012-2014,PQosCom 2012,MDSP 2012,DISA 2012等Workshop。",
+          "imageslist": [
+            { "img": "./static/images/exchange/out/back-5.png", "name":"APSCC 2010 中国杭州第五届IEEE亚太服务计算国际会议" },
+            { "img": "./static/images/exchange/out/back-6.png", "name":"EduCloudSummit 2012中国杭州教育科研云技术高峰论坛" },
+            { "img": "./static/images/exchange/out/back-7.png", "name":"HPDIC 2013 美国第27届IEEE并行与分布式处理国际会议" },
+            { "img": "./static/images/exchange/out/back-8.png", "name":"PQoSCOM 2012 中国北京功率和QoS感知计算国际研讨会" }
+          ]
+        }
+      ],
+      "in_message": [
+        {
+          "description": "实验室邀请H.J.Siegel教授、施巍松教授、Smets教授等教授来访进行学术交流，同韦恩州立大学、约克大学、巴黎十三大学等知名国外学府进行了合作研究。",
+          "imageslist": [
+            { "img": "./static/images/exchange/in/back-2.png", "name":"" },
+            { "img": "./static/images/exchange/in/back-3.png", "name":"" },
+            { "img": "./static/images/exchange/in/back-4.png", "name":"" },
+            { "img": "./static/images/exchange/in/back-1.png", "name":"" },
+            { "img": "./static/images/exchange/in/back-5.jpg", "name":"" },
+            { "img": "./static/images/exchange/in/back-6.jpg", "name":"" },
+            { "img": "./static/images/exchange/in/back-10.jpg", "name":"" },
+            { "img": "./static/images/exchange/in/back-12.jpg", "name":"" },
+            { "img": "./static/images/exchange/in/back-7.jpg", "name":"" },
+            { "img": "./static/images/exchange/in/back-8.jpg", "name":"" },
+            { "img": "./static/images/exchange/in/back-9.jpg", "name":"" },
+            { "img": "./static/images/exchange/in/back-11.jpg", "name":"" }
+          ]
+        }
+      ]
+    }
+   
   ]
 }
