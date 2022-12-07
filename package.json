@@ -16,7 +16,7 @@
     "font-awesome": "^4.7.0",
     "lib-flexible": "^0.3.2",
     "popper.js": "^1.14.7",
-    "qs": "^6.5.2",
+    "qs": "^6.5.3",
     "vue": "^2.5.2",
     "vue-echarts": "^4.0.1",
     "vue-router": "^3.0.1"
